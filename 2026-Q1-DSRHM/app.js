@@ -64,10 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
   navFights.appendChild(refNav);
 
   // Populate player dropdown
-  Object.keys(PLAYERS).forEach(id => {
+  const playerOrder = ['MT','OT','H1','H2','DPS1','DPS2','DPS3','DPS4','DPS5','DPS6','DPS7','DPS8'];
+  playerOrder.forEach(id => {
+    if (!PLAYERS[id]) return;
     const opt = document.createElement('option');
     opt.value = id;
-    opt.textContent = `${PLAYERS[id].name} [${PLAYERS[id].tag}]`;
+
+    const roleClass = getRoleClass(id);
+    let icon = '';
+    if (roleClass === 'role-tank') icon = '🛡️ ';
+    else if (roleClass === 'role-healer') icon = '⚕️ ';
+    else if (roleClass === 'role-dps') icon = '⚔️ ';
+
+    opt.textContent = `${icon}${PLAYERS[id].name} [${PLAYERS[id].tag}]`;
+    if (roleClass) opt.classList.add(roleClass);
+
     playerFilter.appendChild(opt);
   });
 
@@ -168,6 +179,7 @@ function switchTab(tabId) {
 function getRoleClass(playerId) {
   if (playerId.startsWith('H')) return 'role-healer';
   if (playerId === 'MT' || playerId === 'OT') return 'role-tank';
+  if (playerId.startsWith('DPS')) return 'role-dps';
   return '';
 }
 
@@ -511,7 +523,7 @@ function makeLeverTable(leverSet) {
   table.innerHTML = `
     <thead><tr><th colspan="2">${leverSet.name}</th></tr></thead>
     <tbody>
-      ${leverSet.positions.map(p => `<tr><td>${p.pos}</td><td data-player-text="${p.player}">${resolvePlayerName(p.player, true)}</td></tr>`).join('')}
+      ${leverSet.positions.map(p => `<tr><td>${p.pos}</td><td data-player-text="${p.player}">${resolvePlayerNameAsPill(p.player)}</td></tr>`).join('')}
     </tbody>
   `;
   wrapper.appendChild(table);
