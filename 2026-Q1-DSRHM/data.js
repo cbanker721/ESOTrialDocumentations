@@ -485,14 +485,14 @@ const LEVERS = {
       { pos: "Right (Far)", player: "MT" }
     ]},
     { name: "Lightning 2", positions: [
-      { pos: "Bridge 1", player: "DPS3" },
-      { pos: "Bridge 2", player: "MT (Streak across)" },
+      { pos: "Bridge 1", player: "MT" },
+      { pos: "Bridge 2", player: "DPS3 (Streak)" },
       { pos: "Exit", player: "H2" }
     ]},
     { name: "Lightning 3", positions: [
-      { pos: "Parkour", player: "MT (Vamp leap/Bow vault)" },
+      { pos: "Parkour", player: "DPS3 (Streak)" },
       { pos: "Exit", player: "H2" },
-      { pos: "Left", player: "DPS3" }
+      { pos: "Left", player: "MT" }
     ]}
   ],
   poison: [
@@ -508,7 +508,7 @@ const LEVERS = {
     ]},
     { name: "Poison 3", positions: [
       { pos: "Left", player: "MT" },
-      { pos: "Right (Entrance, go immediately)", player: "DPS7" },
+      { pos: "Right of Entrance (Go immediately and wait)", player: "DPS7" },
       { pos: "Near", player: "H2" }
     ]}
   ]
