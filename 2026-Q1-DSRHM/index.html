@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSR HM Progression — 2026 Q1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <h1>⚓ Dreadsail Reef — Veteran Hardmode</h1>
+      <p class="subtitle">2026 Q1 Progression Group</p>
+    </div>
+  </header>
+
+  <nav id="main-nav">
+    <div class="nav-inner">
+      <div class="nav-fights" id="nav-fights"></div>
+      <div class="nav-controls">
+        <label for="player-filter">Player:</label>
+        <select id="player-filter">
+          <option value="all">All Players</option>
+        </select>
+      </div>
+    </div>
+  </nav>
+
+  <section id="guidance-section" class="content-section">
+    <h2>⚙️ General Build Guidance</h2>
+    <div id="guidance"></div>
+  </section>
+
+  <main id="app">
+    <!-- Fight selector buttons -->
+    <div class="fight-selector" id="fight-selector"></div>
+
+    <!-- Single shared fight viewer -->
+    <section class="fight-section" id="fight-viewer">
+      <div class="fight-header">
+        <span class="fight-icon" id="fight-viewer-icon"></span>
+        <span class="fight-title" id="fight-viewer-title"></span>
+      </div>
+      <div class="fight-body">
+        <div class="tab-bar" id="fight-tab-bar"></div>
+        <div id="panel-builds" class="tab-panel active"></div>
+        <div id="panel-assignments" class="tab-panel"></div>
+        <div id="panel-strategy" class="tab-panel"></div>
+        <div id="panel-buffs" class="tab-panel"></div>
+      </div>
+    </section>
+  </main>
+
+  <section id="levers-section" class="content-section">
+    <h2>🔧 Lever Assignments</h2>
+    <div class="lever-grid" id="lever-grid"></div>
+  </section>
+
+  <section id="references-section" class="content-section">
+    <h2>📚 References & Tools</h2>
+    <div id="references"></div>
+  </section>
+
+  <footer>
+    <p>Data sourced from walls of text in my Discord server that nobody wants to read. Anthropic Opus 4.6 was used to process this raw data, refine it, and produce the view with human supervision.</p>
+  </footer>
+
+  <script src="players.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

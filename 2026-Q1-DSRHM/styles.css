@@ -1,0 +1,488 @@
+/* ============================================================
+   DSR HM Progression — Styles
+   ============================================================ */
+
+:root {
+  --bg: #0e1117;
+  --bg-card: #161b22;
+  --bg-card-alt: #1c2230;
+  --bg-hover: #21262d;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #58a6ff;
+  --accent-dim: #1f3a5f;
+  --gold: #d4a843;
+  --red: #f85149;
+  --green: #3fb950;
+  --purple: #bc8cff;
+  --orange: #d29922;
+  --cyan: #39d2c0;
+  --role-dps: #f0883e;
+  --role-healer: #3fb950;
+  --role-tank: #58a6ff;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono: 'Cascadia Code', 'Fira Code', monospace;
+  --radius: 8px;
+  --radius-sm: 4px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b2838 50%, #0d1b2a 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 2rem 1.5rem 1.5rem;
+  text-align: center;
+}
+header h1 { font-size: 1.8rem; color: var(--gold); letter-spacing: 0.5px; }
+.subtitle { color: var(--text-muted); margin-top: 0.25rem; font-size: 0.95rem; }
+
+/* Nav */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(14, 17, 23, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 1.5rem;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 0.5rem;
+}
+.nav-fights { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+.nav-fights a {
+  color: var(--text-muted); text-decoration: none;
+  padding: 0.4rem 0.75rem; border-radius: var(--radius-sm);
+  font-size: 0.85rem; transition: all 0.15s;
+  white-space: nowrap;
+}
+.nav-fights a:hover, .nav-fights a.active {
+  color: var(--text); background: var(--bg-hover);
+}
+.nav-controls { display: flex; align-items: center; gap: 0.5rem; }
+.nav-controls label { color: var(--text-muted); font-size: 0.85rem; }
+.nav-controls select {
+  background: var(--bg-card); color: var(--text);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 0.35rem 0.5rem; font-size: 0.85rem; cursor: pointer;
+}
+
+/* Main content */
+main, .content-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* Fight selector bar */
+.fight-selector {
+  display: flex; gap: 0.4rem; flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.fight-sel-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.fight-sel-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--bg-hover);
+}
+.fight-sel-btn.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(212, 168, 67, 0.1);
+}
+
+/* Fight sections */
+.fight-section {
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.fight-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(90deg, var(--bg-card-alt), var(--bg-card));
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.75rem;
+  cursor: default;
+}
+.fight-icon { font-size: 1.5rem; }
+.fight-title { font-size: 1.25rem; font-weight: 600; color: var(--gold); }
+.fight-body { padding: 1.25rem; }
+
+/* Tabs within a fight */
+.tab-bar {
+  display: flex; gap: 0.25rem; margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border); padding-bottom: 0.5rem;
+}
+.tab-btn {
+  background: none; border: none; color: var(--text-muted);
+  padding: 0.4rem 0.85rem; cursor: pointer; font-size: 0.85rem;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: all 0.15s;
+}
+.tab-btn:hover { color: var(--text); background: var(--bg-hover); }
+.tab-btn.active { color: var(--accent); border-bottom: 2px solid var(--accent); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* Build grid */
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+.build-card {
+  background: rgba(240, 136, 62, 0.08);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.85rem;
+  transition: border-color 0.15s;
+  border-left: 3px solid var(--role-dps);
+}
+.build-card:hover { border-color: var(--accent); }
+.build-card.role-healer {
+  border-left-color: var(--role-healer);
+  background: rgba(63, 185, 80, 0.08);
+}
+.build-card.role-tank {
+  border-left-color: var(--role-tank);
+  background: rgba(88, 166, 255, 0.08);
+}
+.build-card-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 0.5rem;
+}
+.player-name {
+  font-weight: 600; font-size: 0.95rem;
+}
+.player-name[title] {
+  cursor: help;
+  border-bottom: 1px dotted var(--gold);
+}
+.player-tag {
+  font-size: 0.7rem; color: var(--text-muted);
+  background: var(--bg); padding: 0.15rem 0.4rem;
+  border-radius: var(--radius-sm);
+}
+.player-id {
+  font-size: 0.8rem; color: var(--text-muted);
+  font-weight: 400;
+}
+.has-nickname {
+  cursor: help;
+  border-bottom: 1px dotted var(--gold);
+}
+.build-row {
+  display: flex; gap: 0.35rem; flex-wrap: wrap;
+  margin-bottom: 0.35rem;
+}
+.set-pill {
+  font-size: 0.75rem; padding: 0.15rem 0.45rem;
+  background: var(--accent-dim); color: var(--accent);
+  border-radius: var(--radius-sm); white-space: nowrap;
+}
+.ult-pill {
+  font-size: 0.75rem; padding: 0.15rem 0.45rem;
+  background: rgba(188, 140, 255, 0.15); color: var(--purple);
+  border-radius: var(--radius-sm); white-space: nowrap;
+}
+.build-notes {
+  font-size: 0.8rem; color: var(--text-muted);
+  margin-top: 0.35rem; line-height: 1.45;
+}
+
+/* Notable skills on build cards */
+.build-skills {
+  display: flex; gap: 0.3rem; flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+.skill-pill {
+  font-size: 0.72rem; padding: 0.12rem 0.4rem;
+  background: rgba(57, 210, 192, 0.1); color: var(--cyan);
+  border-radius: var(--radius-sm); white-space: nowrap;
+}
+
+/* Highlighted build card (player filter) */
+.build-card.highlighted {
+  border-color: var(--gold);
+  box-shadow: 0 0 12px rgba(212, 168, 67, 0.2);
+}
+.build-card.dimmed { opacity: 0.3; }
+
+/* Strategy */
+.strategy-summary {
+  font-size: 0.95rem; color: var(--text);
+  margin-bottom: 1rem; line-height: 1.55;
+  padding: 0.75rem; background: var(--bg-card-alt);
+  border-radius: var(--radius); border-left: 3px solid var(--gold);
+}
+.strategy-details { margin-bottom: 1rem; }
+.strategy-details ul {
+  list-style: none; padding: 0;
+}
+.strategy-details li {
+  padding: 0.3rem 0 0.3rem 1.25rem;
+  position: relative; font-size: 0.9rem; color: var(--text-muted);
+}
+.strategy-details li::before {
+  content: '▸'; position: absolute; left: 0; color: var(--accent);
+}
+
+/* Phase blocks */
+.phase-block {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.phase-header {
+  padding: 0.6rem 1rem;
+  background: var(--bg-card-alt);
+  font-weight: 600; font-size: 0.9rem;
+  color: var(--accent); cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.phase-header::after { content: '▾'; color: var(--text-muted); font-size: 0.8rem; }
+.phase-header.collapsed::after { content: '▸'; }
+.phase-body {
+  padding: 0.6rem 1rem;
+}
+.phase-body.collapsed { display: none; }
+.phase-body ul { list-style: none; padding: 0; }
+.phase-body li {
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  position: relative; font-size: 0.85rem; color: var(--text-muted);
+}
+.phase-body li::before {
+  content: '•'; position: absolute; left: 0.25rem; color: var(--gold);
+}
+
+/* Reminders */
+.reminders {
+  background: rgba(248, 81, 73, 0.08);
+  border: 1px solid rgba(248, 81, 73, 0.25);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem; margin-top: 0.75rem;
+}
+.reminders h4 {
+  font-size: 0.85rem; color: var(--red); margin-bottom: 0.4rem;
+}
+.reminders li {
+  font-size: 0.85rem; color: var(--text-muted);
+  padding: 0.2rem 0 0.2rem 1.25rem; position: relative;
+}
+.reminders li::before {
+  content: '⚠'; position: absolute; left: 0; font-size: 0.75rem;
+}
+
+/* Assignments */
+.assignments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 0.75rem; margin-top: 0.75rem;
+}
+.assignment-card {
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem;
+}
+.assignment-card h4 {
+  font-size: 0.85rem; color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.assignment-card p, .assignment-card li {
+  font-size: 0.85rem; color: var(--text-muted);
+}
+.assignment-card ul { list-style: none; padding: 0; }
+.assignment-card li { padding: 0.15rem 0; }
+
+/* Lever section */
+.lever-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1rem;
+}
+.lever-group h3 {
+  font-size: 1rem; color: var(--accent); margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem; border-bottom: 1px solid var(--border);
+}
+.lever-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem;
+}
+.lever-table th {
+  text-align: left; padding: 0.4rem 0.6rem;
+  color: var(--text-muted); font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+.lever-table td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+}
+.lever-table tr:hover td { background: var(--bg-hover); }
+
+/* References */
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.ref-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+.ref-card h3 {
+  font-size: 0.95rem; color: var(--gold); margin-bottom: 0.5rem;
+}
+.ref-card a {
+  display: block; color: var(--accent); text-decoration: none;
+  font-size: 0.85rem; padding: 0.2rem 0;
+  transition: color 0.15s;
+}
+.ref-card a:hover { color: var(--text); }
+
+/* Footer */
+footer {
+  text-align: center; padding: 2rem 1rem;
+  color: var(--text-muted); font-size: 0.8rem;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+
+/* Player filter highlight in assignments */
+.highlight-player { color: var(--gold); font-weight: 600; }
+
+/* Buffs/Debuffs table in Assignments tab */
+.buffs-table-wrapper {
+  margin-top: 0;
+  padding-top: 0;
+}
+.buffs-table-wrapper:not(.standalone) {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.buffs-table-wrapper h4 {
+  font-size: 0.95rem; color: var(--cyan);
+  margin-bottom: 0.5rem;
+}
+.buffs-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.buffs-col-label {
+  font-size: 0.8rem; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.04em;
+  margin-bottom: 0.35rem; font-weight: 600;
+}
+.buffs-table {
+  width: 100%;
+  border-collapse: collapse; font-size: 0.85rem;
+}
+.buffs-table th {
+  text-align: left; padding: 0.45rem 0.75rem;
+  color: var(--text-muted); font-weight: 600;
+  border-bottom: 2px solid var(--border);
+  font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.buffs-table td {
+  padding: 0.35rem 0.75rem;
+  border-bottom: 1px solid rgba(48, 54, 61, 0.5);
+}
+.buffs-table tr:hover td { background: var(--bg-hover); }
+.buffs-table tr.unassigned td { opacity: 0.5; }
+.buffs-table .no-owner { color: var(--text-muted); font-style: italic; }
+
+/* Owner pills in buffs table */
+.owner-pill {
+  display: inline-block;
+  font-size: 0.78rem; padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-sm);
+  margin: 0.1rem 0.15rem 0.1rem 0;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.owner-tank {
+  background: rgba(88, 166, 255, 0.12);
+  color: var(--role-tank);
+}
+.owner-healer {
+  background: rgba(63, 185, 80, 0.12);
+  color: var(--role-healer);
+}
+.owner-dps {
+  background: rgba(240, 136, 62, 0.12);
+  color: var(--role-dps);
+}
+.owner-pill.owner-highlighted {
+  outline: 1.5px solid var(--gold);
+  box-shadow: 0 0 6px rgba(212, 168, 67, 0.3);
+}
+.owner-pill.owner-dimmed { opacity: 0.25; }
+
+/* Guidance section */
+.guidance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+.guidance-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--text-muted);
+}
+.guidance-card h3 {
+  font-size: 1rem; margin-bottom: 0.6rem;
+  color: var(--gold);
+}
+.guidance-card p {
+  font-size: 0.85rem; color: var(--text-muted);
+  margin-bottom: 0.35rem; line-height: 1.5;
+}
+.guidance-key {
+  color: var(--text); font-weight: 600;
+}
+.guidance-dps { border-left-color: var(--role-dps); }
+.guidance-healer { border-left-color: var(--role-healer); }
+.guidance-tank { border-left-color: var(--role-tank); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  header h1 { font-size: 1.3rem; }
+  .build-grid { grid-template-columns: 1fr; }
+  .nav-inner { flex-direction: column; align-items: flex-start; }
+  .lever-grid { grid-template-columns: 1fr; }
+  .buffs-two-col { grid-template-columns: 1fr; }
+  .guidance-grid { grid-template-columns: 1fr; }
+  .fight-sel-btn { flex: 1; min-width: 0; text-align: center; padding: 0.4rem 0.5rem; font-size: 0.8rem; }
+}
