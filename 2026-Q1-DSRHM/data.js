@@ -50,10 +50,10 @@ const FIGHTS = [
       "DPS6": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS7": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS8": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "H1":   { sets: ["MA", "PP", "PoE"], ult: "—", notes: "Arkasis on trash. Hotkey manual gear swaps." },
-      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "—", notes: "Arkasis on trash. Hotkey manual gear swaps." },
-      "MT":   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "Coordinate pulls with OT. Arkasis." },
-      "OT":   { sets: ["PW", "Crimson", "Baron"], ult: "Horn", notes: "Arkasis on trash." }
+      "H1":   { sets: ["MA", "PP", "PoE"], ult: "None", notes: "Hotkey manual gear swaps." },
+      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", notes: "Hotkey manual gear swaps." },
+      "MT":   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "Coordinate pulls with OT. Hotkey manual gear swaps." },
+      "OT":   { sets: ["PW", "Crimson", "Baron"], ult: "Horn", notes: "" }
     },
     buffsDebuffs: [
       { name: "Crimson Oath", owners: ["OT"] },
