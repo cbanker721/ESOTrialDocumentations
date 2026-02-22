@@ -6,12 +6,12 @@
 const PLAYER_SKILLS = {
   "MT":  [
     { skill: "Crusher", note: "Enchants" },
-    { skill: "Igneous Weapons", note: "Minor Brutality, Major Sorcery/Brutality" },
     { skill: "Frost Cloak", note: "Major Resolve" }
   ],
   "OT":  [
     { skill: "Crusher", note: "Enchants" },
-    { skill: "Colourless", note: "Minor Brittle" }
+    { skill: "Colourless", note: "Minor Brittle" },
+    { skill: "Igneous Weapons", note: "Minor Brutality, Major Sorcery/Brutality" },
   ],
   "H1":  [
     { skill: "Altar", note: "Undaunted" },
