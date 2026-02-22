@@ -213,6 +213,12 @@ function renderBuilds(fight) {
         ${skills.map(s => `<span class="skill-pill">${s.skill}</span>`).join('')}
       </div>
     ` : '';
+    const miscRowHTML = b.misc && b.misc.length ? `
+      <div class="build-row">
+        ${b.misc.map(s => `<span class="misc-pill">${s}</span>`).join('')}
+      </div>
+    ` : '';
+
     card.innerHTML = `
       <div class="build-card-header">
         <span class="player-name"${nameTooltip}>${p.name} <span class="player-id">(${pid})</span></span>
@@ -224,6 +230,7 @@ function renderBuilds(fight) {
       <div class="build-row">
         <span class="ult-pill">Ult: ${b.ult}</span>
       </div>
+      ${miscRowHTML}
       ${skillsHtml}
       ${b.notes ? `<div class="build-notes">${resolvePlayerName(b.notes)}</div>` : ''}
     `;

@@ -5,21 +5,24 @@
 // Notable skills/modifiers per role (shown on build cards)
 const PLAYER_SKILLS = {
   "MT":  [
+    { skill: "Crusher", note: "Enchants" },
     { skill: "Igneous Weapons", note: "Minor Brutality, Major Sorcery/Brutality" },
     { skill: "Frost Cloak", note: "Major Resolve" }
   ],
   "OT":  [
+    { skill: "Crusher", note: "Enchants" },
     { skill: "Colourless", note: "Minor Brittle" }
   ],
   "H1":  [
-    { skill: "Crusher/Weakening", note: "Enchants" },
-    { skill: "Altar", note: "Undaunted synergy" },
-    { skill: "Off Balance", note: "" }
+    { skill: "Weakening", note: "Enchants" },
+    { skill: "Altar", note: "Undaunted" },
+    { skill: "Off Balance", note: "Lightning Staff" }
   ],
   "H2":  [
-    { skill: "Radiant Aura", note: "Minor Magickasteal" },
+    { skill: "Weakening", note: "Enchants" },
+    { skill: "Radiant Aura", note: "" },
     { skill: "Warding Burst", note: "Minor Expedition" },
-    { skill: "Off Balance", note: "" }
+    { skill: "Off Balance", note: "Lightning Staff" }
   ]
 };
 
@@ -41,7 +44,7 @@ const FIGHTS = [
     builds: {
       "DPS1": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS2": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS3": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      "DPS3": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
       "DPS4": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS5": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS6": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
@@ -309,7 +312,7 @@ const FIGHTS = [
       "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Horn", notes: "Heal group and MT. Naz extend Colo." },
       "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", notes: "Heal OT. PP + Slayer. Time PP after OT ult. Major + Minor Expedition on move. Rubberband mage into group if MT requests." },
       "MT":   { sets: ["LE", "WM", "Baron"], ult: "Atro only", notes: "Watch for bears/cats on every portal clear. Taunt Large Guardian. Rubberband mages into group. Frost Cloak at reef clears and acid reflux. Left Slayer with 3s countdown." },
-      "OT":   { sets: ["PW", "Flex", "Baron/Encratis/Selfish"], ult: "Selfish ults", notes: "Dictates group stack position. Stack on right side of reef. Race Against Time. Don't overstay — avoid backwards mediums/smalls." }
+      "OT":   { sets: ["PW", "Flex", "Baron/Encratis/Selfish"], ult: "Selfish ults", misc: ["Ele Sus"], notes: "Dictates group stack position. Stack on right side of reef. Race Against Time. Don't overstay — avoid backwards mediums/smalls." }
     },
     buffsDebuffs: [
       { name: "Alkosh", owners: ["DPS2"] },
@@ -444,7 +447,7 @@ const FIGHTS = [
       "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Barrier", notes: "Seeds on MT. Naz extend Colo. Barrier without waiting for Colo if group in danger." },
       "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", notes: "PP + Back Slayer. Focus healing OT (especially with Behemoth). Occasional HoT/synergy to MT. Major + Minor Expedition on move." },
       "MT":   { sets: ["LE", "Xoryn/EC", "Trem"], ult: "Selfish", notes: "Taunt Taleria, focus surviving. Be selfish. Go into group for Maelstrom as needed. Keep ~1.5 clock units from group. Frost Cloak at Maelstrom and end of bridge when mage spawns." },
-      "OT":   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Behemoth is #1 priority — perma-block while alive. Stack mage close to Taleria. Ele Sus and taunt in-range matrons. Break free from Siren lure before Behemoth kills you. Proc Slayer (front) and ultigen. Stagger only if no mages/behemoths." }
+      "OT":   { sets: ["PW", "WM", "Baron"], ult: "Horn", misc: ["Ele Sus"], notes: "Behemoth is #1 priority — perma-block while alive. Stack mage close to Taleria. Ele Sus and taunt in-range matrons. Break free from Siren lure before Behemoth kills you. Proc Slayer (front) and ultigen. Stagger only if no mages/behemoths." }
     },
     buffsDebuffs: [
       { name: "Barrier", owners: ["H1", "H2"] },
