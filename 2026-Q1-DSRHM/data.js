@@ -38,7 +38,7 @@ const FIGHTS = [
         "Coordinate pulls between MT and OT.",
         "Supports never ult on trash.",
         "DDs can ult until last or 2nd-last pull (Standards are expensive).",
-        "Lever pullers swap sets via Wizard's Wardrobe hotkey before being pulled in."
+        "Lever pullers swap sets via Wizard's Wardrobe hotkey before being pulled in.",
       ]
     },
     builds: {
@@ -190,17 +190,18 @@ const FIGHTS = [
   },
   {
     id: "sailripper-bowbreaker",
-    name: "Sail Ripper & Bow Breaker",
+    name: "Sail Ripper & Bow Breaker + Trash Pulls",
     shortName: "Minis",
     icon: "🐦🐢",
     strategy: {
       summary: "Two mini-bosses with no hardmode. Sail Ripper has lethal harpy heavy attacks. Bow Breaker is a Coral Haj Mota with frontal cleave. Don't ult on Bow Breaker — save for Reef Guardians.",
       details: [
+        "For trash pulls before Sail Ripper/Bow Breaker, H1 and OT are officially solo-heal and solo-tank as H2 and MT are away at levers",
         "People not responsible for levers wait at exit as soon as trash is dead.",
         "Lever pullers run to levers or wait for trash (at discretion). For last lever set before boss, hotkey gear swap via Wizard's Wardrobe.",
         "Don't ult on Bow Breaker — save for Reef Guardians immediately after.",
         "OT takes boss and first adds since other tank may be late from levers.",
-        "MT takes small adds and stacks on boss once pulled into group."
+        "MT takes small adds and stacks on boss once pulled into group.",
       ]
     },
     builds: {
