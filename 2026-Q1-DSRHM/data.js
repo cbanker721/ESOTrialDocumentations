@@ -46,11 +46,11 @@ const FIGHTS = [
     builds: {
       "DPS1": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS2": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS3": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
+      "DPS3": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS4": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS5": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS6": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS7": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      "DPS7": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
       "DPS8": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Shattering Knife"], notes: "Be mindful about ulting before the last boss." },
       "H1":   { sets: ["MA", "PP", "PoE"], ult: "None", notes: "Hotkey manual gear swaps." },
       "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", notes: "Hotkey manual gear swaps." },
