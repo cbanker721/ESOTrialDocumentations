@@ -17,12 +17,14 @@ const PLAYER_SKILLS = {
     { skill: "Weakening", note: "Enchants" },
     { skill: "Altar", note: "Undaunted" },
     { skill: "Off Balance", note: "Lightning Staff" }
+    { skill: "From the Brink", note: "CP" },
   ],
   "H2":  [
     { skill: "Weakening", note: "Enchants" },
     { skill: "Radiant Aura", note: "" },
     { skill: "Warding Burst", note: "Minor Expedition" },
     { skill: "Off Balance", note: "Lightning Staff" }
+    { skill: "Enlivening", note: "CP" },
   ]
 };
 
