@@ -615,11 +615,18 @@ function renderReferences() {
     <a href="${REFERENCES.videos.twinsTank}" target="_blank">o_Temp — Twins Tank Guide</a>
     <a href="${REFERENCES.videos.reefMT}" target="_blank">o_Temp — Reef Guardian MT Guide</a>
     <a href="${REFERENCES.videos.taleriaOT}" target="_blank">o_Temp — Taleria OT Guide</a>
-    <a href="${REFERENCES.videos.scrappyClear}" target="_blank">Full Run [Healer 2 POV] — Scrappy Clear (U45)</a>
-    <a href="${REFERENCES.videos.cleanerClear}" target="_blank">Full Run [Healer 2 POV] — Cleaner Clear (U45)</a>
-    <a href="${REFERENCES.videos.trifectaClear}" target="_blank">Full Run [Healer 2 POV] — Trifecta Clear (U45)</a>
   `;
   grid.appendChild(vidCard);
+
+  const povCard = document.createElement('div');
+  povCard.className = 'ref-card';
+  povCard.innerHTML = `
+    <h3>🎬 Full Clear POVs</h3>
+    <a href="${REFERENCES.videos.scrappyClear}" target="_blank">Scrappy Clear (U45) - H2 POV</a>
+    <a href="${REFERENCES.videos.cleanerClear}" target="_blank">Cleaner Clear (U45) - H2 POV</a>
+    <a href="${REFERENCES.videos.trifectaClear}" target="_blank">Trifecta Clear (U45) - H2 POV</a>
+  `;
+  grid.appendChild(povCard);
 
   const penCard = document.createElement('div');
   penCard.className = 'ref-card';
