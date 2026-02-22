@@ -501,11 +501,11 @@ const LEVERS = {
     ]},
     { name: "Lightning 2", positions: [
       { pos: "Bridge 1", player: "MT" },
-      { pos: "Bridge 2", player: "DPS3 (Streak)" },
+      { pos: "Bridge 2", player: "DPS7 (Streak)" },
       { pos: "Exit", player: "H2" }
     ]},
     { name: "Lightning 3", positions: [
-      { pos: "Parkour", player: "DPS3 (Streak)" },
+      { pos: "Parkour", player: "DPS7 (Streak)" },
       { pos: "Exit", player: "H2" },
       { pos: "Left", player: "MT" }
     ]}
