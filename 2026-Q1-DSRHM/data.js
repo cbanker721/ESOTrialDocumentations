@@ -554,7 +554,7 @@ const REFERENCES = {
 
 // General DPS build guidance
 const DPS_GUIDANCE = {
-  subclass: "Herald/Ardent/X. The last subclass can be Storm, Assassination, or Spear. Adjust build for pen/crit. Most fights allow 7 medium pieces. Storm for portal survival, Assassination for execute damage, Spear for overall damage.",
+  subclass: "Herald/Ardent/X. Bridge DDs go Storm Calling. Non-Portal DDs go Assassination or Spear. Other Portal DDs go either Storm or Assassination.",
   bannerDDs: "Shocking/Cavalier/Courage banner.",
   beamDDs: "The beam morph to use is Pragmatic Fatecarver.",
   alkoshDPS: "Colo-only for ult. Gravelord for 3rd subclass. Alkosh for all fights except Taleria (use parse trial set + Colo)."
