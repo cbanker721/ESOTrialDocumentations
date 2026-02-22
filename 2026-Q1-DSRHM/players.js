@@ -10,4 +10,6 @@ const PLAYERS = {
   "DPS8": { name: "CommunistBanker",   tag: "Misc",         nickname: "" },
   "H1":   { name: "Lissa",    tag: "SPC",          nickname: "" },
   "H2":   { name: "Violon/B",    tag: "PP",           nickname: "" },
+  "MT":   { name: "TheInsaneEngineer",   tag: "Taleria Tank", nickname: "" },
+  "OT":   { name: "VectorRar",     tag: "Reef Tank",    nickname: "The Furry" }
 };

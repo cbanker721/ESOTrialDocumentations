@@ -205,7 +205,7 @@ function renderBuilds(fight) {
     card.className = `build-card ${getRoleClass(pid)}`;
     card.dataset.player = pid;
 
-    const p = PLAYERS[pid];
+    const p = PLAYERS[pid] || { name: pid, tag: '', nickname: '' };
     const nameTooltip = p.nickname ? ` title="${p.nickname}"` : '';
     const skills = PLAYER_SKILLS[pid] || [];
     const skillsHtml = skills.length ? `
