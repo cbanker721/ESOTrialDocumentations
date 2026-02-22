@@ -63,7 +63,8 @@ const FIGHTS = [
       { name: "Major Resolve", owners: ["MT"] },
       { name: "Minor Breach", owners: ["OT"] },
       { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["MT"] },
+      { name: "Minor Brutality", owners: ["OT"] },
+      { name: "Minor Vulnerability", owners: ["OT"] },
       { name: "Off Balance", owners: ["H1", "H2"] },
       { name: "PA", owners: ["H2"] },
       { name: "PW", owners: ["OT"] },
@@ -160,7 +161,9 @@ const FIGHTS = [
       { name: "Major Resolve", owners: ["MT"] },
       { name: "Minor Breach", owners: ["MT", "OT"] },
       { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["MT"] },
+      { name: "Minor Brutality", owners: ["OT"] },
+      { name: "Minor Vulnerability", owners: ["OT"] },
+      { name: "Major Vulnerability", owners: ["DPS2"] },
       { name: "Naz", owners: ["H1"] },
       { name: "Off Balance", owners: ["H1", "H2"] },
       { name: "PA", owners: ["MT", "OT"] },
@@ -229,7 +232,9 @@ const FIGHTS = [
       { name: "Major Resolve", owners: ["MT"] },
       { name: "Minor Breach", owners: ["OT"] },
       { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["MT"] },
+      { name: "Minor Brutality", owners: ["OT"] },
+      { name: "Minor Vulnerability", owners: ["OT"] },
+      { name: "Major Vulnerability", owners: ["DPS2"] },
       { name: "Naz", owners: ["H1"] },
       { name: "Off Balance", owners: ["H1", "H2"] },
       { name: "PA", owners: ["H2"] },
@@ -327,7 +332,9 @@ const FIGHTS = [
       { name: "Major Resolve", owners: ["MT"] },
       { name: "Minor Breach", owners: ["MT", "OT"] },
       { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["MT"] },
+      { name: "Minor Brutality", owners: ["OT"] },
+      { name: "Minor Vulnerability", owners: ["OT"] },
+      { name: "Major Vulnerability", owners: ["DPS2"] },
       { name: "Naz", owners: ["H1"] },
       { name: "Off Balance", owners: ["H1", "H2"] },
       { name: "PA", owners: ["H1"] },
@@ -459,8 +466,10 @@ const FIGHTS = [
       { name: "Major Breach", owners: ["MT", "OT"] },
       { name: "Major Resolve", owners: ["MT"] },
       { name: "Minor Breach", owners: ["MT", "OT"] },
+      { name: "Major Vulnerability", owners: ["DPS2"] },
+      { name: "Minor Vulnerability", owners: ["OT"] },
       { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["MT"] },
+      { name: "Minor Brutality", owners: ["OT"] },
       { name: "Naz", owners: ["H1"] },
       { name: "Off Balance", owners: ["H1", "H2"] },
       { name: "PA", owners: ["H1"] },
@@ -554,6 +563,6 @@ const HEALER_GUIDANCE = {
 };
 
 const TANK_GUIDANCE = {
-  MT: { subclass: "Winter/Daedric/X", buff: "Frost Cloak (Major Resolve), Igneous Weapons (Minor Brutality, Major Sorcery/Brutality)" },
-  OT: { subclass: "Earthen Heart/SoA/X", buff: "Colourless (Minor Brittle), Elemental Susceptibility" }
+  MT: { subclass: "Winter/Daedric/X", buff: "Frost Cloak (Major Resolve)" },
+  OT: { subclass: "Earthen Heart/SoA/X", buff: "Colourless (Minor Brittle), Elemental Susceptibility, Igneous Weapons (Minor Brutality, Major Sorcery/Brutality)" }
 };
