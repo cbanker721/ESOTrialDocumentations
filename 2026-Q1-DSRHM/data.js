@@ -14,13 +14,11 @@ const PLAYER_SKILLS = {
     { skill: "Colourless", note: "Minor Brittle" }
   ],
   "H1":  [
-    { skill: "Weakening", note: "Enchants" },
     { skill: "Altar", note: "Undaunted" },
     { skill: "Off Balance", note: "Lightning Staff" },
     { skill: "From the Brink", note: "CP" },
   ],
   "H2":  [
-    { skill: "Weakening", note: "Enchants" },
     { skill: "Radiant Aura", note: "" },
     { skill: "Warding Burst", note: "Minor Expedition" },
     { skill: "Off Balance", note: "Lightning Staff" },
@@ -52,8 +50,8 @@ const FIGHTS = [
       "DPS6": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       "DPS7": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
       "DPS8": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Shattering Knife"], notes: "Be mindful about ulting before the last boss." },
-      "H1":   { sets: ["MA", "PP", "PoE"], ult: "None", notes: "Hotkey manual gear swaps." },
-      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", notes: "Hotkey manual gear swaps." },
+      "H1":   { sets: ["MA", "PP", "PoE"], ult: "None", misc: ["Crusher"], notes: "Hotkey manual gear swaps." },
+      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", misc: ["Crusher"], notes: "Hotkey manual gear swaps." },
       "MT":   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "Coordinate pulls with OT. Hotkey manual gear swaps." },
       "OT":   { sets: ["PW", "Crimson", "Baron"], ult: "Horn", notes: "" }
     },
@@ -148,8 +146,8 @@ const FIGHTS = [
       "DPS6": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Exit Right Dome. Backup dome grab. Tab-target boss pre-teleport." },
       "DPS7": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Entrance Right Dome. Backup dome grab." },
       "DPS8": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take dome when boss comes down. Move dome out at 80%, back in at channel or 2nd right-colour atro. Bash Entrance Left Dome." },
-      "H1":   { sets: ["SPC", "MA", "PoE", "Naz"], ult: "Horn", notes: "Big group. Stay outside dome, grab on jump. Heal OT. Naz extend Colo, PP." },
-      "H2":   { sets: ["Xoryn", "PP", "PoE"], ult: "Barrier", notes: "Small group. Heal MT. PP on CD." },
+      "H1":   { sets: ["SPC", "MA", "PoE", "Naz"], ult: "Horn", misc: ["Weakening"], notes: "Big group. Stay outside dome, grab on jump. Heal OT. Naz extend Colo, PP." },
+      "H2":   { sets: ["Xoryn", "PP", "PoE"], ult: "Barrier", misc: ["Weakening"], notes: "Small group. Heal MT. PP on CD." },
       "MT":   { sets: ["LE", "PA", "Baron"], ult: "Atro / Barrier as needed", notes: "No guard this fight — be tanky. Both tanks run PA. Coordinate boss swaps. Frost Cloak at weapon spawn, teleport, tank swaps, brands/jumps." },
       "OT":   { sets: ["PW", "PA", "Baron"], ult: "Horn / Magma Shell as needed", notes: "No guard — be tanky. Both tanks run PA. Take wrong-colour atros slightly out of dome. Magma Shell for execute abuse." }
     },
@@ -218,8 +216,8 @@ const FIGHTS = [
       "DPS6": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
       "DPS7": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Lever duty. Hotkey gear swaps." },
       "DPS8": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
-      "H1":   { sets: ["MA", "PP", "Naz"], ult: "Horn", notes: "Naz extend." },
-      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "Barrier", notes: "Lever duty. Hotkey gear swaps." },
+      "H1":   { sets: ["MA", "PP", "Naz"], ult: "Horn", misc: ["Weakening"], notes: "Naz extend." },
+      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "Barrier", misc: ["Weakening"], notes: "Lever duty. Hotkey gear swaps." },
       "MT":   { sets: ["LE", "Xoryn", "Baron"], ult: "Atro only", notes: "Lever duty. Race Against Time as needed. Take small adds, stack on boss." },
       "OT":   { sets: ["PW", "Crimson", "Encratis"], ult: "Horn", notes: "Boss tank for both Sail Ripper and Bow Breaker. Solo-tank initially since MT may be late from levers. Take boss and first adds." }
     },
@@ -317,8 +315,8 @@ const FIGHTS = [
       "DPS6": { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach", "Hurricane"], ult: "Standard", notes: "Reef Group 2. Bring Major Breach. Start at Chalice." },
       "DPS7": { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Hurricane"], ult: "Standard", notes: "Reef Group 2. Start at Chalice." },
       "DPS8": { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn"], ult: "Standard", notes: "Start upstairs. Do first Crossbones. Can slot self-heal for portal." },
-      "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Horn", notes: "Heal group and MT. Naz extend Colo." },
-      "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", notes: "Heal OT. PP + Slayer. Time PP after OT ult. Major + Minor Expedition on move. Rubberband mage into group if MT requests." },
+      "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Horn", misc: ["Crusher"], notes: "Heal group and MT. Naz extend Colo." },
+      "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Crusher"], notes: "Heal OT. PP + Slayer. Time PP after OT ult. Major + Minor Expedition on move. Rubberband mage into group if MT requests." },
       "MT":   { sets: ["LE", "WM", "Baron"], ult: "Atro only", notes: "Watch for bears/cats on every portal clear. Taunt Large Guardian. Rubberband mages into group. Frost Cloak at reef clears and acid reflux. Left Slayer with 3s countdown." },
       "OT":   { sets: ["PW", "Flex", "Baron/Encratis/Selfish"], ult: "Selfish ults", misc: ["Ele Sus"], notes: "Dictates group stack position. Stack on right side of reef. Race Against Time. Don't overstay — avoid backwards mediums/smalls." }
     },
@@ -454,8 +452,8 @@ const FIGHTS = [
       "DPS6": { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Major Breach", "Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
       "DPS7": { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
       "DPS8": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Bridge backup. DoT and cleave sirens." },
-      "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Barrier", notes: "Seeds on MT. Naz extend Colo. Barrier without waiting for Colo if group in danger." },
-      "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", notes: "PP + Back Slayer. Focus healing OT (especially with Behemoth). Occasional HoT/synergy to MT. Major + Minor Expedition on move." },
+      "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Barrier", misc: ["Weakening"], notes: "Seeds on MT. Naz extend Colo. Barrier without waiting for Colo if group in danger." },
+      "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Weakening"], notes: "PP + Back Slayer. Focus healing OT (especially with Behemoth). Occasional HoT/synergy to MT. Major + Minor Expedition on move." },
       "MT":   { sets: ["LE", "Xoryn/EC", "Trem"], ult: "Selfish", notes: "Taunt Taleria, focus surviving. Be selfish. Go into group for Maelstrom as needed. Keep ~1.5 clock units from group. Frost Cloak at Maelstrom and end of bridge when mage spawns." },
       "OT":   { sets: ["PW", "WM", "Baron"], ult: "Horn", misc: ["Ele Sus"], notes: "Behemoth is #1 priority — perma-block while alive. Stack mage close to Taleria. Ele Sus and taunt in-range matrons. Break free from Siren lure before Behemoth kills you. Proc Slayer (front) and ultigen. Stagger only if no mages/behemoths." }
     },
