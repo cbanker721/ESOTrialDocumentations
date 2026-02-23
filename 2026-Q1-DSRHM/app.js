@@ -631,11 +631,12 @@ function renderReferences() {
   const penCard = document.createElement('div');
   penCard.className = 'ref-card';
   penCard.innerHTML = `
-    <h3>🔢 Pen/Crit Calculators</h3>
+    <h3>🔢 Pen/Crit Calculators and Utilities</h3>
     <a href="${REFERENCES.penCrit.trash}" target="_blank">Trash (no crusher, no brittle)</a>
     <a href="${REFERENCES.penCrit.twins}" target="_blank">Twins</a>
     <a href="${REFERENCES.penCrit.reef}" target="_blank">Reef (inconsistent crusher)</a>
     <a href="${REFERENCES.penCrit.taleria}" target="_blank">Taleria (replace Alkosh with Trem)</a>
+    <a href="${REFERENCES.builds.hyperBeam}" target="_blank">Hyperioxy's Beam Builds (U48)</a>
   `;
   grid.appendChild(penCard);
 
