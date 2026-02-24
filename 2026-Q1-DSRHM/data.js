@@ -188,7 +188,7 @@ const FIGHTS = [
       },
       healerFocus: { "H1": "OT", "H2": "MT" },
       slayer: { left: "DPS4", right: "H1" },
-      weaponSlayers: ["DPS3", "DPS8"]
+      weaponSlayers: ["DPS8"]
     }
   },
   {
@@ -270,18 +270,19 @@ const FIGHTS = [
             "MT taunts Large Guardian. OT taunts Medium #1 when Large splits at 99%. OT ults whenever.",
             "Downstairs DDs kill heart at Chalice and come up.",
             "Upstairs DDs burn Medium #1 and any Smalls that spawn.",
+            "MT takes bear, mage, and cats when Chalice clears. The large guardian will not need re-taunt",
             "Slayer ult: DDs + MT → H1 Naz → H2 PP."
           ]
         },
         {
           name: "Crossbones",
           details: [
-            "MT grabs Large Guardian and puts it on left side of the reef.",
+            "MT takes Large Guardian (no re-taunt needed) and puts it on left side of the reef.",
             "OT stacks all Small and Medium on right side.",
             "Upstairs DDs parse Large Guardian on left side ONLY. Right side does NOT get burned to avoid pushing reef spawns. No ults.",
             "When Crossbones heart is at 40%: Reef Group 1 informs group. OT takes Large Guardian into right stack. Upstairs DDs lay DoTs on right side.",
-            "When Crossbones heart clears: DPS8 comes up. Reef Group 1 proceeds to Skull.",
-            "Ult dump: DDs and MT ult → H1 Naz → H2 PP."
+            "When Crossbones heart clears: DPS8 comes up. MT takes mage, bear, and cat. Reef Group 1 proceeds to Skull.",
+            "Ult dump when mage is into group: DDs and MT ult → H1 Naz → H2 PP."
           ]
         },
         {
@@ -289,11 +290,11 @@ const FIGHTS = [
           details: [
             "Upstairs DD stays at a reef until its mage spawns and is killed (removes need for OOT), then goes clockwise to next reef.",
             "OT stacks reef guardians on right side of a reef. Ults whenever.",
-            "MT watches for adds whenever a reef clears. Grab bears and cats immediately. Rubberbands them into group.",
+            "MT watches for adds whenever a reef clears. Grab bears, mage, and cats immediately. Rubberbands mage into group.",
             "H1 focuses group and MT. H2 pocket heals OT.",
             "Slayer and PP called by MT and H2. Timing: when enemies are stacked, not while running.",
             "Criteria to move to next reef: (1) 2 active channels in reefs after current one, OR (2) mage of current reef is dead. OT and RL decide.",
-            "The idea: each Reef Group does 2 hearts in sequence instead of 1."
+            "The idea: Each Reef Group does 2 hearts in sequence instead of 1."
           ]
         },
         {
