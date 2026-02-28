@@ -56,22 +56,22 @@ function populateDropdown(currentId) {
 function renderHeader(id) {
   const p = PLAYERS[id];
   const role = getRole(id);
-  const container = document.getElementById('header-content');
+  const container = document.getElementById('sidebar-content');
   
   let guidanceHtml = '';
   if (role === 'Tank') {
     const g = TANK_GUIDANCE[id] || {};
-    guidanceHtml = `<div class="guidance-box"><p><strong>Subclass:</strong> ${g.subclass}</p><p><strong>Buffs:</strong> ${g.buff}</p></div>`;
+    guidanceHtml = `<div class="sidebar-guidance"><p><strong>Subclass:</strong> ${g.subclass}</p><p><strong>Buffs:</strong> ${g.buff}</p></div>`;
   } else if (role === 'Healer') {
     const g = HEALER_GUIDANCE[id] || {};
-    guidanceHtml = `<div class="guidance-box"><p><strong>Subclass:</strong> ${g.subclass}</p><p><strong>Group Skills:</strong> ${g.groupSkill || g.groupSkills}</p></div>`;
+    guidanceHtml = `<div class="sidebar-guidance"><p><strong>Subclass:</strong> ${g.subclass}</p><p><strong>Responsible For: </strong> ${g.groupSkill || g.groupSkills}</p></div>`;
   } else {
-    guidanceHtml = `<div class="guidance-box"><p><strong>DPS Guidance:</strong> ${DPS_GUIDANCE.subclass}</p></div>`;
+    guidanceHtml = `<div class="sidebar-guidance"><p><strong>DPS Guidance:</strong> ${DPS_GUIDANCE.subclass}</p></div>`;
   }
 
   container.innerHTML = `
-    <h1 class="personal-title">${p.name} <span style="opacity:0.5">(${id})</span></h1>
-    <div class="personal-subtitle">${role} • ${p.tag}</div>
+    <h1 class="sidebar-title">${p.name} <span class="sidebar-id">(${id})</span></h1>
+    <div class="sidebar-meta">${role} • ${p.tag}</div>
     ${guidanceHtml}
   `;
 }
@@ -132,11 +132,13 @@ function renderContent(id) {
         <h2>${fight.name}</h2>
       </div>
       <div class="personal-fight-body">
-        <div class="personal-grid">
+        <div class="fight-content-grid">
           
-          <div class="personal-section">
-            <h3>🛡️ Build</h3>
-            ${buildHtml}
+          <div class="fight-col-build">
+            <div class="personal-section" style="margin-bottom:0">
+              <h3>🛡️ Build</h3>
+              ${buildHtml}
+            </div>
           </div>
 
           <div class="personal-section">
