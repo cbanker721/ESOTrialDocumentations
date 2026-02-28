@@ -2,23 +2,38 @@
 // DSR HM Progression — Structured Data
 // ============================================================
 
+const PLAYER_ID = Object.freeze({
+  MT: 'MT',
+  OT: 'OT',
+  H1: 'H1',
+  H2: 'H2',
+  DPS1: 'DPS1',
+  DPS2: 'DPS2',
+  DPS3: 'DPS3',
+  DPS4: 'DPS4',
+  DPS5: 'DPS5',
+  DPS6: 'DPS6',
+  DPS7: 'DPS7',
+  DPS8: 'DPS8',
+});
+
 // Notable skills/modifiers per role (shown on build cards)
 const PLAYER_SKILLS = {
-  "MT":  [
+  [PLAYER_ID.MT]:  [
     { skill: "Crusher", note: "Enchants" },
     { skill: "Frost Cloak", note: "Major Resolve" }
   ],
-  "OT":  [
+  [PLAYER_ID.OT]:  [
     { skill: "Crusher", note: "Enchants" },
     { skill: "Colourless", note: "Minor Brittle" },
     { skill: "Igneous Weapons", note: "Minor Brutality, Major Sorcery/Brutality" },
   ],
-  "H1":  [
+  [PLAYER_ID.H1]:  [
     { skill: "Altar", note: "Undaunted" },
     { skill: "Off Balance", note: "Lightning Staff" },
     { skill: "From the Brink", note: "CP" },
   ],
-  "H2":  [
+  [PLAYER_ID.H2]:  [
     { skill: "Radiant Aura", note: "" },
     { skill: "Warding Burst", note: "Minor Expedition" },
     { skill: "Off Balance", note: "Lightning Staff" },

@@ -19,8 +19,8 @@ function getRole(id) {
 
 function populateDropdown(currentId) {
   const selector = document.getElementById('player-selector');
-  const playerOrder = ['MT','OT','H1','H2','DPS1','DPS2','DPS3','DPS4','DPS5','DPS6','DPS7','DPS8'];
-  
+  const playerOrder = [PLAYER_ID.MT, PLAYER_ID.OT, PLAYER_ID.H1, PLAYER_ID.H2, PLAYER_ID.DPS1, PLAYER_ID.DPS2, PLAYER_ID.DPS3, PLAYER_ID.DPS4, PLAYER_ID.DPS5, PLAYER_ID.DPS6, PLAYER_ID.DPS7, PLAYER_ID.DPS8];
+
   // Add placeholder if no valid player is selected
   if (!currentId || !PLAYERS[currentId]) {
     const placeholder = document.createElement('option');
@@ -91,10 +91,10 @@ function renderContent(id) {
       const sets = build.sets.map(s => `<span class="set-pill">${s}</span>`).join(' ');
       const misc = build.misc ? build.misc.map(m => `<span class="misc-pill">${m}</span>`).join(' ') : '';
       buildHtml = `
-        <div style="margin-bottom:0.5rem;"><strong>Sets:</strong> ${sets}</div>
-        <div style="margin-bottom:0.5rem;"><strong>Ult:</strong> <span class="ult-pill">${build.ult}</span></div>
-        ${misc ? `<div style="margin-bottom:0.5rem;"><strong>Misc:</strong> ${misc}</div>` : ''}
-        ${build.notes ? `<div style="font-style:italic;color:var(--text-muted);margin-top:0.5rem;">📝 ${build.notes}</div>` : ''}
+        <div style="margin-bottom:0.25rem;"><strong>Sets:</strong> ${sets}</div>
+        <div style="margin-bottom:0.25rem;"><strong>Ult:</strong> <span class="ult-pill">${build.ult}</span></div>
+        ${misc ? `<div style="margin-bottom:0.25rem;"><strong>Misc:</strong> ${misc}</div>` : ''}
+        ${build.notes ? `<div style="font-style:italic;color:var(--text-muted);margin-top:0.25rem;">📝 ${build.notes}</div>` : ''}
       `;
     }
 
@@ -144,7 +144,7 @@ function renderContent(id) {
           <div class="personal-section">
             <h3>📋 Assignments</h3>
             ${myAssignments.length ? `<ul class="personal-list">${myAssignments.map(a => `<li>${highlightId(a, id)}</li>`).join('')}</ul>` : '<p style="color:var(--text-muted)">No specific assignments.</p>'}
-            ${myBuffs.length ? `<div style="margin-top:1rem;"><strong>Buffs/Debuffs:</strong> ${myBuffs.join(', ')}</div>` : ''}
+            ${myBuffs.length ? `<div style="margin-top:0.5rem;"><strong>Buffs/Debuffs:</strong> ${myBuffs.join(', ')}</div>` : ''}
           </div>
 
           <div class="personal-section">

@@ -10,10 +10,10 @@
     .app-layout {
       display: grid;
       grid-template-columns: 300px 1fr;
-      gap: 2rem;
+      gap: 1rem;
       max-width: 1400px;
       margin: 0 auto;
-      padding: 2rem;
+      padding: 1rem;
       align-items: start;
     }
 
@@ -22,7 +22,7 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 1.5rem;
+      padding: 1rem;
       position: sticky;
       top: 2rem;
       max-height: calc(100vh - 4rem);
@@ -30,19 +30,19 @@
     }
     .sidebar-title { color: var(--gold); font-size: 1.6rem; margin-bottom: 0.25rem; line-height: 1.2; }
     .sidebar-id { font-size: 1rem; color: var(--text-muted); font-weight: normal; }
-    .sidebar-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+    .sidebar-meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
     
     /* Main Content */
     .main-content { min-width: 0; }
 
-    .personal-fight-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 2rem; overflow: hidden; }
-    .personal-fight-header { background: var(--bg-card-alt); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.75rem; }
-    .personal-fight-header h2 { font-size: 1.25rem; color: var(--accent); margin: 0; }
-    .personal-fight-body { padding: 1.5rem; }
-    .personal-section { margin-bottom: 1.5rem; }
-    .personal-section h3 { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    .personal-fight-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 1rem; overflow: hidden; }
+    .personal-fight-header { background: var(--bg-card-alt); padding: 0.5rem 1rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.5rem; }
+    .personal-fight-header h2 { font-size: 1.1rem; color: var(--accent); margin: 0; }
+    .personal-fight-body { padding: 0.75rem; }
+    .personal-section { margin-bottom: 0.75rem; }
+    .personal-section h3 { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; margin-bottom: 0.5rem; }
     .personal-list { list-style: none; padding: 0; }
-    .personal-list li { padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); }
+    .personal-list li { padding: 0.2rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); font-size: 0.9rem; }
     .personal-list li:last-child { border-bottom: none; }
     .highlight-me { color: var(--gold); font-weight: 600; background: rgba(212, 168, 67, 0.1); padding: 0.1rem 0.3rem; border-radius: 4px; }
     .sidebar-guidance { font-size: 0.9rem; }
@@ -54,8 +54,8 @@
       background: var(--bg-card-alt); color: var(--text);
       border: 1px solid var(--border); border-radius: var(--radius);
       padding: 0.5rem; font-size: 0.95rem; cursor: pointer;
-      width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-      margin-bottom: 1.5rem;
+      width: 100%; box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      margin-bottom: 1rem;
     }
     .player-select option { background: var(--bg-card); }
 
@@ -65,8 +65,8 @@
     }
 
     /* Fight Card Layout */
-    .fight-content-grid { display: grid; grid-template-columns: 280px 1fr 1fr; gap: 1.5rem; align-items: start; }
-    .fight-col-build { background: rgba(255,255,255,0.02); border-radius: var(--radius); padding: 1rem; border: 1px solid rgba(255,255,255,0.05); }
+    .fight-content-grid { display: grid; grid-template-columns: 260px 1fr 1fr; gap: 1rem; align-items: start; }
+    .fight-col-build { background: rgba(255,255,255,0.02); border-radius: var(--radius); padding: 0.75rem; border: 1px solid rgba(255,255,255,0.05); font-size: 0.9rem; }
     
     @media (max-width: 1100px) {
       .fight-content-grid { grid-template-columns: 1fr; }
@@ -85,8 +85,9 @@
     </aside>
     <main id="main-container" class="main-content"></main>
   </div>
-  <script src="players.js"></script>
   <script src="data.js"></script>
+  <script src="role-map.js"></script>
+  <script src="players.js"></script>
   <script src="player-view.js"></script>
 </body>
 </html>

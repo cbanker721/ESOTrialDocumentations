@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navFights.appendChild(refNav);
 
   // Populate player dropdown
-  const playerOrder = ['MT','OT','H1','H2','DPS1','DPS2','DPS3','DPS4','DPS5','DPS6','DPS7','DPS8'];
+  const playerOrder = [PLAYER_ID.MT, PLAYER_ID.OT, PLAYER_ID.H1, PLAYER_ID.H2, PLAYER_ID.DPS1, PLAYER_ID.DPS2, PLAYER_ID.DPS3, PLAYER_ID.DPS4, PLAYER_ID.DPS5, PLAYER_ID.DPS6, PLAYER_ID.DPS7, PLAYER_ID.DPS8];
   playerOrder.forEach(id => {
     if (!PLAYERS[id]) return;
     const opt = document.createElement('option');
@@ -208,8 +208,8 @@ function renderBuilds(fight) {
   const grid = document.createElement('div');
   grid.className = 'build-grid';
 
-  const order = ['MT','OT','H1','H2','DPS1','DPS2','DPS3','DPS4','DPS5','DPS6','DPS7','DPS8'];
-  order.forEach(pid => {
+  const playerOrder = [PLAYER_ID.MT, PLAYER_ID.OT, PLAYER_ID.H1, PLAYER_ID.H2, PLAYER_ID.DPS1, PLAYER_ID.DPS2, PLAYER_ID.DPS3, PLAYER_ID.DPS4, PLAYER_ID.DPS5, PLAYER_ID.DPS6, PLAYER_ID.DPS7, PLAYER_ID.DPS8];
+  playerOrder.forEach(pid => {
     const b = fight.builds[pid];
     if (!b) return;
     const card = document.createElement('div');
