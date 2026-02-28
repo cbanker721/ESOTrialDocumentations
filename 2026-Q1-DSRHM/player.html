@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Player View — DSR HM</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .personal-header { background: var(--bg-card); padding: 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+    .personal-title { color: var(--gold); font-size: 2rem; margin-bottom: 0.5rem; }
+    .personal-subtitle { color: var(--text-muted); font-size: 1.1rem; }
+    .personal-fight-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 2rem; overflow: hidden; }
+    .personal-fight-header { background: var(--bg-card-alt); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0.75rem; }
+    .personal-fight-header h2 { font-size: 1.25rem; color: var(--accent); margin: 0; }
+    .personal-fight-body { padding: 1.5rem; }
+    .personal-section { margin-bottom: 1.5rem; }
+    .personal-section h3 { font-size: 1rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    .personal-list { list-style: none; padding: 0; }
+    .personal-list li { padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); color: var(--text); }
+    .personal-list li:last-child { border-bottom: none; }
+    .highlight-me { color: var(--gold); font-weight: 600; background: rgba(212, 168, 67, 0.1); padding: 0.1rem 0.3rem; border-radius: 4px; }
+    .guidance-box { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: var(--radius); margin-top: 1rem; border-left: 3px solid var(--accent); }
+    .nav-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+    .player-select {
+      background: var(--bg-card-alt); color: var(--text);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer;
+      min-width: 250px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .player-select option { background: var(--bg-card); }
+  </style>
+</head>
+<body>
+  <header class="personal-header">
+    <div class="nav-row">
+      <a href="index.html" style="color:var(--text-muted);text-decoration:none;font-size:0.9rem;">← Back to Full Guide</a>
+      <select id="player-selector" class="player-select"></select>
+    </div>
+    <div id="header-content"></div>
+  </header>
+  <main id="main-container" class="content-section"></main>
+  <script src="players.js"></script>
+  <script src="data.js"></script>
+  <script src="player-view.js"></script>
+</body>
+</html>

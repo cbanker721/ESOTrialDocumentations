@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const navFights = document.getElementById('nav-fights');
   const playerFilter = document.getElementById('player-filter');
   const fightSelector = document.getElementById('fight-selector');
+  const btnPersonal = document.getElementById('btn-personal-view');
 
   // Build fight selector buttons
   FIGHTS.forEach((f, i) => {
@@ -94,6 +95,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Player filter
   playerFilter.addEventListener('change', () => applyPlayerFilter(playerFilter.value));
+
+  // Personal View Button
+  btnPersonal.addEventListener('click', () => {
+    const pid = playerFilter.value;
+    if (pid && pid !== 'all') {
+      window.open(`player.html?id=${pid}`, '_blank');
+    } else {
+      alert('Please select a specific player from the dropdown first.');
+    }
+  });
 
   // Scroll spy
   const observer = new IntersectionObserver(entries => {
