@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navFights.appendChild(refNav);
 
   // Populate player dropdown
-  const playerOrder = [PLAYER_ID.MT, PLAYER_ID.OT, PLAYER_ID.H1, PLAYER_ID.H2, PLAYER_ID.DPS1, PLAYER_ID.DPS2, PLAYER_ID.DPS3, PLAYER_ID.DPS4, PLAYER_ID.DPS5, PLAYER_ID.DPS6, PLAYER_ID.DPS7, PLAYER_ID.DPS8];
+  const playerOrder = [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8];
   playerOrder.forEach(id => {
     if (!PLAYERS[id]) return;
     const opt = document.createElement('option');
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderGuidance();
 
   // Select first fight
-  selectFight(FIGHTS[0].id);
+  selectFight(FIGHTS.values().next().value.id);
 
   // Render levers & references
   renderLevers();
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ---- Fight selection & tab switching ----
 
 function selectFight(fightId) {
-  const fight = FIGHTS.find(f => f.id === fightId);
+  const fight = FIGHTS.get(fightId);
   if (!fight) return;
   currentFightId = fightId;
 
@@ -208,7 +208,7 @@ function renderBuilds(fight) {
   const grid = document.createElement('div');
   grid.className = 'build-grid';
 
-  const playerOrder = [PLAYER_ID.MT, PLAYER_ID.OT, PLAYER_ID.H1, PLAYER_ID.H2, PLAYER_ID.DPS1, PLAYER_ID.DPS2, PLAYER_ID.DPS3, PLAYER_ID.DPS4, PLAYER_ID.DPS5, PLAYER_ID.DPS6, PLAYER_ID.DPS7, PLAYER_ID.DPS8];
+  const playerOrder = [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8];
   playerOrder.forEach(pid => {
     const b = fight.builds[pid];
     if (!b) return;
@@ -326,10 +326,9 @@ function renderStrategy(fight) {
 
 function renderAssignments(fight) {
   const container = document.createElement('div');
-  const a = fight.assignments;
-  const hasAssignments = a && Object.keys(a).length > 0;
+  const assignments = fight.assignments;
 
-  if (!hasAssignments) {
+  if (!assignments || assignments.length === 0) {
     container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">No specific assignments for this fight.</p>';
     return container;
   }
@@ -337,71 +336,57 @@ function renderAssignments(fight) {
   const grid = document.createElement('div');
   grid.className = 'assignments-grid';
 
-  if (a.domes) {
-    grid.appendChild(makeAssignmentCard('Dome Assignments', [
-      `Start: ${a.domes.start}`,
-      `Teleport Carriers: ${a.domes.teleport.join(', ')}`,
-      `Bash/Backup: ${a.domes.bashBackup.join(', ')}`,
-      `Execute Large: ${a.domes.executeLarge.join(', ')}`,
-      `Execute Small: ${a.domes.executeSmall.join(', ')}`
-    ]));
-  }
-
-  if (a.sides) {
-    grid.appendChild(makeAssignmentCard('Side Assignments', [
-      `Big Side: ${a.sides.bigSide.join(', ')}`,
-      `Small Side: ${a.sides.smallSide.join(', ')}`
-    ]));
-  }
-
-  if (a.healerFocus) {
-    const lines = Object.entries(a.healerFocus).map(([h, t]) => `${h} → ${t}`);
-    grid.appendChild(makeAssignmentCard('Healer Focus', lines));
-  }
-
-  if (a.slayer) {
-    const lines = Object.entries(a.slayer).map(([side, p]) => `${side.charAt(0).toUpperCase() + side.slice(1)}: ${p}`);
-    grid.appendChild(makeAssignmentCard('Slayer', lines));
-  }
-
-  if (a.weaponSlayers) {
-    grid.appendChild(makeAssignmentCard('Weapon Slayers', a.weaponSlayers));
-  }
-
-  if (a.reefGroups) {
-    const rg = a.reefGroups;
-    grid.appendChild(makeAssignmentCard('Reef Group 1', [
-      `Players: ${rg.group1.players.join(', ')}`,
-      `Reefs: ${rg.group1.reefs.join(' → ')}`
-    ]));
-    grid.appendChild(makeAssignmentCard('Reef Group 2', [
-      `Players: ${rg.group2.players.join(', ')}`,
-      `Reefs: ${rg.group2.reefs.join(' → ')}`
-    ]));
-    grid.appendChild(makeAssignmentCard('Special Roles', [
-      `Chalice Only: ${rg.chaliceOnly}`,
-      `Backup #1: ${rg.backupFirst}`,
-      `Backup #2: ${rg.backupSecond}`
-    ]));
-    if (a.note) {
-      grid.appendChild(makeAssignmentCard('Note', [a.note]));
+  assignments.forEach(assign => {
+    // Handle new ID-based assignments
+    if (typeof assign === 'string') {
+      const def = ASSIGNMENTS.get(assign);
+      if (def) {
+        grid.appendChild(makeAssignmentCardFromDef(def));
+      }
+    } else if (assign.text) {
+      // Fallback for legacy object structure (if any)
+      const lines = assign.text.split('\n');
+      grid.appendChild(makeAssignmentCard(assign.name, lines));
     }
-  }
-
-  if (a.bridge) {
-    grid.appendChild(makeAssignmentCard('Bridge Assignments', [
-      `Primary: ${a.bridge.primary.join(', ')}`,
-      `Backup #1: ${a.bridge.backup1}`,
-      `Backup #2: ${a.bridge.backup2}`
-    ]));
-  }
-
-  if (a.levers) {
-    grid.appendChild(makeAssignmentCard('Levers', [a.levers]));
-  }
+  });
 
   container.appendChild(grid);
   return container;
+}
+
+function makeAssignmentCardFromDef(def) {
+  const card = document.createElement('div');
+  card.className = 'assignment-card';
+  
+  // Title with tooltip description
+  card.innerHTML = `<h4 title="${def.description || ''}">${def.name}</h4>`;
+  
+  // Owners as pills
+  if (def.role_ids && def.role_ids.length > 0) {
+    const ownersDiv = document.createElement('div');
+    ownersDiv.style.marginBottom = '0.5rem';
+    def.role_ids.forEach(id => {
+      const roleClass = getOwnerRoleClass(id);
+      const display = resolvePlayerName(id, true);
+      const pill = document.createElement('span');
+      pill.className = `owner-pill ${roleClass}`;
+      pill.dataset.ownerId = id;
+      pill.innerHTML = display;
+      ownersDiv.appendChild(pill);
+    });
+    card.appendChild(ownersDiv);
+  }
+
+  // Instructions
+  if (def.instructions) {
+    const p = document.createElement('p');
+    p.style.fontSize = '0.85rem';
+    p.style.color = 'var(--text-muted)';
+    p.textContent = def.instructions;
+    card.appendChild(p);
+  }
+
+  return card;
 }
 
 function makeAssignmentCard(title, lines) {

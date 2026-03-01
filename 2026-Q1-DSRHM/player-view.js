@@ -19,7 +19,7 @@ function getRole(id) {
 
 function populateDropdown(currentId) {
   const selector = document.getElementById('player-selector');
-  const playerOrder = [PLAYER_ID.MT, PLAYER_ID.OT, PLAYER_ID.H1, PLAYER_ID.H2, PLAYER_ID.DPS1, PLAYER_ID.DPS2, PLAYER_ID.DPS3, PLAYER_ID.DPS4, PLAYER_ID.DPS5, PLAYER_ID.DPS6, PLAYER_ID.DPS7, PLAYER_ID.DPS8];
+  const playerOrder = [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8];
 
   // Add placeholder if no valid player is selected
   if (!currentId || !PLAYERS[currentId]) {
@@ -103,7 +103,7 @@ function renderContent(id) {
     extractAssignments(fight.assignments, id, myAssignments);
     
     // Special: Inject Levers for the Minis fight
-    if (fight.id === 'sailripper-bowbreaker') {
+    if (fight.id === FIGHT_ID.MINIS) {
       const leverAssigns = getLeverAssignments(id);
       if (leverAssigns.length) myAssignments.push(...leverAssigns);
     }
@@ -159,27 +159,28 @@ function renderContent(id) {
   });
 }
 
-function extractAssignments(obj, id, results, prefix = '') {
-  if (!obj) return;
+function extractAssignments(assignments, id, results) {
+  if (!assignments || !Array.isArray(assignments)) return;
   
-  for (const key in obj) {
-    const value = obj[key];
-    const label = prefix ? `${prefix} › ${formatKey(key)}` : formatKey(key);
-
-    if (typeof value === 'string') {
-      if (value.includes(id)) {
-        results.push(`<strong>${label}:</strong> ${value}`);
+  assignments.forEach(assign => {
+    // Handle new ID-based assignments
+    if (typeof assign === 'string') {
+      const def = ASSIGNMENTS.get(assign);
+      if (def && def.role_ids && def.role_ids.includes(id)) {
+        // Format: "Assignment Name: Instructions"
+        results.push(`<strong>${def.name}:</strong> ${def.instructions}`);
       }
-    } else if (Array.isArray(value)) {
-      value.forEach(item => {
-        if (typeof item === 'string' && item.includes(id)) {
-          results.push(`<strong>${label}:</strong> ${item}`);
+    } 
+    // Handle legacy object structure
+    else if (assign.text && assign.text.includes(id)) {
+      const lines = assign.text.split('\n');
+      lines.forEach(line => {
+        if (line.includes(id)) {
+          results.push(`<strong>${assign.name}:</strong> ${line}`);
         }
       });
-    } else if (typeof value === 'object') {
-      extractAssignments(value, id, results, label);
     }
-  }
+  });
 }
 
 function findMentions(lines, id) {

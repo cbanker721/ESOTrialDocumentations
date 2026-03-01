@@ -2,38 +2,23 @@
 // DSR HM Progression — Structured Data
 // ============================================================
 
-const PLAYER_ID = Object.freeze({
-  MT: 'MT',
-  OT: 'OT',
-  H1: 'H1',
-  H2: 'H2',
-  DPS1: 'DPS1',
-  DPS2: 'DPS2',
-  DPS3: 'DPS3',
-  DPS4: 'DPS4',
-  DPS5: 'DPS5',
-  DPS6: 'DPS6',
-  DPS7: 'DPS7',
-  DPS8: 'DPS8',
-});
-
 // Notable skills/modifiers per role (shown on build cards)
 const PLAYER_SKILLS = {
-  [PLAYER_ID.MT]:  [
+  [MAIN_ROLE_ID.MT]:  [
     { skill: "Crusher", note: "Enchants" },
     { skill: "Frost Cloak", note: "Major Resolve" }
   ],
-  [PLAYER_ID.OT]:  [
+  [MAIN_ROLE_ID.OT]:  [
     { skill: "Crusher", note: "Enchants" },
     { skill: "Colourless", note: "Minor Brittle" },
     { skill: "Igneous Weapons", note: "Minor Brutality, Major Sorcery/Brutality" },
   ],
-  [PLAYER_ID.H1]:  [
+  [MAIN_ROLE_ID.H1]:  [
     { skill: "Altar", note: "Undaunted" },
     { skill: "Off Balance", note: "Lightning Staff" },
     { skill: "From the Brink", note: "CP" },
   ],
-  [PLAYER_ID.H2]:  [
+  [MAIN_ROLE_ID.H2]:  [
     { skill: "Radiant Aura", note: "" },
     { skill: "Warding Burst", note: "Minor Expedition" },
     { skill: "Off Balance", note: "Lightning Staff" },
@@ -41,9 +26,9 @@ const PLAYER_SKILLS = {
   ]
 };
 
-const FIGHTS = [
-  {
-    id: "trash",
+const FIGHTS = new Map([
+  [FIGHT_ID.TRASH, {
+    id: FIGHT_ID.TRASH,
     name: "Trash Pulls",
     shortName: "Trash",
     icon: "⚔️",
@@ -57,40 +42,40 @@ const FIGHTS = [
       ]
     },
     builds: {
-      "DPS1": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS2": { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS3": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS4": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS5": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS6": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      "DPS7": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
-      "DPS8": { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Shattering Knife"], notes: "Be mindful about ulting before the last boss." },
-      "H1":   { sets: ["MA", "PP", "PoE"], ult: "None", misc: ["Crusher"], notes: "Hotkey manual gear swaps." },
-      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", misc: ["Crusher"], notes: "Hotkey manual gear swaps." },
-      "MT":   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "Coordinate pulls with OT. Hotkey manual gear swaps." },
-      "OT":   { sets: ["PW", "Crimson", "Baron"], ult: "Horn", notes: "" }
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Shattering Knife"], notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.H1]:   { sets: ["MA", "PP", "PoE"], ult: "None", misc: ["Crusher"], notes: "Hotkey manual gear swaps." },
+      [MAIN_ROLE_ID.H2]:   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", misc: ["Crusher"], notes: "Hotkey manual gear swaps." },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "Coordinate pulls with OT. Hotkey manual gear swaps." },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "Crimson", "Baron"], ult: "Horn", notes: "" }
     },
     buffsDebuffs: [
-      { name: "Crimson Oath", owners: ["OT"] },
-      { name: "Crusher", owners: ["H1", "H2", "MT", "OT"] },
-      { name: "LE", owners: ["MT"] },
-      { name: "Major Breach", owners: ["MT", "OT"] },
-      { name: "Major Resolve", owners: ["MT"] },
-      { name: "Minor Breach", owners: ["OT"] },
-      { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["OT"] },
-      { name: "Minor Vulnerability", owners: ["OT"] },
-      { name: "Off Balance", owners: ["H1", "H2", "DPS8"] },
-      { name: "PA", owners: ["H2"] },
-      { name: "PW", owners: ["OT"] },
-      { name: "Slayer", owners: ["H1"] },
-      { name: "SPC", owners: ["H2"] },
-      { name: "Xoryn", owners: ["MT"] }
+      { name: "Crimson Oath", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Crusher", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "LE", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Major Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Major Resolve", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Minor Breach", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brittle", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brutality", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Vulnerability", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Off Balance", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS8] },
+      { name: "PA", owners: [MAIN_ROLE_ID.H2] },
+      { name: "PW", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Slayer", owners: [MAIN_ROLE_ID.H1] },
+      { name: "SPC", owners: [MAIN_ROLE_ID.H2] },
+      { name: "Xoryn", owners: [MAIN_ROLE_ID.MT] }
     ],
-    assignments: {}
-  },
-  {
-    id: "twins",
+    assignments: []
+  }],
+  [FIGHT_ID.TWINS, {
+    id: FIGHT_ID.TWINS,
     name: "Lylanar & Turlassil (Twins)",
     shortName: "Twins",
     icon: "🔥❄️",
@@ -153,61 +138,64 @@ const FIGHTS = [
       ]
     },
     builds: {
-      "DPS1": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Banner DD. Take Exit Left Dome during teleport." },
-      "DPS2": { sets: ["Alkosh", "Deadly/Tideborn", "Velothi"], ult: "Colo", notes: "Alkosh DD. Take Exit Right Dome. Call out Colos to notify Naz." },
-      "DPS3": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take Entrance Right Dome during teleport." },
-      "DPS4": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "War Machine Left Slayer. Take Entrance Left Dome." },
-      "DPS5": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Banner DD. Bash Exit Left Dome. Backup dome grab." },
-      "DPS6": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Exit Right Dome. Backup dome grab. Tab-target boss pre-teleport." },
-      "DPS7": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Entrance Right Dome. Backup dome grab." },
-      "DPS8": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take dome when boss comes down. Move dome out at 80%, back in at channel or 2nd right-colour atro. Bash Entrance Left Dome." },
-      "H1":   { sets: ["SPC", "MA", "PoE", "Naz"], ult: "Horn", misc: ["Weakening"], notes: "Big group. Stay outside dome, grab on jump. Heal OT. Naz extend Colo, PP." },
-      "H2":   { sets: ["Xoryn", "PP", "PoE"], ult: "Barrier", misc: ["Weakening"], notes: "Small group. Heal MT. PP on CD." },
-      "MT":   { sets: ["LE", "PA", "Baron"], ult: "Atro / Barrier as needed", notes: "No guard this fight — be tanky. Both tanks run PA. Coordinate boss swaps. Frost Cloak at weapon spawn, teleport, tank swaps, brands/jumps." },
-      "OT":   { sets: ["PW", "PA", "Baron"], ult: "Horn / Magma Shell as needed", notes: "No guard — be tanky. Both tanks run PA. Take wrong-colour atros slightly out of dome. Magma Shell for execute abuse." }
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Banner DD. Take Exit Left Dome during teleport." },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Alkosh", "Deadly/Tideborn", "Velothi"], ult: "Colo", notes: "Alkosh DD. Take Exit Right Dome. Call out Colos to notify Naz." },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take Entrance Right Dome during teleport." },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "War Machine Left Slayer. Take Entrance Left Dome." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Banner DD. Bash Exit Left Dome. Backup dome grab." },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Exit Right Dome. Backup dome grab. Tab-target boss pre-teleport." },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Entrance Right Dome. Backup dome grab." },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take dome when boss comes down. Move dome out at 80%, back in at channel or 2nd right-colour atro. Bash Entrance Left Dome." },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "MA", "PoE", "Naz"], ult: "Horn", misc: ["Weakening"], notes: "Big group. Stay outside dome, grab on jump. Heal OT. Naz extend Colo, PP." },
+      [MAIN_ROLE_ID.H2]:   { sets: ["Xoryn", "PP", "PoE"], ult: "Barrier", misc: ["Weakening"], notes: "Small group. Heal MT. PP on CD." },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "PA", "Baron"], ult: "Atro / Barrier as needed", notes: "No guard this fight — be tanky. Both tanks run PA. Coordinate boss swaps. Frost Cloak at weapon spawn, teleport, tank swaps, brands/jumps." },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "PA", "Baron"], ult: "Horn / Magma Shell as needed", notes: "No guard — be tanky. Both tanks run PA. Take wrong-colour atros slightly out of dome. Magma Shell for execute abuse." }
     },
     buffsDebuffs: [
-      { name: "Alkosh", owners: ["DPS2"] },
-      { name: "Barrier", owners: ["H2"] },
-      { name: "Crusher", owners: ["MT", "OT"] },
-      { name: "Horn", owners: ["H1", "OT"] },
-      { name: "LE", owners: ["MT"] },
-      { name: "Major Breach", owners: ["MT", "OT"] },
-      { name: "Major Resolve", owners: ["MT"] },
-      { name: "Minor Breach", owners: ["MT", "OT"] },
-      { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["OT"] },
-      { name: "Minor Vulnerability", owners: ["OT"] },
-      { name: "Major Vulnerability", owners: ["DPS2"] },
-      { name: "Naz", owners: ["H1"] },
-      { name: "Off Balance", owners: ["H1", "H2"] },
-      { name: "PA", owners: ["MT", "OT"] },
-      { name: "PP", owners: ["H2"] },
-      { name: "PW", owners: ["OT"] },
-      { name: "Slayer", owners: ["DPS4"] },
-      { name: "SPC", owners: ["H1"] },
-      { name: "Weakening", owners: ["H1", "H2"] },
-      { name: "Xoryn", owners: ["H2"] }
+      { name: "Alkosh", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Barrier", owners: [MAIN_ROLE_ID.H2] },
+      { name: "Crusher", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Horn", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.OT] },
+      { name: "LE", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Major Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Major Resolve", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Minor Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Minor Brittle", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brutality", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Vulnerability", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Major Vulnerability", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Naz", owners: [MAIN_ROLE_ID.H1] },
+      { name: "Off Balance", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "PA", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "PP", owners: [MAIN_ROLE_ID.H2] },
+      { name: "PW", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Slayer", owners: [MAIN_ROLE_ID.DPS4] },
+      { name: "SPC", owners: [MAIN_ROLE_ID.H1] },
+      { name: "Weakening", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "Xoryn", owners: [MAIN_ROLE_ID.H2] }
     ],
-    assignments: {
-      domes: {
-        start: "DPS8",
-        teleport: ["DPS1 (Exit L)", "DPS2 (Exit R)", "DPS3 (Entrance R)", "DPS4 (Entrance L)"],
-        bashBackup: ["DPS5 (Exit L)", "DPS6 (Exit R)", "DPS7 (Entrance R)", "DPS8 (Entrance L)"],
-        executeLarge: ["DPS6", "DPS7"],
-        executeSmall: ["H2 (first)", "DPS8"]
-      },
-      sides: {
-        bigSide: ["OT", "All DDs + H1"],
-        smallSide: ["MT", "H2", "DPS8 (after swap)"]
-      },
-      healerFocus: { "H1": "OT", "H2": "MT" },
-      slayer: { left: "DPS4", right: "H1" },
-      weaponSlayers: ["DPS8"]
-    }
-  },
-  {
-    id: "sailripper-bowbreaker",
+    assignments: [
+      ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_DOME_BASH,
+      ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER,
+      ASSIGNMENT_ID.TWINS_EXECUTE_LEFT_DOME_HOLDER,
+      ASSIGNMENT_ID.TWINS_EXECUTE_SMALL_DOME_HOLDER,
+      ASSIGNMENT_ID.TWINS_WEAPON_SLAYER,
+      ASSIGNMENT_ID.TWINS_LARGE_SIDE,
+      ASSIGNMENT_ID.TWINS_SMALL_SIDE,
+      ASSIGNMENT_ID.TWINS_MT_TANK,
+      ASSIGNMENT_ID.TWINS_OT_TANK,
+      ASSIGNMENT_ID.TWINS_MT_HEALER,
+      ASSIGNMENT_ID.TWINS_OT_HEALER,
+      ASSIGNMENT_ID.LEFT_SLAYER_PROVIDER,
+      ASSIGNMENT_ID.RIGHT_SLAYER_PROVIDER
+    ]
+  }],
+  [FIGHT_ID.MINIS, {
+    id: FIGHT_ID.MINIS,
     name: "Sail Ripper & Bow Breaker + Trash Pulls",
     shortName: "Minis",
     icon: "🐦🐢",
@@ -223,49 +211,55 @@ const FIGHTS = [
       ]
     },
     builds: {
-      "DPS1": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Banner DD." },
-      "DPS2": { sets: ["Alkosh", "Deadly/Tideborn", "Velothi"], ult: "Colo", notes: "Alkosh DD." },
-      "DPS3": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Lever duty (2 levers)." },
-      "DPS4": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
-      "DPS5": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Banner DD." },
-      "DPS6": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
-      "DPS7": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Lever duty. Hotkey gear swaps." },
-      "DPS8": { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
-      "H1":   { sets: ["MA", "PP", "Naz"], ult: "Horn", misc: ["Weakening"], notes: "Naz extend." },
-      "H2":   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "Barrier", misc: ["Weakening"], notes: "Lever duty. Hotkey gear swaps." },
-      "MT":   { sets: ["LE", "Xoryn", "Baron"], ult: "Atro only", notes: "Lever duty. Race Against Time as needed. Take small adds, stack on boss." },
-      "OT":   { sets: ["PW", "Crimson", "Encratis"], ult: "Horn", notes: "Boss tank for both Sail Ripper and Bow Breaker. Solo-tank initially since MT may be late from levers. Take boss and first adds." }
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Banner DD." },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Alkosh", "Deadly/Tideborn", "Velothi"], ult: "Colo", notes: "Alkosh DD." },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Banner DD." },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Lever duty. Hotkey gear swaps." },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["MA", "PP", "Naz"], ult: "Horn", misc: ["Weakening"], notes: "Naz extend." },
+      [MAIN_ROLE_ID.H2]:   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "Barrier", misc: ["Weakening"], notes: "Lever duty. Hotkey gear swaps." },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Baron"], ult: "Atro only", notes: "Lever duty. Race Against Time as needed. Take small adds, stack on boss." },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "Crimson", "Encratis"], ult: "Horn", notes: "Boss tank for both Sail Ripper and Bow Breaker. Solo-tank initially since MT may be late from levers. Take boss and first adds." }
     },
     buffsDebuffs: [
-      { name: "Alkosh", owners: ["DPS2"] },
-      { name: "Crimson Oath", owners: ["OT"] },
-      { name: "Crusher", owners: ["MT", "OT"] },
-      { name: "Encratis", owners: ["OT"] },
-      { name: "Horn", owners: ["H1", "OT"] },
-      { name: "LE", owners: ["MT"] },
-      { name: "Major Breach", owners: ["MT", "OT"] },
-      { name: "Major Resolve", owners: ["MT"] },
-      { name: "Minor Breach", owners: ["OT"] },
-      { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["OT"] },
-      { name: "Minor Vulnerability", owners: ["OT"] },
-      { name: "Major Vulnerability", owners: ["DPS2"] },
-      { name: "Naz", owners: ["H1"] },
-      { name: "Off Balance", owners: ["H1", "H2"] },
-      { name: "PA", owners: ["H2"] },
-      { name: "PP", owners: ["H1"] },
-      { name: "PW", owners: ["OT"] },
-      { name: "Slayer", owners: ["H1"] },
-      { name: "SPC", owners: ["H2"] },
-      { name: "Weakening", owners: ["H1", "H2"] },
-      { name: "Xoryn", owners: ["MT"] }
+      { name: "Alkosh", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Crimson Oath", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Crusher", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Encratis", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Horn", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.OT] },
+      { name: "LE", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Major Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Major Resolve", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Minor Breach", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brittle", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brutality", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Vulnerability", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Major Vulnerability", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Naz", owners: [MAIN_ROLE_ID.H1] },
+      { name: "Off Balance", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "PA", owners: [MAIN_ROLE_ID.H2] },
+      { name: "PP", owners: [MAIN_ROLE_ID.H1] },
+      { name: "PW", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Slayer", owners: [MAIN_ROLE_ID.H1] },
+      { name: "SPC", owners: [MAIN_ROLE_ID.H2] },
+      { name: "Weakening", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "Xoryn", owners: [MAIN_ROLE_ID.MT] }
     ],
-    assignments: {
-      levers: "See Lever Assignments section"
-    }
-  },
-  {
-    id: "reef",
+    assignments: [
+      ASSIGNMENT_ID.LEVERS,
+      ASSIGNMENT_ID.LEVER_TANK,
+      ASSIGNMENT_ID.LEVER_HEALER,
+      ASSIGNMENT_ID.LEVER_DPS,
+      ASSIGNMENT_ID.NON_LEVER_TANK,
+      ASSIGNMENT_ID.NON_LEVER_HEALER,
+      ASSIGNMENT_ID.NON_LEVER_DPS
+    ]
+  }],
+  [FIGHT_ID.REEF, {
+    id: FIGHT_ID.REEF,
     name: "Reef Guardian",
     shortName: "Reef",
     icon: "🪸",
@@ -323,59 +317,58 @@ const FIGHTS = [
       ]
     },
     builds: {
-      "DPS1": { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach"], ult: "Standard", notes: "Reef Group 1. Bring Major Breach. Start upstairs." },
-      "DPS2": { sets: ["Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", notes: "Alkosh DD. Start at Chalice. Permanent upstairs after." },
-      "DPS3": { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Reef backup (first). Start at Chalice." },
-      "DPS4": { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], ult: "Standard", notes: "Reef Group 1. Start upstairs." },
-      "DPS5": { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Reef backup (second). Start at Chalice." },
-      "DPS6": { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach", "Hurricane"], ult: "Standard", notes: "Reef Group 2. Bring Major Breach. Start at Chalice." },
-      "DPS7": { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Hurricane"], ult: "Standard", notes: "Reef Group 2. Start at Chalice." },
-      "DPS8": { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Start upstairs. Do first Crossbones. Can slot self-heal for portal." },
-      "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Horn", misc: ["Crusher"], notes: "Heal group and MT. Naz extend Colo." },
-      "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Crusher"], notes: "Heal OT. PP + Slayer. Time PP after OT ult. Major + Minor Expedition on move. Rubberband mage into group if MT requests." },
-      "MT":   { sets: ["LE", "WM", "Baron"], ult: "Atro only", notes: "Watch for bears/cats on every portal clear. Taunt Large Guardian. Rubberband mages into group. Frost Cloak at reef clears and acid reflux. Left Slayer with 3s countdown." },
-      "OT":   { sets: ["PW", "Flex", "Baron/Encratis/Selfish"], ult: "Selfish ults", misc: ["Ele Sus"], notes: "Dictates group stack position. Stack on right side of reef. Race Against Time. Don't overstay — avoid backwards mediums/smalls." }
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach"], ult: "Standard", notes: "Reef Group 1. Bring Major Breach. Start upstairs." },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", notes: "Alkosh DD. Start at Chalice. Permanent upstairs after." },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Reef backup (first). Start at Chalice." },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], ult: "Standard", notes: "Reef Group 1. Start upstairs." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Reef backup (second). Start at Chalice." },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach", "Hurricane"], ult: "Standard", notes: "Reef Group 2. Bring Major Breach. Start at Chalice." },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Hurricane"], ult: "Standard", notes: "Reef Group 2. Start at Chalice." },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Start upstairs. Do first Crossbones. Can slot self-heal for portal." },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Horn", misc: ["Crusher"], notes: "Heal group and MT. Naz extend Colo." },
+      [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Crusher"], notes: "Heal OT. PP + Slayer. Time PP after OT ult. Major + Minor Expedition on move. Rubberband mage into group if MT requests." },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "WM", "Baron"], ult: "Atro only", notes: "Watch for bears/cats on every portal clear. Taunt Large Guardian. Rubberband mages into group. Frost Cloak at reef clears and acid reflux. Left Slayer with 3s countdown." },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "Flex", "Baron/Encratis/Selfish"], ult: "Selfish ults", misc: ["Ele Sus"], notes: "Dictates group stack position. Stack on right side of reef. Race Against Time. Don't overstay — avoid backwards mediums/smalls." }
     },
     buffsDebuffs: [
-      { name: "Alkosh", owners: ["DPS2"] },
-      { name: "Barrier", owners: ["H2"] },
-      { name: "Crusher", owners: ["H1", "H2", "MT", "OT"] },
-      { name: "Expedition (Major + Minor)", owners: ["H2"] },
-      { name: "Horn", owners: ["H1"] },
-      { name: "LE", owners: ["MT"] },
-      { name: "Major Breach", owners: ["MT", "OT"] },
-      { name: "Major Breach (portals)", owners: ["DPS1", "DPS6"] },
-      { name: "Major Resolve", owners: ["MT"] },
-      { name: "Minor Breach", owners: ["MT", "OT"] },
-      { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["OT"] },
-      { name: "Minor Vulnerability", owners: ["OT"] },
-      { name: "Major Vulnerability", owners: ["DPS2"] },
-      { name: "Naz", owners: ["H1"] },
-      { name: "Off Balance", owners: ["H1", "H2"] },
-      { name: "PA", owners: ["H1"] },
-      { name: "PP", owners: ["H2"] },
-      { name: "PW", owners: ["OT"] },
-      { name: "Slayer", owners: ["MT", "H2"] },
-      { name: "SPC", owners: ["H1"] }
+      { name: "Alkosh", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Barrier", owners: [MAIN_ROLE_ID.H2] },
+      { name: "Crusher", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Expedition (Major + Minor)", owners: [MAIN_ROLE_ID.H2] },
+      { name: "Horn", owners: [MAIN_ROLE_ID.H1] },
+      { name: "LE", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Major Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Major Breach (portals)", owners: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS6] },
+      { name: "Major Resolve", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Minor Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Minor Brittle", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brutality", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Vulnerability", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Major Vulnerability", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Naz", owners: [MAIN_ROLE_ID.H1] },
+      { name: "Off Balance", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "PA", owners: [MAIN_ROLE_ID.H1] },
+      { name: "PP", owners: [MAIN_ROLE_ID.H2] },
+      { name: "PW", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Slayer", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.H2] },
+      { name: "SPC", owners: [MAIN_ROLE_ID.H1] }
     ],
-    assignments: {
-      reefGroups: {
-        group1: { players: ["DPS1 (Major Breach)", "DPS4"], reefs: ["2,3 (Crossbones/Skull)", "6,7 (Crown/Chalice)*", "10,11 (Anchor/Wheel)"] },
-        group2: { players: ["DPS6 (Major Breach)", "DPS7"], reefs: ["4,5 (Anchor/Wheel)", "8,9 (Crossbones/Skull)", "12,13 (Crown/Chalice)"] },
-        chaliceOnly: "DPS8",
-        backupFirst: "DPS3",
-        backupSecond: "DPS5"
-      },
-      healerFocus: { "H1": "MT + group", "H2": "OT" },
-      slayer: { left: "MT", right: "H2" },
-      note: "* Fight should end by the time Group 1 reaches Crown/Chalice."
-    }
-  },
-  {
-    id: "taleria",
-    name: "Tideborn Taleria (Fleet Queen)",
-    shortName: "Taleria",
+    assignments: [
+      ASSIGNMENT_ID.REEF_GROUP_1,
+      ASSIGNMENT_ID.REEF_GROUP_2,
+      ASSIGNMENT_ID.REEF_BACKUP,
+      ASSIGNMENT_ID.REEF_FIRST_CROSSBONES,
+      ASSIGNMENT_ID.REEF_MT_TANK,
+      ASSIGNMENT_ID.REEF_OT_TANK,
+      ASSIGNMENT_ID.REEF_MT_HEALER,
+      ASSIGNMENT_ID.REEF_OT_HEALER,
+      ASSIGNMENT_ID.LEFT_SLAYER_GROUP,
+      ASSIGNMENT_ID.RIGHT_SLAYER_GROUP
+    ]
+  }],
+  [FIGHT_ID.TALERIA, {
+    id: FIGHT_ID.TALERIA,
+    name: "Tideborn Taleria",
     icon: "🌊",
     strategy: {
       summary: "Final boss. Heavy movement fight with Winter Storm walls, Rapid Deluge water-dip mechanic, Sea Behemoths, Sirens, and bridge portals with coloured dome debuffs. Group can skip last bridge with enough DPS.",
@@ -460,85 +453,91 @@ const FIGHTS = [
       ]
     },
     builds: {
-      "DPS1": { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Stay with group. DoT and cleave sirens." },
-      "DPS2": { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Colo", notes: "No Alkosh on Taleria — use parse trial set. Keep Colo. Stay with group." },
-      "DPS3": { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Bridge backup #1. Slot self-heal/shield for bridge. Bring extra pen." },
-      "DPS4": { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Stay with group. DoT and cleave sirens." },
-      "DPS5": { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Banner DD. 2nd bridge backup." },
-      "DPS6": { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Major Breach", "Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
-      "DPS7": { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
-      "DPS8": { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Bridge backup. DoT and cleave sirens." },
-      "H1":   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Barrier", misc: ["Weakening"], notes: "Seeds on MT. Naz extend Colo. Barrier without waiting for Colo if group in danger." },
-      "H2":   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Weakening"], notes: "PP + Back Slayer. Focus healing OT (especially with Behemoth). Occasional HoT/synergy to MT. Major + Minor Expedition on move." },
-      "MT":   { sets: ["LE", "Xoryn/EC", "Trem"], ult: "Selfish", notes: "Taunt Taleria, focus surviving. Be selfish. Go into group for Maelstrom as needed. Keep ~1.5 clock units from group. Frost Cloak at Maelstrom and end of bridge when mage spawns." },
-      "OT":   { sets: ["PW", "WM", "Baron"], ult: "Horn", misc: ["Ele Sus"], notes: "Behemoth is #1 priority — perma-block while alive. Stack mage close to Taleria. Ele Sus and taunt in-range matrons. Break free from Siren lure before Behemoth kills you. Proc Slayer (front) and ultigen. Stagger only if no mages/behemoths." }
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Stay with group. DoT and cleave sirens." },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Colo", notes: "No Alkosh on Taleria — use parse trial set. Keep Colo. Stay with group." },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Bridge backup #1. Slot self-heal/shield for bridge. Bring extra pen." },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Stay with group. DoT and cleave sirens." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Banner DD. 2nd bridge backup." },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Major Breach", "Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Bridge backup. DoT and cleave sirens." },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Barrier", misc: ["Weakening"], notes: "Seeds on MT. Naz extend Colo. Barrier without waiting for Colo if group in danger." },
+      [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Weakening"], notes: "PP + Back Slayer. Focus healing OT (especially with Behemoth). Occasional HoT/synergy to MT. Major + Minor Expedition on move." },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn/EC", "Trem"], ult: "Selfish", notes: "Taunt Taleria, focus surviving. Be selfish. Go into group for Maelstrom as needed. Keep ~1.5 clock units from group. Frost Cloak at Maelstrom and end of bridge when mage spawns." },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", misc: ["Ele Sus"], notes: "Behemoth is #1 priority — perma-block while alive. Stack mage close to Taleria. Ele Sus and taunt in-range matrons. Break free from Siren lure before Behemoth kills you. Proc Slayer (front) and ultigen. Stagger only if no mages/behemoths." }
     },
     buffsDebuffs: [
-      { name: "Barrier", owners: ["H1", "H2"] },
-      { name: "Crusher", owners: ["MT", "OT"] },
-      { name: "Expedition (Major + Minor)", owners: ["H2"] },
-      { name: "Horn", owners: ["OT"] },
-      { name: "LE", owners: ["MT"] },
-      { name: "Major Breach", owners: ["MT", "OT"] },
-      { name: "Major Resolve", owners: ["MT"] },
-      { name: "Minor Breach", owners: ["MT", "OT"] },
-      { name: "Major Vulnerability", owners: ["DPS2"] },
-      { name: "Minor Vulnerability", owners: ["OT"] },
-      { name: "Minor Brittle", owners: ["OT"] },
-      { name: "Minor Brutality", owners: ["OT"] },
-      { name: "Naz", owners: ["H1"] },
-      { name: "Off Balance", owners: ["H1", "H2"] },
-      { name: "PA", owners: ["H1"] },
-      { name: "PP", owners: ["H2"] },
-      { name: "PW", owners: ["OT"] },
-      { name: "Slayer", owners: ["OT", "H2"] },
-      { name: "SPC", owners: ["H1"] },
-      { name: "Tremorscale", owners: ["MT"] },
-      { name: "Weakening", owners: ["H1", "H2"] },
-      { name: "Xoryn", owners: ["MT"] }
+      { name: "Barrier", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "Crusher", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Expedition (Major + Minor)", owners: [MAIN_ROLE_ID.H2] },
+      { name: "Horn", owners: [MAIN_ROLE_ID.OT] },
+      { name: "LE", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Major Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Major Resolve", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Minor Breach", owners: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.OT] },
+      { name: "Major Vulnerability", owners: [MAIN_ROLE_ID.DPS2] },
+      { name: "Minor Vulnerability", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brittle", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Minor Brutality", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Naz", owners: [MAIN_ROLE_ID.H1] },
+      { name: "Off Balance", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "PA", owners: [MAIN_ROLE_ID.H1] },
+      { name: "PP", owners: [MAIN_ROLE_ID.H2] },
+      { name: "PW", owners: [MAIN_ROLE_ID.OT] },
+      { name: "Slayer", owners: [MAIN_ROLE_ID.OT, MAIN_ROLE_ID.H2] },
+      { name: "SPC", owners: [MAIN_ROLE_ID.H1] },
+      { name: "Tremorscale", owners: [MAIN_ROLE_ID.MT] },
+      { name: "Weakening", owners: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.H2] },
+      { name: "Xoryn", owners: [MAIN_ROLE_ID.MT] }
     ],
-    assignments: {
-      bridge: { primary: ["DPS6", "DPS7"], backup1: "DPS3", backup2: "DPS5" },
-      healerFocus: { "H1": "MT (Budding Seeds)", "H2": "Group and OT" },
-      slayer: { front: "OT", back: "H2" }
-    }
-  }
-];
+    assignments: [
+      ASSIGNMENT_ID.TALERIA_BRIDGE_DPS,
+      ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP,
+      ASSIGNMENT_ID.TALERIA_MT_TANK,
+      ASSIGNMENT_ID.TALERIA_OT_TANK,
+      ASSIGNMENT_ID.TALERIA_MT_HEALER,
+      ASSIGNMENT_ID.TALERIA_OT_HEALER,
+      ASSIGNMENT_ID.FRONT_SLAYER_PROVIDER,
+      ASSIGNMENT_ID.BACK_SLAYER_PROVIDER,
+      ASSIGNMENT_ID.TALERIA_SIRENS
+    ]
+  }]
+]);
 
 // Lever assignments
 const LEVERS = {
   lightning: [
     { name: "Lightning 1", positions: [
-      { pos: "Left", player: "DPS7" },
-      { pos: "Middle", player: "H2" },
-      { pos: "Right (Far)", player: "MT" }
+      { pos: "Left", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Right (Far)", player: MAIN_ROLE_ID.MT },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
     ]},
     { name: "Lightning 2", positions: [
-      { pos: "Bridge 1", player: "MT" },
-      { pos: "Bridge 2", player: "DPS7" },
-      { pos: "Exit", player: "H2" }
+      { pos: "Bridge 1", player: MAIN_ROLE_ID.MT },
+      { pos: "Bridge 2", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
     ]},
     { name: "Lightning 3", positions: [
-      { pos: "Parkour", player: "DPS7" },
-      { pos: "Exit", player: "H2" },
-      { pos: "Left", player: "MT" }
+      { pos: "Parkour", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 },
+      { pos: "Left", player: MAIN_ROLE_ID.MT }
     ]}
   ],
   poison: [
     { name: "Poison 1", positions: [
-      { pos: "Exit Left", player: "MT" },
-      { pos: "Exit Right", player: "H2" },
-      { pos: "Upstairs", player: "DPS7" }
+      { pos: "Exit Left", player: MAIN_ROLE_ID.MT },
+      { pos: "Exit Right", player: MAIN_ROLE_ID.H2 },
+      { pos: "Upstairs", player: MAIN_ROLE_ID.DPS7 }
     ]},
     { name: "Poison 2", positions: [
-      { pos: "Middle", player: "MT" },
-      { pos: "Entrance", player: "DPS7" },
-      { pos: "Exit", player: "H2" }
+      { pos: "Middle", player: MAIN_ROLE_ID.MT },
+      { pos: "Entrance", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
     ]},
     { name: "Poison 3", positions: [
-      { pos: "Left", player: "MT" },
-      { pos: "Right of Entrance (Go immediately and wait)", player: "DPS7" },
-      { pos: "Near", player: "H2" }
+      { pos: "Left", player: MAIN_ROLE_ID.MT },
+      { pos: "Right of Entrance (Go immediately and wait)", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Near", player: MAIN_ROLE_ID.H2 }
     ]}
   ]
 };
@@ -571,7 +570,7 @@ const REFERENCES = {
 
 // General DPS build guidance
 const DPS_GUIDANCE = {
-  subclass: "Herald/Ardent/X. Bridge DDs go Storm Calling. Non-Portal DDs go Assassination or Spear. Other Portal DDs go either Storm or Assassination. See <a href=\"https://hyperioxes.com/eso/dps/beam-builds\" target=\"_blank\">Hyperioxes's guide</a> for more U48 beam subclass builds.",
+  subclass: "Herald/Ardent/X. Bridge DDs go Storm Calling. Non-Portal DDs go Assassination or Spear. Other Portal DDs go either Storm or Assassination. See <a href=\"https://hyperioxes.com/eso/dps/beam-builds\" target=\"_blank\">Hyperioxes</a> for more U48 beam subclass builds.",
   bannerDDs: "Shocking/Cavalier/Courage banner.",
   beamDDs: "The beam morph to use is Pragmatic Fatecarver.",
   alkoshDPS: "Colo-only for ult. Gravelord for 3rd subclass. Alkosh for all fights except Taleria (use parse trial set + Colo)."
