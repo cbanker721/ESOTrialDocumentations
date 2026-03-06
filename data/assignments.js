@@ -1,0 +1,726 @@
+const ASSIGNMENT_ID = Object.freeze({
+  TWINS_TELEPORT: 'twins-teleport',
+
+  TWINS_TELEPORT_TOP_LEFT: 'twins-teleport-top-left',
+  TWINS_TELEPORT_TOP_LEFT_DOME_HOLDER: 'twins-teleport-top-left-dome-holder',
+  TWINS_TELEPORT_TOP_LEFT_DOME_BASHER: 'twins-teleport-top-left-dome-basher',
+
+  TWINS_GENERAL_ROLES: 'twins-general-roles',
+  TWINS_DPS_GENERAL: 'twins-dps-general',
+  TWINS_HEALER_GENERAL: 'twins-healer-general',
+  TWINS_TANK_GENERAL: 'twins-tank-general',
+  REEF_GENERAL_ROLES: 'reef-general-roles',
+  REEF_DPS_GENERAL: 'reef-dps-general',
+  REEF_HEALER_GENERAL: 'reef-healer-general',
+  REEF_TANK_GENERAL: 'reef-tank-general',
+  TALERIA_GENERAL_ROLES: 'taleria-general-roles',
+  TALERIA_DPS_GENERAL: 'taleria-dps-general',
+  TALERIA_HEALER_GENERAL: 'taleria-healer-general',
+  TALERIA_TANK_GENERAL: 'taleria-tank-general',
+  TWINS_TELEPORT_TOP_RIGHT: 'twins-teleport-top-right',
+  TWINS_TELEPORT_TOP_RIGHT_DOME_HOLDER: 'twins-teleport-top-right-dome-holder',
+  TWINS_TELEPORT_TOP_RIGHT_DOME_BASHER: 'twins-teleport-top-right-dome-basher',
+
+  TWINS_TELEPORT_BOTTOM_LEFT: 'twins-teleport-bottom-left',
+  TWINS_TELEPORT_BOTTOM_LEFT_DOME_HOLDER: 'twins-teleport-bottom-left-dome-holder',
+  TWINS_TELEPORT_BOTTOM_LEFT_DOME_BASHER: 'twins-teleport-bottom-left-dome-basher',
+
+  TWINS_TELEPORT_BOTTOM_RIGHT: 'twins-teleport-bottom-right',
+  TWINS_TELEPORT_BOTTOM_RIGHT_DOME_HOLDER: 'twins-teleport-bottom-right-dome-holder',
+  TWINS_TELEPORT_BOTTOM_RIGHT_DOME_BASHER: 'twins-teleport-bottom-right-dome-basher',
+  TWINS_TELEPORT_INTERRUPTER: 'twins-teleport-interrupter',
+  TWINS_EXECUTE: 'twins-execute',
+  TWINS_EXECUTE_LARGE_DOME_HOLDER: "twins-execute-left-dome-holder",
+  TWINS_LARGE_DOME_RESCUE: "twins-large-dome-rescue",
+  TWINS_EXECUTE_SMALL_DOME_HOLDER: "twins-execute-small-dome-holder",
+  TWINS_WEAPON_SLAYER: 'twins-weapon-slayer',
+  TWINS_LARGE_SIDE: 'twins-large-side',
+  TWINS_SMALL_SIDE: 'twins-small-side',
+  TWINS_MT_TANK: 'twins-mt-tank',
+  TWINS_OT_TANK: 'twins-ot-tank',
+  TWINS_MT_HEALER: 'twins-mt-healer',
+  TWINS_OT_HEALER: 'twins-ot-healer',
+  REEF_MT_TANK: 'reef-mt-tank',
+  REEF_OT_TANK: 'reef-ot-tank',
+  REEF_MT_HEALER: 'reef-mt-healer',
+  REEF_OT_HEALER: 'reef-ot-healer',
+  REEF_GROUP_1: 'reef-group-1',
+  REEF_GROUP_2: 'reef-group-2',
+  REEF_GROUPS: 'reef-groups',
+  REEF_BACKUP: 'reef-backup',
+  REEF_FIRST_CROSSBONES: 'reef-first-crossbones',
+  TALERIA_MT_TANK: 'taleria-mt-tank',
+  TALERIA_OT_TANK: 'taleria-ot-tank',
+  TALERIA_MT_HEALER: 'taleria-mt-healer',
+  TALERIA_OT_HEALER: 'taleria-ot-healer',
+  TALERIA_BRIDGE: 'taleria-bridge',
+  TALERIA_BRIDGE_DPS: 'taleria-bridge-dps',
+  TALERIA_BRIDGE_BACKUP: 'taleria-bridge-backup',
+  TALERIA_SLAYERS: 'taleria-slayers',
+  TWINS_SLAYERS: 'twins-slayers',
+  REEF_GUARDIAN_SLAYERS: 'reef-guardian-slayers',
+  TWINS_LEFT_SLAYER_GROUP: 'twins-left-slayer-group',
+  TWINS_RIGHT_SLAYER_GROUP: 'twins-right-slayer-group',
+  TWINS_LEFT_SLAYER_PROVIDER: 'twins-left-slayer-provider',
+  TWINS_RIGHT_SLAYER_PROVIDER: 'twins-right-slayer-provider',
+  REEF_LEFT_SLAYER_GROUP: 'reef-left-slayer-group',
+  REEF_RIGHT_SLAYER_GROUP: 'reef-right-slayer-group',
+  REEF_LEFT_SLAYER_PROVIDER: 'reef-left-slayer-provider',
+  REEF_RIGHT_SLAYER_PROVIDER: 'reef-right-slayer-provider',
+  TALERIA_FRONT_SLAYER_GROUP: 'taleria-front-slayer-group',
+  TALERIA_BACK_SLAYER_GROUP: 'taleria-back-slayer-group',
+  TALERIA_FRONT_SLAYER_PROVIDER: 'taleria-front-slayer-provider',
+  TALERIA_BACK_SLAYER_PROVIDER: 'taleria-back-slayer-provider',
+  NON_LEVER_TANK: 'non-lever-tank',
+  NON_LEVER_DPS: 'non-lever-dps',
+  NON_LEVER_HEALER: 'non-lever-healer',
+  LEVER_HEALER: 'lever-healer',
+  LEVER_TANK: 'lever-tank',
+  LEVER_DPS: 'lever-dps',
+  LEVERS: 'levers',
+});
+
+const ASSIGNMENTS = new Map([
+  [ASSIGNMENT_ID.TWINS_TELEPORT, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT,
+    name: "Teleport Phase",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER,
+      ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT
+    ],
+    fights: [FIGHT_ID.TWINS],
+    description: "Assignments for the teleport phase in the Twins fight.",
+    instructions: "All DDs tab-target the boss before teleport to see where their orb spawns. Go to your assigned dome position. Tip: Look at the orb beside you and take the dome of the opposite color."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT,
+    name: "Top Left (Exit) Dome",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT_DOME_HOLDER, ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT_DOME_BASHER],
+    fights: [FIGHT_ID.TWINS],
+    description: "Handles the Top Left (Exit) dome during teleport.",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT_DOME_HOLDER,
+    name: "Dome Holder",
+    role_ids: [MAIN_ROLE_ID.DPS1],
+    fights: [FIGHT_ID.TWINS],
+    description: "Carries the Top Left (Exit) dome.",
+    instructions: "Take the dome. If freed up, drop DoTs in middle. Wait for old dome to drop before picking up."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT_DOME_BASHER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT_DOME_BASHER,
+    name: "Dome Basher",
+    role_ids: [MAIN_ROLE_ID.DPS5],
+    fights: [FIGHT_ID.TWINS],
+    description: "Bashes the Top Left (Exit) dome.",
+    instructions: "Bash the dome to prevent cast. Prepare to grab dome as backup."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT,
+    name: "Top Right (Exit) Dome",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT_DOME_HOLDER, ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT_DOME_BASHER],
+    fights: [FIGHT_ID.TWINS],
+    description: "Handles the Top Right (Exit) dome during teleport.",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT_DOME_HOLDER,
+    name: "Dome Holder",
+    role_ids: [MAIN_ROLE_ID.DPS2],
+    fights: [FIGHT_ID.TWINS],
+    description: "Carries the Top Right (Exit) dome.",
+    instructions: "Take the dome. If freed up, drop DoTs in middle. Wait for old dome to drop before picking up."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT_DOME_BASHER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT_DOME_BASHER,
+    name: "Dome Basher",
+    role_ids: [MAIN_ROLE_ID.DPS6],
+    fights: [FIGHT_ID.TWINS],
+    description: "Bashes the Top Right (Exit) dome.",
+    instructions: "Bash the dome to prevent cast. Prepare to grab dome as backup."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT,
+    name: "Bottom Left (Entrance) Dome",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT_DOME_HOLDER, ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT_DOME_BASHER],
+    fights: [FIGHT_ID.TWINS],
+    description: "Handles the Bottom Left (Entrance) dome during teleport.",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT_DOME_HOLDER,
+    name: "Dome Holder",
+    role_ids: [MAIN_ROLE_ID.DPS4],
+    fights: [FIGHT_ID.TWINS],
+    description: "Carries the Bottom Left (Entrance) dome.",
+    instructions: "Take the dome. If freed up, drop DoTs in middle. Wait for old dome to drop before picking up."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT_DOME_BASHER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT_DOME_BASHER,
+    name: "Dome Basher",
+    role_ids: [MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TWINS],
+    description: "Bashes the Bottom Left (Entrance) dome.",
+    instructions: "Bash the dome to prevent cast. Prepare to grab dome as backup."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT,
+    name: "Bottom Right (Entrance) Dome",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT_DOME_HOLDER, ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT_DOME_BASHER],
+    fights: [FIGHT_ID.TWINS],
+    description: "Handles the Bottom Right (Entrance) dome during teleport.",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT_DOME_HOLDER,
+    name: "Dome Holder",
+    role_ids: [MAIN_ROLE_ID.DPS3],
+    fights: [FIGHT_ID.TWINS],
+    description: "Carries the Bottom Right (Entrance) dome.",
+    instructions: "Take the dome. If freed up, drop DoTs in middle. Wait for old dome to drop before picking up."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT_DOME_BASHER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT_DOME_BASHER,
+    name: "Dome Basher",
+    role_ids: [MAIN_ROLE_ID.DPS7],
+    fights: [FIGHT_ID.TWINS],
+    description: "Bashes the Bottom Right (Entrance) dome.",
+    instructions: "Bash the dome to prevent cast. Prepare to grab dome as backup."
+  }],
+  [ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER, {
+    id: ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER,
+    name: "Teleport Interrupter",
+    role_ids: [MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.TWINS],
+    description: "Interrupts boss.",
+    instructions: "Use Crushing Shock to help interrupt the boss during teleport phase."
+  }],
+  [ASSIGNMENT_ID.TWINS_GENERAL_ROLES, {
+    id: ASSIGNMENT_ID.TWINS_GENERAL_ROLES,
+    name: "General Roles",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.TWINS_DPS_GENERAL,
+      ASSIGNMENT_ID.TWINS_HEALER_GENERAL,
+      ASSIGNMENT_ID.TWINS_TANK_GENERAL
+    ],
+    fights: [FIGHT_ID.TWINS],
+    description: "General role assignments for Twins."
+  }],
+  [ASSIGNMENT_ID.TWINS_DPS_GENERAL, {
+    id: ASSIGNMENT_ID.TWINS_DPS_GENERAL,
+    name: "DPS",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TWINS],
+    description: "General DPS responsibilities for Twins.",
+    instructions: "Before execute, hold ult until both same colour atros are stacked on boss. During execute, mechs always take precedence over damage."
+  }],
+  [ASSIGNMENT_ID.TWINS_HEALER_GENERAL, {
+    id: ASSIGNMENT_ID.TWINS_HEALER_GENERAL,
+    name: "Healers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_MT_HEALER, ASSIGNMENT_ID.TWINS_OT_HEALER],
+    fights: [FIGHT_ID.TWINS],
+    description: "",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TWINS_TANK_GENERAL, {
+    id: ASSIGNMENT_ID.TWINS_TANK_GENERAL,
+    name: "Tanks",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_MT_TANK, ASSIGNMENT_ID.TWINS_OT_TANK],
+    fights: [FIGHT_ID.TWINS],
+    description: "",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.REEF_GENERAL_ROLES, {
+    id: ASSIGNMENT_ID.REEF_GENERAL_ROLES,
+    name: "General Roles",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.REEF_DPS_GENERAL,
+      ASSIGNMENT_ID.REEF_HEALER_GENERAL,
+      ASSIGNMENT_ID.REEF_TANK_GENERAL
+    ],
+    fights: [FIGHT_ID.REEF],
+    description: "General role assignments for Reef Guardian."
+  }],
+  [ASSIGNMENT_ID.REEF_DPS_GENERAL, {
+    id: ASSIGNMENT_ID.REEF_DPS_GENERAL,
+    name: "DPS",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.REEF],
+    description: "General DPS responsibilities for Reef Guardian.",
+    instructions: "Soft stack at lightning and do not overlap with people when in lightning. Roll-dodge/walk out of poison AoE. At chalice, burn both Large and first Medium guardians. At crossbones, burn Large on left side and leave right side alone until it walks over. Ever after, burn every enemy."
+  }],
+  [ASSIGNMENT_ID.REEF_HEALER_GENERAL, {
+    id: ASSIGNMENT_ID.REEF_HEALER_GENERAL,
+    name: "Healers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.REEF_MT_HEALER, ASSIGNMENT_ID.REEF_OT_HEALER],
+    fights: [FIGHT_ID.REEF],
+    description: "",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.REEF_TANK_GENERAL, {
+    id: ASSIGNMENT_ID.REEF_TANK_GENERAL,
+    name: "Tanks",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.REEF_MT_TANK, ASSIGNMENT_ID.REEF_OT_TANK],
+    fights: [FIGHT_ID.REEF],
+    description: "",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TALERIA_GENERAL_ROLES, {
+    id: ASSIGNMENT_ID.TALERIA_GENERAL_ROLES,
+    name: "General Roles",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.TALERIA_DPS_GENERAL,
+      ASSIGNMENT_ID.TALERIA_HEALER_GENERAL,
+      ASSIGNMENT_ID.TALERIA_TANK_GENERAL
+    ],
+    fights: [FIGHT_ID.TALERIA],
+    description: "General role assignments for Taleria."
+  }],
+  [ASSIGNMENT_ID.TALERIA_DPS_GENERAL, {
+    id: ASSIGNMENT_ID.TALERIA_DPS_GENERAL,
+    name: "DPS",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TALERIA],
+    description: "General DPS responsibilities for Taleria, including Siren control.",
+    instructions: "Roll-dodge every wave unless OT says he's taking it out. Run to do deluge early. DoT and cleave Sirens as they show up, and break free immediately if lured."
+  }],
+  [ASSIGNMENT_ID.TALERIA_HEALER_GENERAL, {
+    id: ASSIGNMENT_ID.TALERIA_HEALER_GENERAL,
+    name: "Healers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TALERIA_MT_HEALER, ASSIGNMENT_ID.TALERIA_OT_HEALER],
+    fights: [FIGHT_ID.TALERIA],
+    description: "",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TALERIA_TANK_GENERAL, {
+    id: ASSIGNMENT_ID.TALERIA_TANK_GENERAL,
+    name: "Tanks",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TALERIA_MT_TANK, ASSIGNMENT_ID.TALERIA_OT_TANK],
+    fights: [FIGHT_ID.TALERIA],
+    description: "",
+    instructions: ""
+  }],
+  [ASSIGNMENT_ID.TWINS_EXECUTE, {
+    id: ASSIGNMENT_ID.TWINS_EXECUTE,
+    name: "Execute Phase",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.TWINS_WEAPON_SLAYER,
+      ASSIGNMENT_ID.TWINS_LARGE_SIDE,
+      ASSIGNMENT_ID.TWINS_SMALL_SIDE
+    ],
+    fights: [FIGHT_ID.TWINS],
+    description: "Assignments for the execute phase."
+  }],
+  [ASSIGNMENT_ID.TWINS_EXECUTE_LARGE_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_EXECUTE_LARGE_DOME_HOLDER,
+    name: "Execute Large Dome Swapper",
+    role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
+    fights: [FIGHT_ID.TWINS],
+    description: "Swaps dome (Large).",
+    instructions: "Swap domes on jump/brands. DPS6 grabs first. Move vertically (entrance<->exit)."
+  }],
+  [ASSIGNMENT_ID.TWINS_LARGE_DOME_RESCUE, {
+    id: ASSIGNMENT_ID.TWINS_LARGE_DOME_RESCUE,
+    name: "Dome Rescue",
+    role_ids: [MAIN_ROLE_ID.H1],
+    fights: [FIGHT_ID.TWINS],
+    description: "Rescue dome if needed.",
+    instructions: "Stand outside of dome to grab opposite dome during jumps if needed."
+  }],
+  [ASSIGNMENT_ID.TWINS_EXECUTE_SMALL_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_EXECUTE_SMALL_DOME_HOLDER,
+    name: "Execute Small Dome Swapper",
+    role_ids: [MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TWINS],
+    description: "Holds dome (Small).",
+    instructions: "H2 holds dome initially. If someone else has dome and PP is off CD, go to large side to pop PP."
+  }],
+  [ASSIGNMENT_ID.TWINS_WEAPON_SLAYER, {
+    id: ASSIGNMENT_ID.TWINS_WEAPON_SLAYER,
+    name: "Weapon Slayers",
+    role_ids: [MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TWINS],
+    description: "Kills weapons.",
+    instructions: "Beam weapons as soon as they spawn."
+  }],
+  [ASSIGNMENT_ID.TWINS_LARGE_SIDE, {
+    id: ASSIGNMENT_ID.TWINS_LARGE_SIDE,
+    name: "Large Side Group",
+    role_ids: [MAIN_ROLE_ID.H1, MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_EXECUTE_LARGE_DOME_HOLDER, ASSIGNMENT_ID.TWINS_LARGE_DOME_RESCUE],
+    fights: [FIGHT_ID.TWINS],
+    description: "Large Side.",
+    instructions: "Stack puddles along sides in L-shape pattern. Avoid running into DDs doing brands."
+  }],
+  [ASSIGNMENT_ID.TWINS_SMALL_SIDE, {
+    id: ASSIGNMENT_ID.TWINS_SMALL_SIDE,
+    name: "Small Side Group",
+    role_ids: [MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS8],
+    assignment_ids: [ASSIGNMENT_ID.TWINS_EXECUTE_SMALL_DOME_HOLDER],
+    fights: [FIGHT_ID.TWINS],
+    description: "Small Side.",
+    instructions: "DPS8 kills weapons after a mech finishes and calls out."
+  }],
+  [ASSIGNMENT_ID.TWINS_MT_TANK, {
+    id: ASSIGNMENT_ID.TWINS_MT_TANK,
+    name: "MT Tank",
+    role_ids: [MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.TWINS],
+    description: "Main Tank.",
+    instructions: "Coordinate boss swaps. Stack same-colour atros on boss. Keep them centered during teleport."
+  }],
+  [ASSIGNMENT_ID.TWINS_OT_TANK, {
+    id: ASSIGNMENT_ID.TWINS_OT_TANK,
+    name: "OT Tank",
+    role_ids: [MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.TWINS],
+    description: "Off Tank.",
+    instructions: "Stack wrong-colour atros out of group (~1-2 o'clock outside dome). Use Magma Shell for execute abuse."
+  }],
+  [ASSIGNMENT_ID.TWINS_MT_HEALER, {
+    id: ASSIGNMENT_ID.TWINS_MT_HEALER,
+    name: "MT Healer",
+    role_ids: [MAIN_ROLE_ID.H2],
+    fights: [FIGHT_ID.TWINS],
+    description: "Heals MT.",
+    instructions: "Heal MT. PP on CD."
+  }],
+  [ASSIGNMENT_ID.TWINS_OT_HEALER, {
+    id: ASSIGNMENT_ID.TWINS_OT_HEALER,
+    name: "OT Healer",
+    role_ids: [MAIN_ROLE_ID.H1],
+    fights: [FIGHT_ID.TWINS],
+    description: "Heals OT.",
+    instructions: "Stay out of dome for jump rescue. Heal OT."
+  }],
+  [ASSIGNMENT_ID.TWINS_LEFT_SLAYER_GROUP, {
+    id: ASSIGNMENT_ID.TWINS_LEFT_SLAYER_GROUP,
+    name: "Left Slayer Group",
+    role_ids: [MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.TWINS],
+    description: "Left Slayer group.",
+    instructions: "Coordinate Slayer drops on the left side."
+  }],
+  [ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_GROUP, {
+    id: ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_GROUP,
+    name: "Right Slayer Group",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.TWINS],
+    description: "Right Slayer group.",
+    instructions: "Coordinate Slayer drops on the right side."
+  }],
+  [ASSIGNMENT_ID.TWINS_SLAYERS, {
+    id: ASSIGNMENT_ID.TWINS_SLAYERS,
+    name: "Slayer Stack",
+    assignment_ids: [ASSIGNMENT_ID.TWINS_LEFT_SLAYER_GROUP, ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_GROUP, ASSIGNMENT_ID.TWINS_LEFT_SLAYER_PROVIDER, ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_PROVIDER],
+    fights: [FIGHT_ID.TWINS],
+    description: "Slayer assignments for Twins.",
+    instructions: "DPS4 provides Left Slayer, H1 provides Right Slayer."
+  }],
+  [ASSIGNMENT_ID.TWINS_LEFT_SLAYER_PROVIDER, {
+    id: ASSIGNMENT_ID.TWINS_LEFT_SLAYER_PROVIDER,
+    name: "Left Slayer Provider",
+    role_ids: [MAIN_ROLE_ID.H1],
+    fights: [FIGHT_ID.TWINS],
+    description: "Provides Left Slayer.",
+    instructions: "Provide Major Slayer for the left group."
+  }],
+  [ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_PROVIDER, {
+    id: ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_PROVIDER,
+    name: "Right Slayer Provider",
+    role_ids: [MAIN_ROLE_ID.DPS4],
+    fights: [FIGHT_ID.TWINS],
+    description: "Provides Right Slayer.",
+    instructions: "Provide Major Slayer for the right group."
+  }],
+  [ASSIGNMENT_ID.REEF_LEFT_SLAYER_GROUP, {
+    id: ASSIGNMENT_ID.REEF_LEFT_SLAYER_GROUP,
+    name: "Left Slayer Group",
+    role_ids: [MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.REEF],
+    description: "Left Slayer group.",
+    instructions: "Coordinate Slayer drops on the left side."
+  }],
+  [ASSIGNMENT_ID.REEF_RIGHT_SLAYER_GROUP, {
+    id: ASSIGNMENT_ID.REEF_RIGHT_SLAYER_GROUP,
+    name: "Right Slayer Group",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.REEF],
+    description: "Right Slayer group.",
+    instructions: "Coordinate Slayer drops on the right side."
+  }],
+  [ASSIGNMENT_ID.REEF_GUARDIAN_SLAYERS, {
+    id: ASSIGNMENT_ID.REEF_GUARDIAN_SLAYERS,
+    name: "Slayer Stack",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.REEF_LEFT_SLAYER_GROUP, ASSIGNMENT_ID.REEF_RIGHT_SLAYER_GROUP, ASSIGNMENT_ID.REEF_LEFT_SLAYER_PROVIDER, ASSIGNMENT_ID.REEF_RIGHT_SLAYER_PROVIDER],
+    fights: [FIGHT_ID.REEF],
+    description: "Slayer assignments for Reef Guardian.",
+    instructions: "MT provides Left Slayer, H2 provides Right Slayer."
+  }],
+  [ASSIGNMENT_ID.REEF_LEFT_SLAYER_PROVIDER, {
+    id: ASSIGNMENT_ID.REEF_LEFT_SLAYER_PROVIDER,
+    name: "Left Slayer Provider",
+    role_ids: [MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.REEF],
+    description: "Provides Left Slayer.",
+    instructions: "Provide Major Slayer for the left group."
+  }],
+  [ASSIGNMENT_ID.REEF_RIGHT_SLAYER_PROVIDER, {
+    id: ASSIGNMENT_ID.REEF_RIGHT_SLAYER_PROVIDER,
+    name: "Right Slayer Provider",
+    role_ids: [MAIN_ROLE_ID.H2],
+    fights: [FIGHT_ID.REEF],
+    description: "Provides Right Slayer.",
+    instructions: "Provide Major Slayer for the right group."
+  }],
+  [ASSIGNMENT_ID.LEVERS, {
+    id: ASSIGNMENT_ID.LEVERS,
+    name: "Levers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.LEVER_TANK, ASSIGNMENT_ID.LEVER_HEALER, ASSIGNMENT_ID.LEVER_DPS],
+    fights: [FIGHT_ID.MINIS],
+    description: "Overall lever assignments.",
+    instructions: "Group of players responsible for pulling levers during trash pulls before Sail Ripper & Bow Breaker."
+  }],
+  [ASSIGNMENT_ID.LEVER_TANK, {
+    id: ASSIGNMENT_ID.LEVER_TANK,
+    name: "Lever Tank",
+    role_ids: [MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.MINIS],
+    description: "Lever Tank.",
+    instructions: "Handle lever mechanics. Race Against Time as needed."
+  }],
+  [ASSIGNMENT_ID.LEVER_HEALER, {
+    id: ASSIGNMENT_ID.LEVER_HEALER,
+    name: "Lever Healer",
+    role_ids: [MAIN_ROLE_ID.H2],
+    fights: [FIGHT_ID.MINIS],
+    description: "Lever Healer.",
+    instructions: "Handle lever mechanics. Hotkey gear swaps."
+  }],
+  [ASSIGNMENT_ID.LEVER_DPS, {
+    id: ASSIGNMENT_ID.LEVER_DPS,
+    name: "Lever DPS",
+    role_ids: [MAIN_ROLE_ID.DPS7],
+    fights: [FIGHT_ID.MINIS],
+    description: "Lever DPS.",
+    instructions: "Handle lever mechanics. Hotkey gear swaps."
+  }],
+  [ASSIGNMENT_ID.NON_LEVER_TANK, {
+    id: ASSIGNMENT_ID.NON_LEVER_TANK,
+    name: "Non-Lever Tank",
+    role_ids: [MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.MINIS],
+    description: "Group Tank.",
+    instructions: "Solo-tank boss and first adds initially."
+  }],
+  [ASSIGNMENT_ID.NON_LEVER_HEALER, {
+    id: ASSIGNMENT_ID.NON_LEVER_HEALER,
+    name: "Non-Lever Healer",
+    role_ids: [MAIN_ROLE_ID.H1],
+    fights: [FIGHT_ID.MINIS],
+    description: "Group Healer.",
+    instructions: "Solo-heal group initially."
+  }],
+  [ASSIGNMENT_ID.NON_LEVER_DPS, {
+    id: ASSIGNMENT_ID.NON_LEVER_DPS,
+    name: "Non-Lever DPS",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.MINIS],
+    description: "Group DPS.",
+    instructions: "Wait at exit until trash is dead."
+  }],
+  [ASSIGNMENT_ID.REEF_GROUP_1, {
+    id: ASSIGNMENT_ID.REEF_GROUP_1,
+    name: "Reef Group 1",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS4],
+    fights: [FIGHT_ID.REEF],
+    description: "Portal Group 1.",
+    instructions: "Reefs: 2,3 (Crossbones/Skull) -> 6,7 (Crown/Chalice) -> 10,11 (Anchor/Wheel)."
+  }],
+  [ASSIGNMENT_ID.REEF_GROUP_2, {
+    id: ASSIGNMENT_ID.REEF_GROUP_2,
+    name: "Reef Group 2",
+    role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
+    fights: [FIGHT_ID.REEF],
+    description: "Portal Group 2.",
+    instructions: "Reefs: 4,5 (Anchor/Wheel) -> 8,9 (Crossbones/Skull) -> 12,13 (Crown/Chalice)."
+  }],
+  [ASSIGNMENT_ID.REEF_BACKUP, {
+    id: ASSIGNMENT_ID.REEF_BACKUP,
+    name: "Reef Backup",
+    role_ids: [MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS5],
+    fights: [FIGHT_ID.REEF],
+    description: "Portal Backup.",
+    instructions: "Go down immediately if a boss goes counter-clockwise (backwards reef)."
+  }],
+  [ASSIGNMENT_ID.REEF_FIRST_CROSSBONES, {
+    id: ASSIGNMENT_ID.REEF_FIRST_CROSSBONES,
+    name: "First Crossbones",
+    role_ids: [MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.REEF],
+    description: "First Crossbones.",
+    instructions: "Help clear first Crossbones to speed up mage spawn."
+  }],
+  [ASSIGNMENT_ID.REEF_GROUPS, {
+    id: ASSIGNMENT_ID.REEF_GROUPS,
+    name: "Reef Groups",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.REEF_GROUP_1,
+      ASSIGNMENT_ID.REEF_FIRST_CROSSBONES,
+      ASSIGNMENT_ID.REEF_GROUP_2,
+      ASSIGNMENT_ID.REEF_BACKUP
+    ],
+  }],
+  [ASSIGNMENT_ID.REEF_MT_TANK, {
+    id: ASSIGNMENT_ID.REEF_MT_TANK,
+    name: "MT Tank",
+    role_ids: [MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.REEF],
+    description: "Main Tank.",
+    instructions: "Taunt Large Guardian. Rubberband mages into group. Watch for bears/cats."
+  }],
+  [ASSIGNMENT_ID.REEF_OT_TANK, {
+    id: ASSIGNMENT_ID.REEF_OT_TANK,
+    name: "OT Tank",
+    role_ids: [MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.REEF],
+    description: "Off Tank.",
+    instructions: "Stack reef guardians on right side of reef. Dictate group stack position."
+  }],
+  [ASSIGNMENT_ID.REEF_MT_HEALER, {
+    id: ASSIGNMENT_ID.REEF_MT_HEALER,
+    name: "MT Healer",
+    role_ids: [MAIN_ROLE_ID.H1],
+    fights: [FIGHT_ID.REEF],
+    description: "Heals MT.",
+    instructions: "Focus group and MT."
+  }],
+  [ASSIGNMENT_ID.REEF_OT_HEALER, {
+    id: ASSIGNMENT_ID.REEF_OT_HEALER,
+    name: "OT Healer",
+    role_ids: [MAIN_ROLE_ID.H2],
+    fights: [FIGHT_ID.REEF],
+    description: "Heals OT.",
+    instructions: "Pocket heal OT. PP + Slayer."
+  }],
+  [ASSIGNMENT_ID.TALERIA_MT_TANK, {
+    id: ASSIGNMENT_ID.TALERIA_MT_TANK,
+    name: "MT Tank",
+    role_ids: [MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Main Tank.",
+    instructions: "Frost cloak jail. Lead group during Winter Storm. Keep ~1.5 clock units from group."
+  }],
+  [ASSIGNMENT_ID.TALERIA_OT_TANK, {
+    id: ASSIGNMENT_ID.TALERIA_OT_TANK,
+    name: "OT Tank",
+    role_ids: [MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Off Tank.",
+    instructions: "Behemoth is #1 priority. Stack mage close to Taleria. Ele Sus matrons."
+  }],
+  [ASSIGNMENT_ID.TALERIA_BRIDGE_DPS, {
+    id: ASSIGNMENT_ID.TALERIA_BRIDGE_DPS,
+    name: "Bridge DPS",
+    role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Bridge DPS.",
+    instructions: "Go to bridge. Roll dodge through MT if needed. Slot self-heal/shield."
+  }],
+  [ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP, {
+    id: ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP,
+    name: "Bridge Backup",
+    role_ids: [MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Bridge Backup.",
+    instructions: "Fill in if primary bridge DPS is down."
+  }],
+  [ASSIGNMENT_ID.TALERIA_MT_HEALER, {
+    id: ASSIGNMENT_ID.TALERIA_MT_HEALER,
+    name: "MT Healer",
+    role_ids: [MAIN_ROLE_ID.H1],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Heals MT.",
+    instructions: "Seeds on MT. Naz extend Colo."
+  }],
+  [ASSIGNMENT_ID.TALERIA_OT_HEALER, {
+    id: ASSIGNMENT_ID.TALERIA_OT_HEALER,
+    name: "OT Healer",
+    role_ids: [MAIN_ROLE_ID.H2],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Heals OT.",
+    instructions: "Focus healing OT (especially with Behemoth). Provide Major + Minor Expedition."
+  }],
+  [ASSIGNMENT_ID.TALERIA_BRIDGE, {
+    id: ASSIGNMENT_ID.TALERIA_BRIDGE,
+    name: "Bridge Group",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TALERIA_BRIDGE_DPS, ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Assignments for handling the bridge mechanic.",
+    instructions: "Coordinate bridge crossings and backups."
+  }],
+  [ASSIGNMENT_ID.TALERIA_FRONT_SLAYER_GROUP, {
+    id: ASSIGNMENT_ID.TALERIA_FRONT_SLAYER_GROUP,
+    name: "Front Slayer Group",
+    role_ids: [MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Front Slayer group.",
+    instructions: "Group of players receiving front slayer buff, provided by H2."
+  }],
+  [ASSIGNMENT_ID.TALERIA_BACK_SLAYER_GROUP, {
+    id: ASSIGNMENT_ID.TALERIA_BACK_SLAYER_GROUP,
+    name: "Back Slayer Group",
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.MT],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Back Slayer group.",
+    instructions: "Group of players receiving back slayer buff, provided by OT."
+  }],
+  [ASSIGNMENT_ID.TALERIA_SLAYERS, {
+    id: ASSIGNMENT_ID.TALERIA_SLAYERS,
+    name: "Slayer Stack",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TALERIA_FRONT_SLAYER_GROUP, ASSIGNMENT_ID.TALERIA_BACK_SLAYER_GROUP, ASSIGNMENT_ID.TALERIA_FRONT_SLAYER_PROVIDER, ASSIGNMENT_ID.TALERIA_BACK_SLAYER_PROVIDER],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Slayer assignments for Taleria.",
+    instructions: "OT provides front slayer, H2 provides back slayer."
+  }],
+  [ASSIGNMENT_ID.TALERIA_FRONT_SLAYER_PROVIDER, {
+    id: ASSIGNMENT_ID.TALERIA_FRONT_SLAYER_PROVIDER,
+    name: "Front Slayer Provider",
+    role_ids: [MAIN_ROLE_ID.OT],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Provides Front Slayer.",
+    instructions: "Provide Major Slayer for the front group."
+  }],
+  [ASSIGNMENT_ID.TALERIA_BACK_SLAYER_PROVIDER, {
+    id: ASSIGNMENT_ID.TALERIA_BACK_SLAYER_PROVIDER,
+    name: "Back Slayer Provider",
+    role_ids: [MAIN_ROLE_ID.H2],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Provides Back Slayer.",
+    instructions: "Provide Major Slayer for the back group."
+  }]
+]);

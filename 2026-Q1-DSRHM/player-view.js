@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const playerId = params.get('id');
 
   populateDropdown(playerId);
+  
 
   // Only render the content if a valid player is selected
   if (playerId && PLAYERS[playerId]) {
     renderHeader(playerId);
-    renderContent(playerId);
+    const assignmentRenderer = new AssignmentRenderer();
+    renderContent(playerId, assignmentRenderer);
   }
 });
 
@@ -76,7 +78,7 @@ function renderHeader(id) {
   `;
 }
 
-function renderContent(id) {
+function renderContent(id, assignmentRenderer) {
   const main = document.getElementById('main-container');
   
   FIGHTS.forEach(fight => {
@@ -100,7 +102,7 @@ function renderContent(id) {
 
     // 2. Assignments (Recursive search)
     const myAssignments = [];
-    extractAssignments(fight.assignments, id, myAssignments);
+    
     
     // Special: Inject Levers for the Minis fight
     if (fight.id === FIGHT_ID.MINIS) {
@@ -143,7 +145,8 @@ function renderContent(id) {
 
           <div class="personal-section">
             <h3>📋 Assignments</h3>
-            ${myAssignments.length ? `<ul class="personal-list">${myAssignments.map(a => `<li>${highlightId(a, id)}</li>`).join('')}</ul>` : '<p style="color:var(--text-muted)">No specific assignments.</p>'}
+            ${myAssignments.length ? `<ul class="personal-list">${myAssignments.map(a => `<li>${a}</li>`).join('')}</ul>` : ''}
+            ${assignmentRenderer.renderAssignments(fight.assignments, id, true)}
             ${myBuffs.length ? `<div style="margin-top:0.5rem;"><strong>Buffs/Debuffs:</strong> ${myBuffs.join(', ')}</div>` : ''}
           </div>
 
@@ -159,26 +162,26 @@ function renderContent(id) {
   });
 }
 
-function extractAssignments(assignments, id, results) {
-  if (!assignments || !Array.isArray(assignments)) return;
+function extractAssignments(assignmentIds, playerId,  visited = new Set()) {
+  if (!assignmentIds || !Array.isArray(assignmentIds)) return;
   
-  assignments.forEach(assign => {
-    // Handle new ID-based assignments
-    if (typeof assign === 'string') {
-      const def = ASSIGNMENTS.get(assign);
-      if (def && def.role_ids && def.role_ids.includes(id)) {
-        // Format: "Assignment Name: Instructions"
-        results.push(`<strong>${def.name}:</strong> ${def.instructions}`);
-      }
-    } 
-    // Handle legacy object structure
-    else if (assign.text && assign.text.includes(id)) {
-      const lines = assign.text.split('\n');
-      lines.forEach(line => {
-        if (line.includes(id)) {
-          results.push(`<strong>${assign.name}:</strong> ${line}`);
-        }
-      });
+  assignmentIds.forEach(assignId => {
+    if (visited.has(assignId)) return;
+
+    const def = ASSIGNMENTS.get(assignId);
+    if (!def) return;
+
+    // Only add the assignment to the results if the player is directly part of it
+    if (def.role_ids && def.role_ids.includes(playerId)) {
+      results.push(`<strong>${def.name}:</strong> ${def.instructions}`);
+      // Mark as visited only after adding, so parent and child can both be added if player is in both
+      visited.add(assignId); 
+    }
+
+    // If the current assignment is a parent, recurse into its children
+    // to find more specific roles for the player.
+    if (def.assignment_ids) {
+      extractAssignments(def.assignment_ids, playerId, results, visited);
     }
   });
 }
@@ -215,11 +218,13 @@ function getLeverAssignments(id) {
   return list;
 }
 
+
+
 // Re-using pill styles from main css, but ensuring they work here
-const style = document.createElement('style');
-style.innerHTML = `
+const playerViewPillStyle = document.createElement('style');
+playerViewPillStyle.innerHTML = `
   .set-pill { background: var(--accent-dim); color: var(--accent); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
   .ult-pill { background: rgba(188, 140, 255, 0.15); color: var(--purple); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
   .misc-pill { background: rgba(233, 183, 21, 0.2); color: var(--gold); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
 `;
-document.head.appendChild(style);
+document.head.appendChild(playerViewPillStyle);

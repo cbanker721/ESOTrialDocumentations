@@ -2,6 +2,7 @@
 // DSR HM Progression — App Logic
 // ============================================================
 
+
 let currentFightId = null;
 let currentTab = 'builds';
 
@@ -173,8 +174,10 @@ function selectFight(fightId) {
   // Re-apply player filter
   const filterVal = document.getElementById('player-filter').value;
   if (filterVal !== 'all') applyPlayerFilter(filterVal);
-}
 
+  
+}
+ 
 function switchTab(tabId) {
   currentTab = tabId;
   document.querySelectorAll('#fight-tab-bar .tab-btn').forEach(b => {
@@ -191,13 +194,6 @@ function getRoleClass(playerId) {
   if (playerId.startsWith('H')) return 'role-healer';
   if (playerId === 'MT' || playerId === 'OT') return 'role-tank';
   if (playerId.startsWith('DPS')) return 'role-dps';
-  return '';
-}
-
-function getOwnerRoleClass(id) {
-  if (id === 'MT' || id === 'OT') return 'owner-tank';
-  if (id.startsWith('H')) return 'owner-healer';
-  if (id.startsWith('DPS')) return 'owner-dps';
   return '';
 }
 
@@ -326,34 +322,12 @@ function renderStrategy(fight) {
 
 function renderAssignments(fight) {
   const container = document.createElement('div');
-  const assignments = fight.assignments;
+  const assignmentRenderer = new AssignmentRenderer();
 
-  if (!assignments || assignments.length === 0) {
-    container.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">No specific assignments for this fight.</p>';
-    return container;
-  }
+  container.innerHTML = assignmentRenderer.renderAssignments(fight.assignments, null, false);
 
-  const grid = document.createElement('div');
-  grid.className = 'assignments-grid';
-
-  assignments.forEach(assign => {
-    // Handle new ID-based assignments
-    if (typeof assign === 'string') {
-      const def = ASSIGNMENTS.get(assign);
-      if (def) {
-        grid.appendChild(makeAssignmentCardFromDef(def));
-      }
-    } else if (assign.text) {
-      // Fallback for legacy object structure (if any)
-      const lines = assign.text.split('\n');
-      grid.appendChild(makeAssignmentCard(assign.name, lines));
-    }
-  });
-
-  container.appendChild(grid);
   return container;
 }
-
 function makeAssignmentCardFromDef(def) {
   const card = document.createElement('div');
   card.className = 'assignment-card';
@@ -464,40 +438,6 @@ function renderBuffsTable(buffsDebuffs) {
   row.appendChild(buildMiniTable(debuffs, '✧ Debuffs'));
   wrapper.appendChild(row);
   return wrapper;
-}
-
-// ---- Player name resolution ----
-
-function resolvePlayerNameAsPill(text) {
-  let result = text;
-  const ids = Object.keys(PLAYERS).sort((a, b) => b.length - a.length);
-  ids.forEach(id => {
-    const regex = new RegExp(`\\b${id}\\b`, 'g');
-    if (regex.test(result)) {
-      const p = PLAYERS[id];
-      const roleClass = getOwnerRoleClass(id);
-      const nick = p.nickname ? ` title="${p.nickname}"` : '';
-      result = result.replace(regex, `<span class="owner-pill ${roleClass}" data-owner-id="${id}"${nick}>${p.name} (${id})</span>`);
-    }
-  });
-  return result;
-}
-
-function resolvePlayerName(text, asHtml) {
-  let result = text;
-  const ids = Object.keys(PLAYERS).sort((a, b) => b.length - a.length);
-  ids.forEach(id => {
-    const regex = new RegExp(`\\b${id}\\b`, 'g');
-    if (regex.test(result)) {
-      const p = PLAYERS[id];
-      if (asHtml && p.nickname) {
-        result = result.replace(regex, `<span class="has-nickname" title="${p.nickname}">${p.name} (${id})</span>`);
-      } else {
-        result = result.replace(regex, `${p.name} (${id})`);
-      }
-    }
-  });
-  return result;
 }
 
 // ---- Render: Levers ----
