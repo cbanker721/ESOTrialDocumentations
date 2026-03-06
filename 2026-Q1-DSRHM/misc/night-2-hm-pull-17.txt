@@ -1,0 +1,43 @@
+Pull 17 (Bad run):
+- Start (00:00)
+- Chalice Clear (00:17)
+  - Large: 98%
+  - Medium #1: 82%
+- Chalice Mage Dead (00:29)
+  - Large: 94%
+  - Medium #1: 77%
+- Chalice Mage Dead (00:31)
+  - Large: 89%
+  - Medium #1: 74%
+  - Small #1 100%
+- Medium #1 Running (00:34)
+  - Large: 84%
+  - Medium #1: 64% (Running)
+  - Small #1 96%
+- Medium #1 Running (00:43)
+  - Large: 77%
+  - Medium #1: 63% (Running)
+  - Small #1 96%
+  - Medium #2: 100%
+- Crossbone Start Channelling (00:48)
+  - Group transitioning to crossbones
+  - Large: 71%
+  - Medium #1: 63% (Channelling)
+  - Small #1: 94%
+  - Medium #2: 96%
+- Crossbone Clear (01:03)
+  - Large is already on right side
+  - Large #1: 62%
+  - Medium #1: 63%
+  - Small #1: 94%
+  - Medium $2: 84%
+- Medium #2 Running (01:17)
+  - Large #1: 52%
+  - Medium #1: 53% 
+  - Small #1: 86%
+  - Medium $2: 85% (Running)
+- Small #1 Running (01:28)
+  - Large #1: 47%
+  - Medium #1: 50%
+  - Small #1: 77% (Running)
+  - Medium #2: 85% (Channeling)

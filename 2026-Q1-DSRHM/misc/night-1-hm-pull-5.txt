@@ -1,0 +1,37 @@
+Pull 5 (Night 1) (Good run):
+- Start (00:00)
+- Chalice Clear (00:22)
+  - Large: 98%
+  - Medium #1: 79%
+- Small #1 Spawns (00:24)
+  - Large: 97%
+  - Medium #1: 78%
+  - Small #1: 100%
+- Medium #1 Running (00:27)
+  - Large: 95%
+  - Medium #1: 75% (Running)
+  - Small #1 98%
+- Chalice Mage Dead (00:34)
+  - Large: 91%
+  - Medium #1: 73% (Running)
+  - Small #1 87%
+- Small #1 Running (00:44)  
+  - Large: 86%
+  - Medium #1: 73% (Channeling)
+  - Small #1: 77%
+- Medium #2 Spawns (01:00)
+  - Group is at crossbones
+  - Large: 78%
+  - Medium #1: 74% (Channelling)
+  - Small #1: 77%
+  - Medium #2: 100
+- Crossbone Clear (01:04)
+  - Large #1: 73%
+  - Medium #1: 73%
+  - Small #1: 74% (Channelling)
+  - Medium $2: 99%
+- Medium #2 Running (01:26)
+  - Large #1: 53%
+  - Medium #1: 61% 
+  - Small #1: 74% (Channelling)
+  - Medium $2: 78% (Running)

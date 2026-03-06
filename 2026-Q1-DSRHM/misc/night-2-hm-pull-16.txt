@@ -1,0 +1,44 @@
+Pull 16 (Bad run):
+- Start (00:00)
+- Chalice Clear (00:22)
+  - Large: 98%
+  - Medium #1: 82%
+- Small #1 Spawns (00:29)
+  - Large: 98%
+  - Medium #1: 79%
+  - Small #1: 100%
+- Medium #1 Running (00:31)
+  - Large: 97%
+  - Medium #1: 75% (Running)
+  - Small #1 96%
+- Chalice Mage Dead (00:35)
+  - Large: 94%
+  - Medium #1: 74% (Running)
+  - Small #1 94%
+- Crossbone Start Channelling (00:38)
+  - Group still at chalice
+  - Large: 90%
+  - Medium #1: 74% (Channelling)
+  - Small #1: 94%
+- Medium #2 Spawns (00:50)
+  - Group still at chalice
+  - Large: 79%
+  - Medium #1: 74% (Channelling)
+  - Small #1: 94%
+- Crossbone Clear (01:05)
+  - Large is still on left side
+  - Group is at crossbones
+  - Large #1: 71%
+  - Medium #1: 74%
+  - Small #1: 91%
+  - Medium $2: 96%
+- Medium #2 Running (01:24)
+  - Large #1: 51%
+  - Medium #1: 56% 
+  - Small #1: 79%
+  - Medium $2: 82% (Running)
+- Small #1 Running (01:26)
+  - Large #1: 49%
+  - Medium #1: 54%
+  - Small #1: 76% (Running)
+  - Medium #2: 81% (Running)

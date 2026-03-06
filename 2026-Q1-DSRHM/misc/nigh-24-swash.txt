@@ -1,0 +1,73 @@
+Night 24 (Good run):
+- Start (13:59)
+- Chalice Clear (14:15)
+  - Large - 99%
+  - Medium #1 - 93%
+- Chalice Mage Dead (14:25)
+  - Large - 79%
+  - Medium #1 - 77%
+- Small #1 and Medium #2 spawned (14:28)
+  - Large - 75%
+  - Medium #1: 73% (Running)
+  - Small #1 100%
+  - Medium #2: 100%
+- Medium #1 Running (14:31)
+  - Large - 69%
+  - Medium #1: 63% (Running)
+  - Small #1 92%
+  - Medium #2: 94%
+- Crossbone Start Channelling (14:38)
+  - Group already arrived
+  - Large - 58%
+  - Medium #1: 61% (Channelling)
+  - Small #1: 87%
+  - Medium #2: 90%
+- Crossbone Large Guardian Move Right (14:53)
+  - Large - 41%
+  - Medium #1: 61% (Channelling)
+  - Small #1: 86%
+  - Medium #2: 89%
+- Crossbone Clear (14:58)
+  - Large #1: 39%
+  - Medium #1: - 61%
+  - Small #1: 77%
+  - Medium $2: 81%
+- Small #1 Running (15:01)
+  - Large #1: 34%
+  - Medium #1: 61%
+  - Small #1: 73% (Running)
+  - Medium #2: 78%
+- Still at Crossbones (15:18)
+  - Large #1: DEAD
+  - Medium #1: 37%
+  - Small #1: 71% (Channeling)
+  - Medium #2: 64%
+- Skull clear (15:31)
+  - Group in-commute to Skull
+  - Medium #2 started running
+  - Large #1: DEAD
+  - Medium #1: 31%
+  - Small #1: 71%
+  - Medium #2: 56%
+  - Small #2: 90%
+- Large died (15:35)
+  - Group in-transition to anchor
+  - Large #1: DEAD
+  - Medium #1: DEAD
+  - Small #1: 67% 
+  - Medium #2: 55% (Running)
+  - Small #2: 92%
+- Medium #1 died (15:48)
+  - Group in-transition to anchor
+  - Large #1: DEAD
+  - Medium #1: DEAD
+  - Small #1: 24%  
+  - Medium #2: 55% (Channeling)
+  - Small #2: 45%
+- Medium #1 died (15:51)
+  - Samm
+  - Large #1: DEAD
+  - Medium #1: DEAD
+  - Small #1: 17%  
+  - Medium #2: 55% (Channeling)
+  - Small #2: 45% (Running)
