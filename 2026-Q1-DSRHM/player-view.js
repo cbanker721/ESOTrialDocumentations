@@ -42,7 +42,7 @@ function populateDropdown(currentId) {
     else if (role === 'Healer') icon = '⚕️ ';
     else icon = '⚔️ ';
 
-    opt.textContent = `${icon}${PLAYERS[id].name} [${PLAYERS[id].tag}]`;
+    opt.textContent = `${icon}${PLAYERS[id].shortName} [${PLAYERS[id].tag}]`;
     selector.appendChild(opt);
   });
 
@@ -72,7 +72,7 @@ function renderHeader(id) {
   }
 
   container.innerHTML = `
-    <h1 class="sidebar-title">${p.name} <span class="sidebar-id">(${id})</span></h1>
+    <h1 class="sidebar-title">${p.shortName} <span class="sidebar-id">(${id})</span></h1>
     <div class="sidebar-meta">${role} • ${p.tag}</div>
     ${guidanceHtml}
   `;

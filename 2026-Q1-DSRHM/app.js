@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (roleClass === 'role-healer') icon = '⚕️ ';
     else if (roleClass === 'role-dps') icon = '⚔️ ';
 
-    opt.textContent = `${icon}${PLAYERS[id].name} [${PLAYERS[id].tag}]`;
+    opt.textContent = `${icon}${PLAYERS[id].shortName} [${PLAYERS[id].tag}]`;
     if (roleClass) opt.classList.add(roleClass);
 
     playerFilter.appendChild(opt);
@@ -223,7 +223,7 @@ function renderBuilds(fight) {
 
     card.innerHTML = `
       <div class="build-card-header">
-        <span class="player-name"${nameTooltip}>${p.name} <span class="player-id">(${pid})</span></span>
+        <span class="player-name"${nameTooltip}>${p.shortName} <span class="player-id">(${pid})</span></span>
         <span class="player-tag">${p.tag}</span>
       </div>
       <div class="build-row">
@@ -334,15 +334,7 @@ function makeAssignmentCardFromDef(def) {
   if (def.role_ids && def.role_ids.length > 0) {
     const ownersDiv = document.createElement('div');
     ownersDiv.style.marginBottom = '0.5rem';
-    def.role_ids.forEach(id => {
-      const roleClass = getOwnerRoleClass(id);
-      const display = resolvePlayerName(id, true);
-      const pill = document.createElement('span');
-      pill.className = `owner-pill ${roleClass}`;
-      pill.dataset.ownerId = id;
-      pill.innerHTML = display;
-      ownersDiv.appendChild(pill);
-    });
+    ownersDiv.innerHTML = def.role_ids.map(id => createOwnerPillHtml(id)).join(' ');
     card.appendChild(ownersDiv);
   }
 
@@ -405,11 +397,7 @@ function buildMiniTable(items, label) {
     tdName.textContent = bd.name;
     const tdOwner = document.createElement('td');
     if (bd.owners.length) {
-      tdOwner.innerHTML = bd.owners.map(id => {
-        const roleClass = getOwnerRoleClass(id);
-        const display = resolvePlayerName(id, true);
-        return `<span class="owner-pill ${roleClass}" data-owner-id="${id}">${display}</span>`;
-      }).join(' ');
+      tdOwner.innerHTML = bd.owners.map(id => createOwnerPillHtml(id)).join(' ');
     } else {
       tdOwner.innerHTML = '<span class="no-owner">—</span>';
     }

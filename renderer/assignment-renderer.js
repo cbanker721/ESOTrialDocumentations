@@ -85,11 +85,7 @@ class AssignmentRenderer {
 
     let ownersHtml = '';
     if (def.role_ids && def.role_ids.length > 0) {
-      ownersHtml = def.role_ids.map(id => {
-        const roleClass = getOwnerRoleClass(id);
-        const display = resolvePlayerName(id, true);
-        return `<span class="owner-pill ${roleClass}" data-owner-id="${id}">${display}</span>`;
-      }).join(' ');
+      ownersHtml = def.role_ids.map(id => createOwnerPillHtml(id)).join(' ');
     }
 
     let childrenHtml = '';
@@ -257,10 +253,7 @@ class AssignmentRenderer {
   renderTeleportBlock(def) {
     if (!def) return '';
     // Simple block with name and owners
-    const ownersHtml = (def.role_ids || []).map(id => {
-      const roleClass = getOwnerRoleClass(id);
-      return `<span class="owner-pill ${roleClass}" data-owner-id="${id}">${resolvePlayerName(id, true)}</span>`;
-    }).join(' ');
+    const ownersHtml = (def.role_ids || []).map(id => createOwnerPillHtml(id)).join(' ');
 
     return `<div class="teleport-role-row"><span class="teleport-role-label">${def.name}:</span> ${ownersHtml}</div>`;
   }
@@ -310,11 +303,7 @@ class AssignmentRenderer {
     
     let ownersHtml = '';
     if (def.role_ids && def.role_ids.length > 0) {
-      ownersHtml = def.role_ids.map(id => {
-        const roleClass = getOwnerRoleClass(id);
-        const display = resolvePlayerName(id, true);
-        return `<span class="owner-pill ${roleClass}" data-owner-id="${id}">${display}</span>`;
-      }).join(' ');
+      ownersHtml = def.role_ids.map(id => createOwnerPillHtml(id)).join(' ');
     }
 
     return `
@@ -374,7 +363,7 @@ class AssignmentRenderer {
                 ${child.custom_positions.map(p => `
                   <div class="lever-pos-row">
                     <span class="lever-pos-label">${p.pos}</span>
-                    <span class="lever-pos-player">${resolvePlayerNameAsPill(p.player)}</span>
+                    <span class="lever-pos-player">${createOwnerPillHtml(p.player)}</span>
                   </div>
                 `).join('')}
               </div>`;
@@ -444,6 +433,27 @@ style.innerHTML = `
   .lever-set-box { background: rgba(0,0,0,0.2); padding: 0.4rem; border-radius: 4px; }
   .lever-pos-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; margin-bottom: 0.1rem; }
   .lever-pos-label { color: var(--text-muted); }
+
+  /* Styles for Role Symbols in Pills */
+  .role-symbol {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 4px;
+    color: white;
+    vertical-align: middle;
+    position: relative;
+    top: -2px;
+    line-height: 1;
+  }
+  .role-symbol.role-dps { background-color: rgba(211, 47, 47, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); }
+  .role-symbol.role-healer { background-color: rgba(56, 142, 60, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); }
+  .role-symbol.role-tank { background-color: rgba(25, 118, 210, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); }
 `;
 document.head.appendChild(style);
 
@@ -464,16 +474,28 @@ function getOwnerRoleClass(id) {
   return '';
 }
 
+function createOwnerPillHtml(id) {
+  const p = PLAYERS[id];
+  if (!p) return `<span class="owner-pill" data-owner-id="${id}">${id}</span>`;
+
+  const roleClass = getOwnerRoleClass(id);
+  const nick = p.nickname ? ` title="${p.nickname}"` : '';
+  const symbolInfo = ROLE_SYMBOLS[id];
+  let symbolHtml = `(${id})`; // Fallback
+  if (symbolInfo) {
+    symbolHtml = `<span class="role-symbol role-${symbolInfo.class}">${symbolInfo.number}</span>`;
+  }
+
+  return `<span class="owner-pill ${roleClass}" data-owner-id="${id}"${nick}>${p.shortName}${symbolHtml}</span>`;
+}
+
 function resolvePlayerNameAsPill(text) {
   let result = text;
   const ids = Object.keys(PLAYERS).sort((a, b) => b.length - a.length);
   ids.forEach(id => {
     const regex = new RegExp(`\\b${id}\\b`, 'g');
     if (regex.test(result)) {
-      const p = PLAYERS[id];
-      const roleClass = getOwnerRoleClass(id);
-      const nick = p.nickname ? ` title="${p.nickname}"` : '';
-      result = result.replace(regex, `<span class="owner-pill ${roleClass}" data-owner-id="${id}"${nick}>${p.name} (${id})</span>`);
+      result = result.replace(regex, createOwnerPillHtml(id));
     }
   });
   return result;
@@ -487,9 +509,9 @@ function resolvePlayerName(text, asHtml) {
     if (regex.test(result)) {
       const p = PLAYERS[id];
       if (asHtml && p.nickname) {
-        result = result.replace(regex, `<span class="has-nickname" title="${p.nickname}">${p.name} (${id})</span>`);
+        result = result.replace(regex, `<span class="has-nickname" title="${p.nickname}">${p.shortName} (${id})</span>`);
       } else {
-        result = result.replace(regex, `${p.name} (${id})`);
+        result = result.replace(regex, `${p.shortName} (${id})`);
       }
     }
   });
