@@ -42,11 +42,11 @@ const FIGHTS = new Map([
       ]
     },
     builds: {
-      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Banner"], notes: "Be mindful about ulting before the last boss." },
       [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
-      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Banner"], notes: "Be mindful about ulting before the last boss." },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Be mindful about ulting before the last boss." },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Streak"], notes: "Be mindful about ulting before the last boss." },
       [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", misc: ["Shattering Knife"], notes: "Be mindful about ulting before the last boss." },
@@ -138,11 +138,11 @@ const FIGHTS = new Map([
       ]
     },
     builds: {
-      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Banner DD. Take Exit Left Dome during teleport." },
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", misc: ["Banner"], notes: "Banner DD. Take Exit Left Dome during teleport." },
       [MAIN_ROLE_ID.DPS2]: { sets: ["Alkosh", "Deadly/Tideborn", "Velothi"], ult: "Colo", notes: "Alkosh DD. Take Exit Right Dome. Call out Colos to notify Naz." },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take Entrance Right Dome during teleport." },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "War Machine Left Slayer. Take Entrance Left Dome." },
-      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Banner DD. Bash Exit Left Dome. Backup dome grab." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", misc: ["Banner"], notes: "Banner DD. Bash Exit Left Dome. Backup dome grab." },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Exit Right Dome. Backup dome grab. Tab-target boss pre-teleport." },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Bash Entrance Right Dome. Backup dome grab." },
       [MAIN_ROLE_ID.DPS8]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Languid or Standard", notes: "Take dome when boss comes down. Move dome out at 80%, back in at channel or 2nd right-colour atro. Bash Entrance Left Dome." },
@@ -198,11 +198,11 @@ const FIGHTS = new Map([
       ]
     },
     builds: {
-      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Banner DD." },
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", misc: ["Banner"], notes: "Banner DD." },
       [MAIN_ROLE_ID.DPS2]: { sets: ["Alkosh", "Deadly/Tideborn", "Velothi"], ult: "Colo", notes: "Alkosh DD." },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
-      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Banner DD." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", misc: ["Banner"], notes: "Banner DD." },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "Lever duty. Hotkey gear swaps." },
       [MAIN_ROLE_ID.DPS8]: { sets: ["Null", "Deadly/Tideborn", "Velothi"], ult: "Standard", notes: "" },
@@ -300,14 +300,14 @@ const FIGHTS = new Map([
       ]
     },
     builds: {
-      [MAIN_ROLE_ID.DPS1]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach"], ult: "Standard", notes: "Reef Group 1. Bring Major Breach. Start upstairs." },
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach", "Banner"], ult: "Standard", notes: "Reef Group 1. Bring Major Breach. Start upstairs." },
       [MAIN_ROLE_ID.DPS2]: { sets: ["Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", notes: "Alkosh DD. Start at Chalice. Permanent upstairs after." },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Reef backup (first). Start at Chalice." },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], ult: "Standard", notes: "Reef Group 1. Start upstairs." },
       [MAIN_ROLE_ID.DPS5]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Reef backup (second). Start at Chalice." },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Major Breach", "Hurricane"], ult: "Standard", notes: "Reef Group 2. Bring Major Breach. Start at Chalice." },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Kazpian/Whorl/Ansuul", "Tideborn"], misc: ["Hurricane"], ult: "Standard", notes: "Reef Group 2. Start at Chalice." },
-      [MAIN_ROLE_ID.DPS8]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", notes: "Start upstairs. Do first Crossbones. Can slot self-heal for portal." },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Kazpian/Whorl/Ansuul", "Deadly/Tideborn/Nerien'eth"], ult: "Standard", misc: ["Banner"], notes: "Start upstairs. Do first Crossbones. Can slot self-heal for portal." },
       [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PA", "PoE", "Naz"], ult: "Horn", misc: ["Crusher"], notes: "Heal group and MT. Naz extend Colo." },
       [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PP", "PoE"], ult: "Barrier", misc: ["Crusher"], notes: "Heal OT. PP + Slayer. Time PP after OT ult. Major + Minor Expedition on move. Rubberband mage into group if MT requests." },
       [MAIN_ROLE_ID.MT]:   { sets: ["LE", "WM", "Baron"], ult: "Atro only", notes: "Watch for bears/cats on every portal clear. Taunt Large Guardian. Rubberband mages into group. Frost Cloak at reef clears and acid reflux. Left Slayer with 3s countdown." },
@@ -430,11 +430,11 @@ const FIGHTS = new Map([
       ]
     },
     builds: {
-      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Stay with group. DoT and cleave sirens." },
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", misc: ["Banner"], notes: "Stay with group. DoT and cleave sirens." },
       [MAIN_ROLE_ID.DPS2]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Colo", notes: "No Alkosh on Taleria — use parse trial set. Keep Colo. Stay with group." },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Bridge backup #1. Slot self-heal/shield for bridge. Bring extra pen." },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Stay with group. DoT and cleave sirens." },
-      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Banner DD. 2nd bridge backup." },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", misc: ["Banner"], notes: "Banner DD. 2nd bridge backup." },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Major Breach", "Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Null", "Tideborn", "Velothi"], ult: "Standard", misc: ["Hurricane"], notes: "Bridge DD. Slot self-heal and/or shield. Bring extra pen." },
       [MAIN_ROLE_ID.DPS8]: { sets: ["Null", "Deadly/Tideborn/Nerien'eth", "Velothi"], ult: "Standard", notes: "Bridge backup. DoT and cleave sirens." },

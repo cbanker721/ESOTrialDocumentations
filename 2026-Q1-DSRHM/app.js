@@ -232,7 +232,7 @@ function renderBuilds(fight) {
     card.innerHTML = `
       <div class="build-card-header">
         <span class="player-name"${nameTooltip}>${p.shortName} <span class="player-id">(${pid})</span></span>
-        <span class="player-tag">${p.tag}</span>
+        ${p.tag ? `<span class="player-tag">${p.tag}</span>` : ''}
       </div>
       <div class="build-row">
         ${b.sets.map(s => `<span class="set-pill">${s}</span>`).join('')}
