@@ -56,10 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     navFights.appendChild(a);
   });
-  const levNav = document.createElement('a');
-  levNav.href = '#levers-section';
-  levNav.textContent = '🔧 Levers';
-  navFights.appendChild(levNav);
   const refNav = document.createElement('a');
   refNav.href = '#references-section';
   refNav.textContent = '📚 Refs';
@@ -91,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
   selectFight(FIGHTS.values().next().value.id);
 
   // Render levers & references
-  renderLevers();
   renderReferences();
 
   // Player filter
@@ -437,50 +432,6 @@ function renderBuffsTable(buffsDebuffs) {
   row.appendChild(buildMiniTable(buffs, '✦ Buffs'));
   row.appendChild(buildMiniTable(debuffs, '✧ Debuffs'));
   wrapper.appendChild(row);
-  return wrapper;
-}
-
-// ---- Render: Levers ----
-
-function renderLevers() {
-  const grid = document.getElementById('lever-grid');
-
-  const lightGroup = document.createElement('div');
-  lightGroup.className = 'lever-group';
-  lightGroup.innerHTML = `
-    <h3>⚡ Lightning Side</h3>
-    <img src="../resources/dsr/bird-lever.png" alt="Lightning Levers Map" style="max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: 4px; border: 1px solid #333;">
-  `;
-  LEVERS.lightning.forEach((set, i) => lightGroup.appendChild(makeLeverTable(set, i)));
-  grid.appendChild(lightGroup);
-
-  const poisonGroup = document.createElement('div');
-  poisonGroup.className = 'lever-group';
-  poisonGroup.innerHTML = `
-    <h3>☠️ Poison Side</h3>
-    <img src="../resources/dsr/turtle-lever.png" alt="Poison Levers Map" style="max-width: 100%; height: auto; margin-bottom: 1rem; border-radius: 4px; border: 1px solid #333;">
-  `;
-  LEVERS.poison.forEach((set, i) => poisonGroup.appendChild(makeLeverTable(set, i)));
-  grid.appendChild(poisonGroup);
-}
-
-function makeLeverTable(leverSet, index = 0) {
-  const wrapper = document.createElement('div');
-  wrapper.style.marginBottom = '0.75rem';
-
-  // Colors: Green, Teal, Magenta (adjusted for dark theme visibility)
-  const colors = ['#00ff0d', '#00e1ff', '#ec407a'];
-  const headerColor = colors[index] || 'white';
-
-  const table = document.createElement('table');
-  table.className = 'lever-table';
-  table.innerHTML = `
-    <thead><tr><th colspan="2" style="color: ${headerColor}">${leverSet.name}</th></tr></thead>
-    <tbody>
-      ${leverSet.positions.map(p => `<tr><td>${p.pos}</td><td data-player-text="${p.player}">${resolvePlayerNameAsPill(p.player)}</td></tr>`).join('')}
-    </tbody>
-  `;
-  wrapper.appendChild(table);
   return wrapper;
 }
 

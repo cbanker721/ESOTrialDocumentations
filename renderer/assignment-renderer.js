@@ -61,7 +61,11 @@ class AssignmentRenderer {
         });
 
         if (!isSpecialParent || !playerInChildren) {
-            results.push(`<li><strong>${def.name}:</strong> ${resolvePlayerName(def.instructions)}</li>`);
+            let content = `<strong>${def.name}</strong>`;
+            if (def.instructions) {
+                content += `: ${resolvePlayerName(def.instructions)}`;
+            }
+            results.push(`<li>${content}</li>`);
         }
       }
 
@@ -115,7 +119,8 @@ class AssignmentRenderer {
       ASSIGNMENT_ID.TWINS_EXECUTE,
       ASSIGNMENT_ID.TWINS_SLAYERS,
       ASSIGNMENT_ID.REEF_GUARDIAN_SLAYERS,
-      ASSIGNMENT_ID.TALERIA_SLAYERS
+      ASSIGNMENT_ID.TALERIA_SLAYERS,
+      ASSIGNMENT_ID.LEVERS
     ].includes(assignmentId);
   }
 
@@ -125,6 +130,9 @@ class AssignmentRenderer {
     }
     if (def.id === ASSIGNMENT_ID.TWINS_EXECUTE) {
       return this.renderTwinsExecute(def, playerId, isPersonalView);
+    }
+    if (def.id === ASSIGNMENT_ID.LEVERS) {
+      return this.renderLevers(def, playerId, isPersonalView);
     }
 
     // We expect 4 children: Left/Front Provider, Left/Front Group, Right/Back Provider, Right/Back Group
@@ -158,23 +166,30 @@ class AssignmentRenderer {
       html += '</ul></li></ul>';
       return html;
     } else {
-      // Main view: 2-column layout
+      // Main view: 4-column layout
       const leftLabel = def.id === ASSIGNMENT_ID.TALERIA_SLAYERS ? 'Front' : 'Left';
       const rightLabel = def.id === ASSIGNMENT_ID.TALERIA_SLAYERS ? 'Back' : 'Right';
 
       return `
         <div class="assignment-card special-slayer-card">
           <h4 title="${def.description || ''}">${def.name}</h4>
+          ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
           <div class="slayer-grid">
             <div class="slayer-col">
-              <h5>${leftLabel}</h5>
-              ${this.renderSlayerBlock(leftFrontProvider, 'Provider')}
-              ${this.renderSlayerBlock(leftFrontGroup, 'Group')}
+              <h5>${leftLabel} Provider</h5>
+              ${this.renderSlayerBlock(leftFrontProvider)}
             </div>
             <div class="slayer-col">
-              <h5>${rightLabel}</h5>
-              ${this.renderSlayerBlock(rightBackProvider, 'Provider')}
-              ${this.renderSlayerBlock(rightBackGroup, 'Group')}
+              <h5>${leftLabel} Group</h5>
+              ${this.renderSlayerBlock(leftFrontGroup)}
+            </div>
+            <div class="slayer-col">
+              <h5>${rightLabel} Provider</h5>
+              ${this.renderSlayerBlock(rightBackProvider)}
+            </div>
+            <div class="slayer-col">
+              <h5>${rightLabel} Group</h5>
+              ${this.renderSlayerBlock(rightBackGroup)}
             </div>
           </div>
         </div>
@@ -185,12 +200,12 @@ class AssignmentRenderer {
   renderTwinsTeleport(def, playerId, isPersonalView) {
     // Children: Interrupter, TopLeft, TopRight, BottomLeft, BottomRight
     const children = (def.assignment_ids || []).map(id => ASSIGNMENTS.get(id)).filter(d => d);
-    
-    const interrupter = children.find(c => c.id === ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER);
+
     const topLeft = children.find(c => c.id === ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT);
     const topRight = children.find(c => c.id === ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT);
     const bottomLeft = children.find(c => c.id === ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT);
     const bottomRight = children.find(c => c.id === ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT);
+    const interrupter = children.find(c => c.id === ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER);
 
     if (isPersonalView) {
       // Personal view logic remains flat/simple, just showing relevant parts
@@ -204,11 +219,7 @@ class AssignmentRenderer {
     return `
       <div class="assignment-card special-teleport-card">
         <h4 title="${def.description || ''}">${def.name}</h4>
-        <p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>
-        
-        <div class="teleport-interrupter-area">
-          ${this.renderTeleportBlock(interrupter)}
-        </div>
+        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
 
         <div class="teleport-grid">
           <div class="teleport-quadrant">
@@ -226,6 +237,10 @@ class AssignmentRenderer {
           <div class="teleport-quadrant">
             <h5>Bottom Right (Entrance)</h5>
             ${this.renderTeleportSubTree(bottomRight)}
+          </div>
+          <div class="teleport-quadrant">
+            <h5>Interrupter</h5>
+            ${this.renderTeleportBlock(interrupter)}
           </div>
         </div>
       </div>
@@ -290,7 +305,7 @@ class AssignmentRenderer {
     return this.renderMainViewSubtree(parentDef.id);
   }
 
-  renderSlayerBlock(def, label) {
+  renderSlayerBlock(def) {
     if (!def) return '';
     
     let ownersHtml = '';
@@ -304,8 +319,75 @@ class AssignmentRenderer {
 
     return `
       <div class="slayer-sub-block">
-        <div class="slayer-sub-label">${label}</div>
         <div class="slayer-owners">${ownersHtml}</div>
+      </div>
+    `;
+  }
+
+  renderLevers(def, playerId, isPersonalView) {
+    if (isPersonalView) {
+      // For personal view, we want to show the specific lever assignments for this player
+      // The recursive collector will handle finding the specific LEVERS_LIGHTNING_X assignments
+      // if we set up the data correctly.
+      // However, since we added 'custom_positions' and not 'role_ids' to the leaf nodes in data.js,
+      // the standard collector won't pick them up automatically unless we update the collector
+      // or handle it here.
+      // Let's rely on the standard collector finding the *instructions* if we put role_ids there,
+      // OR we can just render the whole block if it's relevant.
+      // Actually, the user asked to merge the info.
+      // Let's just return empty here and let the recursion handle it?
+      // No, LEVERS is a parent.
+      // Let's render the maps for everyone in the main view, and specific lines in personal.
+      return ''; 
+    }
+
+    const children = (def.assignment_ids || []).map(id => ASSIGNMENTS.get(id)).filter(d => d);
+    const lightning = children.find(c => c.id === ASSIGNMENT_ID.LEVERS_LIGHTNING);
+    const poison = children.find(c => c.id === ASSIGNMENT_ID.LEVERS_POISON);
+
+    return `
+      <div class="assignment-card special-levers-card">
+        <h4 title="${def.description || ''}">${def.name}</h4>
+        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
+        
+        <div class="levers-container">
+          ${this.renderLeverSide(lightning, 'bird-lever.png')}
+          ${this.renderLeverSide(poison, 'turtle-lever.png')}
+        </div>
+      </div>
+    `;
+  }
+
+  renderLeverSide(def, imageName) {
+    if (!def) return '';
+    const children = (def.assignment_ids || []).map(id => ASSIGNMENTS.get(id)).filter(d => d);
+
+    let rowsHtml = '';
+    children.forEach((child, index) => {
+        if (child.custom_positions) {
+            const colors = ['#00ff0d', '#00e1ff', '#ec407a']; // Green, Teal, Pink
+            const headerColor = colors[index] || 'white';
+            
+            rowsHtml += `
+              <div class="lever-set-box">
+                <h5 style="color:${headerColor}; border-bottom: 1px solid ${headerColor}; margin-bottom: 0.25rem;">${child.name}</h5>
+                ${child.custom_positions.map(p => `
+                  <div class="lever-pos-row">
+                    <span class="lever-pos-label">${p.pos}</span>
+                    <span class="lever-pos-player">${resolvePlayerNameAsPill(p.player)}</span>
+                  </div>
+                `).join('')}
+              </div>`;
+        }
+    });
+
+    return `
+      <div class="lever-side-col">
+        <h5>${def.name}</h5>
+        <img src="../resources/dsr/${imageName}" alt="${def.name} Map" class="lever-map-img">
+        <div class="lever-sets-grid">
+            ${rowsHtml}
+        </div>
       </div>
     `;
   }
@@ -314,40 +396,54 @@ class AssignmentRenderer {
 // Add styles for the special renderer
 const style = document.createElement('style');
 style.innerHTML = `
-  .special-slayer-card .slayer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
-  .slayer-col { background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 4px; }
-  .slayer-col h5 { margin: 0 0 0.5rem 0; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
-  .slayer-sub-block { margin-bottom: 0.5rem; }
-  .slayer-sub-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.2rem; }
+  /* General card conciseness */
+  .assignments-block .assignment-card { padding: 0.6rem; }
+  .assignments-block .assignment-card h4 { font-size: 0.9rem; margin: 0 0 0.4rem 0; }
+  .assignments-block .assignment-card h5 { font-size: 0.8rem; margin: 0 0 0.4rem 0; text-transform: uppercase; color: var(--text-muted); }
+
+  /* Slayer card conciseness */
+  .special-slayer-card .slayer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 0.4rem; }
+  .slayer-col { background: rgba(255,255,255,0.03); padding: 0.4rem; border-radius: 4px; }
+  .slayer-col h5 { text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
+  .slayer-sub-block { margin-top: 0.3rem; }
   .slayer-owners { display: flex; flex-wrap: wrap; gap: 0.25rem; }
 
   /* Styles for standard hierarchical assignments */
   .assignment-owners { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 0.5rem; }
-  .assignment-instructions { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+  .assignment-instructions { font-size: 0.85rem; color: var(--text-muted); margin: 0; line-height: 1.3; }
   .assignment-children {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
   }
   .assignment-children .assignment-card {
     background: rgba(0,0,0,0.2);
     border: 1px solid var(--border-dim);
     height: 100%;
+    padding: 0.5rem;
   }
 
   /* Styles for Twins Teleport Special Renderer */
-  .special-teleport-card .teleport-interrupter-area { margin: 1rem 0; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; text-align: center; }
-  .special-teleport-card .teleport-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .teleport-quadrant { background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 4px; }
-  .teleport-quadrant h5 { margin: 0 0 0.5rem 0; text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
-  .teleport-role-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.9rem; }
+  .special-teleport-card .teleport-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; margin-top: 0.5rem; }
+  .teleport-quadrant { background: rgba(255,255,255,0.03); padding: 0.4rem; border-radius: 4px; }
+  .teleport-quadrant h5 { text-align: center; border-bottom: 1px solid var(--border); padding-bottom: 0.25rem; }
+  .teleport-role-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.85rem; }
 
   /* Styles for Twins Execute Special Renderer */
-  .special-execute-card .execute-weapon-area { margin: 1rem 0; padding: 0.5rem; background: rgba(255,255,255,0.05); border-radius: 4px; text-align: center; }
-  .special-execute-card .execute-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .execute-col { background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 4px; }
+  .special-execute-card .execute-weapon-area { margin: 0.5rem 0; padding: 0.4rem; background: rgba(255,255,255,0.05); border-radius: 4px; text-align: center; }
+  .special-execute-card .execute-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-top: 0.5rem; }
+  .execute-col { background: rgba(255,255,255,0.03); padding: 0.4rem; border-radius: 4px; }
+
+  /* Styles for Levers Special Renderer */
+  .levers-container { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
+  .lever-side-col { background: rgba(255,255,255,0.03); padding: 0.5rem; border-radius: 4px; }
+  .lever-map-img { max-width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--border); margin-bottom: 0.5rem; }
+  .lever-sets-grid { display: grid; gap: 0.5rem; }
+  .lever-set-box { background: rgba(0,0,0,0.2); padding: 0.4rem; border-radius: 4px; }
+  .lever-pos-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; margin-bottom: 0.1rem; }
+  .lever-pos-label { color: var(--text-muted); }
 `;
 document.head.appendChild(style);
 

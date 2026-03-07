@@ -236,8 +236,9 @@ const FIGHTS = new Map([
       { name: "Xoryn", owners: [MAIN_ROLE_ID.MT] }
     ],
     assignments: [
+      ASSIGNMENT_ID.MINIS_GENERAL_ROLES,
+      ASSIGNMENT_ID.REEF_GUARDIAN_SLAYERS,
       ASSIGNMENT_ID.LEVERS,
-      // Non-lever roles are implicitly everyone else
     ]
   }],
   [FIGHT_ID.REEF, {
@@ -473,44 +474,6 @@ const FIGHTS = new Map([
     ]
   }]
 ]);
-
-// Lever assignments
-const LEVERS = {
-  lightning: [
-    { name: "Lightning 1", positions: [
-      { pos: "Left", player: MAIN_ROLE_ID.DPS7 },
-      { pos: "Right (Far)", player: MAIN_ROLE_ID.MT },
-      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
-    ]},
-    { name: "Lightning 2", positions: [
-      { pos: "Bridge 1", player: MAIN_ROLE_ID.MT },
-      { pos: "Bridge 2", player: MAIN_ROLE_ID.DPS7 },
-      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
-    ]},
-    { name: "Lightning 3", positions: [
-      { pos: "Parkour", player: MAIN_ROLE_ID.DPS7 },
-      { pos: "Exit", player: MAIN_ROLE_ID.H2 },
-      { pos: "Left", player: MAIN_ROLE_ID.MT }
-    ]}
-  ],
-  poison: [
-    { name: "Poison 1", positions: [
-      { pos: "Exit Left", player: MAIN_ROLE_ID.MT },
-      { pos: "Exit Right", player: MAIN_ROLE_ID.H2 },
-      { pos: "Upstairs", player: MAIN_ROLE_ID.DPS7 }
-    ]},
-    { name: "Poison 2", positions: [
-      { pos: "Middle", player: MAIN_ROLE_ID.MT },
-      { pos: "Entrance", player: MAIN_ROLE_ID.DPS7 },
-      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
-    ]},
-    { name: "Poison 3", positions: [
-      { pos: "Left", player: MAIN_ROLE_ID.MT },
-      { pos: "Right of Entrance (Go immediately and wait)", player: MAIN_ROLE_ID.DPS7 },
-      { pos: "Near", player: MAIN_ROLE_ID.H2 }
-    ]}
-  ]
-};
 
 // Reference links
 const REFERENCES = {

@@ -9,6 +9,7 @@ const ASSIGNMENT_ID = Object.freeze({
   TWINS_DPS_GENERAL: 'twins-dps-general',
   TWINS_HEALER_GENERAL: 'twins-healer-general',
   TWINS_TANK_GENERAL: 'twins-tank-general',
+  MINIS_GENERAL_ROLES: 'minis-general-roles',
   REEF_GENERAL_ROLES: 'reef-general-roles',
   REEF_DPS_GENERAL: 'reef-dps-general',
   REEF_HEALER_GENERAL: 'reef-healer-general',
@@ -74,10 +75,18 @@ const ASSIGNMENT_ID = Object.freeze({
   NON_LEVER_TANK: 'non-lever-tank',
   NON_LEVER_DPS: 'non-lever-dps',
   NON_LEVER_HEALER: 'non-lever-healer',
-  LEVER_HEALER: 'lever-healer',
-  LEVER_TANK: 'lever-tank',
-  LEVER_DPS: 'lever-dps',
+  LEVER_CLOSE: 'lever-close',
+  LEVER_MIDDLE: 'lever-middle',
+  LEVER_FAR: 'lever-far',
   LEVERS: 'levers',
+  LEVERS_LIGHTNING: 'levers-lightning',
+  LEVERS_POISON: 'levers-poison',
+  LEVERS_LIGHTNING_1: 'levers-lightning-1',
+  LEVERS_LIGHTNING_2: 'levers-lightning-2',
+  LEVERS_LIGHTNING_3: 'levers-lightning-3',
+  LEVERS_POISON_1: 'levers-poison-1',
+  LEVERS_POISON_2: 'levers-poison-2',
+  LEVERS_POISON_3: 'levers-poison-3',
 });
 
 const ASSIGNMENTS = new Map([
@@ -86,11 +95,11 @@ const ASSIGNMENTS = new Map([
     name: "Teleport Phase",
     role_ids: [],
     assignment_ids: [
-      ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER,
       ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT,
       ASSIGNMENT_ID.TWINS_TELEPORT_TOP_RIGHT,
       ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_LEFT,
-      ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT
+      ASSIGNMENT_ID.TWINS_TELEPORT_BOTTOM_RIGHT,
+      ASSIGNMENT_ID.TWINS_TELEPORT_INTERRUPTER
     ],
     fights: [FIGHT_ID.TWINS],
     description: "Assignments for the teleport phase in the Twins fight.",
@@ -434,7 +443,6 @@ const ASSIGNMENTS = new Map([
     assignment_ids: [ASSIGNMENT_ID.TWINS_LEFT_SLAYER_GROUP, ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_GROUP, ASSIGNMENT_ID.TWINS_LEFT_SLAYER_PROVIDER, ASSIGNMENT_ID.TWINS_RIGHT_SLAYER_PROVIDER],
     fights: [FIGHT_ID.TWINS],
     description: "Slayer assignments for Twins.",
-    instructions: "DPS4 provides Left Slayer, H1 provides Right Slayer."
   }],
   [ASSIGNMENT_ID.TWINS_LEFT_SLAYER_PROVIDER, {
     id: ASSIGNMENT_ID.TWINS_LEFT_SLAYER_PROVIDER,
@@ -493,38 +501,139 @@ const ASSIGNMENTS = new Map([
     description: "Provides Right Slayer.",
     instructions: "Provide Major Slayer for the right group."
   }],
+  [ASSIGNMENT_ID.MINIS_GENERAL_ROLES, {
+    id: ASSIGNMENT_ID.MINIS_GENERAL_ROLES, 
+    name: "General Roles",
+    role_ids: [],
+    assignment_ids: [
+      ASSIGNMENT_ID.NON_LEVER_TANK,
+      ASSIGNMENT_ID.NON_LEVER_DPS,
+      ASSIGNMENT_ID.NON_LEVER_HEALER
+    ],
+    fights: [FIGHT_ID.MINIS],
+    description: "General role assignments for Sail Ripper & Bow Breaker and trash.",
+    instructions: "No ults on trash or Bow Breaker. Everyone ult on Sail Ripper."
+  }],    
   [ASSIGNMENT_ID.LEVERS, {
     id: ASSIGNMENT_ID.LEVERS,
     name: "Levers",
     role_ids: [],
-    assignment_ids: [ASSIGNMENT_ID.LEVER_TANK, ASSIGNMENT_ID.LEVER_HEALER, ASSIGNMENT_ID.LEVER_DPS],
+    assignment_ids: [
+      ASSIGNMENT_ID.LEVERS_LIGHTNING,
+      ASSIGNMENT_ID.LEVERS_POISON
+    ],
     fights: [FIGHT_ID.MINIS],
     description: "Overall lever assignments.",
-    instructions: "Group of players responsible for pulling levers during trash pulls before Sail Ripper & Bow Breaker."
+    instructions: "Group of players responsible for pulling levers during trash pulls before Sail Ripper & Bow Breaker. See maps below."
   }],
-  [ASSIGNMENT_ID.LEVER_TANK, {
-    id: ASSIGNMENT_ID.LEVER_TANK,
-    name: "Lever Tank",
+  [ASSIGNMENT_ID.LEVER_MIDDLE, {
+    id: ASSIGNMENT_ID.LEVER_MIDDLE,
+    name: "Lever (Middle)",
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.MINIS],
-    description: "Lever Tank.",
-    instructions: "Handle lever mechanics. Race Against Time as needed."
+    description: "Middle Lever.",
+    instructions: "Pulls lever that's not the cloest or furthest. Race Against Time as needed."
   }],
-  [ASSIGNMENT_ID.LEVER_HEALER, {
-    id: ASSIGNMENT_ID.LEVER_HEALER,
-    name: "Lever Healer",
+  [ASSIGNMENT_ID.LEVER_CLOSE, {
+    id: ASSIGNMENT_ID.LEVER_CLOSE,
+    name: "Lever (Close)",
     role_ids: [MAIN_ROLE_ID.H2],
     fights: [FIGHT_ID.MINIS],
-    description: "Lever Healer.",
-    instructions: "Handle lever mechanics. Hotkey gear swaps."
+    description: "Close Lever.",
+    instructions: "Pulls lever closest to exit. Hotkey gear swaps."
   }],
-  [ASSIGNMENT_ID.LEVER_DPS, {
-    id: ASSIGNMENT_ID.LEVER_DPS,
-    name: "Lever DPS",
+  [ASSIGNMENT_ID.LEVER_FAR, {
+    id: ASSIGNMENT_ID.LEVER_FAR,
+    name: "Lever (Far)",
     role_ids: [MAIN_ROLE_ID.DPS7],
     fights: [FIGHT_ID.MINIS],
-    description: "Lever DPS.",
-    instructions: "Handle lever mechanics. Hotkey gear swaps."
+    description: "Far Lever.",
+    instructions: "Pulls lever furthest from exit. Does the countdown for levers. Use Streak for parkour. Hotkey gear swaps."
+  }],
+  [ASSIGNMENT_ID.LEVERS_LIGHTNING, {
+    id: ASSIGNMENT_ID.LEVERS_LIGHTNING,
+    name: "Lightning Side Levers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.LEVERS_LIGHTNING_1, ASSIGNMENT_ID.LEVERS_LIGHTNING_2, ASSIGNMENT_ID.LEVERS_LIGHTNING_3],
+    fights: [FIGHT_ID.MINIS],
+    description: "Lightning side lever sets.",
+    instructions: "" // Will be rendered specially with image
+  }],
+  [ASSIGNMENT_ID.LEVERS_POISON, {
+    id: ASSIGNMENT_ID.LEVERS_POISON,
+    name: "Poison Side Levers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.LEVERS_POISON_1, ASSIGNMENT_ID.LEVERS_POISON_2, ASSIGNMENT_ID.LEVERS_POISON_3],
+    fights: [FIGHT_ID.MINIS],
+    description: "Poison side lever sets.",
+    instructions: "" // Will be rendered specially with image
+  }],
+  // We will store the specific position data in a custom 'positions' property for the renderer to use
+  [ASSIGNMENT_ID.LEVERS_LIGHTNING_1, {
+    id: ASSIGNMENT_ID.LEVERS_LIGHTNING_1,
+    name: "Lightning 1",
+    role_ids: [],
+    instructions: "Left: DPS7 | Right (Far): MT | Exit: H2",
+    custom_positions: [
+      { pos: "Left", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Right (Far)", player: MAIN_ROLE_ID.MT },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
+    ]
+  }],
+  [ASSIGNMENT_ID.LEVERS_LIGHTNING_2, {
+    id: ASSIGNMENT_ID.LEVERS_LIGHTNING_2,
+    name: "Lightning 2",
+    role_ids: [],
+    instructions: "Bridge 1: MT | Bridge 2: DPS7 | Exit: H2",
+    custom_positions: [
+      { pos: "Bridge 1", player: MAIN_ROLE_ID.MT },
+      { pos: "Bridge 2", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
+    ]
+  }],
+  [ASSIGNMENT_ID.LEVERS_LIGHTNING_3, {
+    id: ASSIGNMENT_ID.LEVERS_LIGHTNING_3,
+    name: "Lightning 3",
+    role_ids: [],
+    instructions: "Parkour: DPS7 | Exit: H2 | Left: MT",
+    custom_positions: [
+      { pos: "Parkour", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 },
+      { pos: "Left", player: MAIN_ROLE_ID.MT }
+    ]
+  }],
+  [ASSIGNMENT_ID.LEVERS_POISON_1, {
+    id: ASSIGNMENT_ID.LEVERS_POISON_1,
+    name: "Poison 1",
+    role_ids: [],
+    instructions: "Exit Left: MT | Exit Right: H2 | Upstairs: DPS7",
+    custom_positions: [
+      { pos: "Exit Left", player: MAIN_ROLE_ID.MT },
+      { pos: "Exit Right", player: MAIN_ROLE_ID.H2 },
+      { pos: "Upstairs", player: MAIN_ROLE_ID.DPS7 }
+    ]
+  }],
+  [ASSIGNMENT_ID.LEVERS_POISON_2, {
+    id: ASSIGNMENT_ID.LEVERS_POISON_2,
+    name: "Poison 2",
+    role_ids: [],
+    instructions: "Middle: MT | Entrance: DPS7 | Exit: H2",
+    custom_positions: [
+      { pos: "Middle", player: MAIN_ROLE_ID.MT },
+      { pos: "Entrance", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Exit", player: MAIN_ROLE_ID.H2 }
+    ]
+  }],
+  [ASSIGNMENT_ID.LEVERS_POISON_3, {
+    id: ASSIGNMENT_ID.LEVERS_POISON_3,
+    name: "Poison 3",
+    role_ids: [],
+    instructions: "Left: MT | Right (Entrance): DPS7 | Near: H2",
+    custom_positions: [
+      { pos: "Left", player: MAIN_ROLE_ID.MT },
+      { pos: "Right (Entrance)", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Near", player: MAIN_ROLE_ID.H2 }
+    ]
   }],
   [ASSIGNMENT_ID.NON_LEVER_TANK, {
     id: ASSIGNMENT_ID.NON_LEVER_TANK,
@@ -532,7 +641,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.MINIS],
     description: "Group Tank.",
-    instructions: "Solo-tank boss and first adds initially."
+    instructions: "Solo-tanks boss and trash."
   }],
   [ASSIGNMENT_ID.NON_LEVER_HEALER, {
     id: ASSIGNMENT_ID.NON_LEVER_HEALER,
@@ -540,7 +649,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.H1],
     fights: [FIGHT_ID.MINIS],
     description: "Group Healer.",
-    instructions: "Solo-heal group initially."
+    instructions: "Solo-heal."
   }],
   [ASSIGNMENT_ID.NON_LEVER_DPS, {
     id: ASSIGNMENT_ID.NON_LEVER_DPS,

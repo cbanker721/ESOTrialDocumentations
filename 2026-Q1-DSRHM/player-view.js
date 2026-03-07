@@ -104,19 +104,11 @@ function renderContent(id, assignmentRenderer) {
     const myAssignments = [];
     
     
-    // Special: Inject Levers for the Minis fight
-    if (fight.id === FIGHT_ID.MINIS) {
-      const leverAssigns = getLeverAssignments(id);
-      if (leverAssigns.length) myAssignments.push(...leverAssigns);
-    }
-    
-    // 3. Buffs/Debuffs
-    const myBuffs = (fight.buffsDebuffs || [])
-      .filter(b => b.owners.includes(id))
-      .map(b => b.name);
-
-    // 4. Strategy Mentions
     const mentions = [];
+    const myBuffs = (fight.buffsDebuffs || [])
+      .filter(bd => bd.owners.includes(id))
+      .map(bd => bd.name);
+
     if (fight.strategy.details) mentions.push(...findMentions(fight.strategy.details, id));
     if (fight.strategy.phases) {
       fight.strategy.phases.forEach(phase => {
@@ -200,31 +192,7 @@ function highlightId(text, id) {
   return text.replace(new RegExp(id, 'g'), `<span class="highlight-me">${id}</span>`);
 }
 
-function getLeverAssignments(id) {
-  const list = [];
-  if (typeof LEVERS === 'undefined') return list;
-
-  ['lightning', 'poison'].forEach(type => {
-    if (LEVERS[type]) {
-      LEVERS[type].forEach(set => {
-        const match = set.positions.find(p => p.player === id);
-        if (match) {
-          const icon = type === 'lightning' ? '⚡' : '☠️';
-          list.push(`<strong>${icon} ${set.name}:</strong> ${match.pos}`);
-        }
-      });
-    }
-  });
-  return list;
-}
-
 
 
 // Re-using pill styles from main css, but ensuring they work here
 const playerViewPillStyle = document.createElement('style');
-playerViewPillStyle.innerHTML = `
-  .set-pill { background: var(--accent-dim); color: var(--accent); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
-  .ult-pill { background: rgba(188, 140, 255, 0.15); color: var(--purple); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
-  .misc-pill { background: rgba(233, 183, 21, 0.2); color: var(--gold); padding: 2px 6px; border-radius: 4px; font-size: 0.85rem; }
-`;
-document.head.appendChild(playerViewPillStyle);
