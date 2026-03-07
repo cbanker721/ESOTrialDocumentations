@@ -83,8 +83,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render guidance
   renderGuidance();
 
-  // Select first fight
-  selectFight(FIGHTS.values().next().value.id);
+  // Handle URL params for state persistence
+  const params = new URLSearchParams(window.location.search);
+  const urlFight = params.get('fight');
+  const urlTab = params.get('tab');
+  if (urlTab && ['builds', 'assignments', 'strategy', 'buffs'].includes(urlTab)) {
+    currentTab = urlTab;
+  }
+  const initialFightId = (urlFight && FIGHTS.has(urlFight)) ? urlFight : FIGHTS.values().next().value.id;
+  selectFight(initialFightId);
 
   // Render levers & references
   renderReferences();
@@ -175,6 +182,7 @@ function selectFight(fightId) {
  
 function switchTab(tabId) {
   currentTab = tabId;
+  updateURL();
   document.querySelectorAll('#fight-tab-bar .tab-btn').forEach(b => {
     b.classList.toggle('active', b.dataset.tab === tabId);
   });
@@ -545,4 +553,12 @@ function applyPlayerFilter(playerId) {
       pill.classList.toggle('owner-dimmed', pill.dataset.ownerId !== playerId);
     }
   });
+}
+
+function updateURL() {
+  const params = new URLSearchParams(window.location.search);
+  if (currentFightId) params.set('fight', currentFightId);
+  if (currentTab) params.set('tab', currentTab);
+  const newUrl = `${window.location.pathname}?${params.toString()}${window.location.hash}`;
+  window.history.replaceState(null, '', newUrl);
 }
