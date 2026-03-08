@@ -304,7 +304,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.TWINS],
     description: "Main Tank.",
-    instructions: `Coordinate boss swaps. Stack same-colour ${NPC_ID.TWINS_DOGS} on ${NPC_ID.TWINS_BOSS}. Keep them centered during teleport.`
+    instructions: `Take dome in initial dogs fight. Coordinate boss swaps. Stack same-colour ${NPC_ID.TWINS_DOGS} on ${NPC_ID.TWINS_BOSS}.`
   }],
   [ASSIGNMENT_ID.TWINS_OT_TANK, {
     id: ASSIGNMENT_ID.TWINS_OT_TANK,
@@ -312,7 +312,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TWINS],
     description: "Off Tank.",
-    instructions: `Stack wrong-colour ${NPC_ID.TWINS_DOGS} out of group (~1-2 o'clock outside dome). Use Magma Shell for execute abuse.`
+    instructions: `Stack wrong-colour ${NPC_ID.TWINS_DOGS} out of group (~1-2 o'clock outside dome). Use Magma Shell for execute phase.`
   }],
   [ASSIGNMENT_ID.TWINS_MT_HEALER, {
     id: ASSIGNMENT_ID.TWINS_MT_HEALER,
@@ -320,7 +320,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.H2],
     fights: [FIGHT_ID.TWINS],
     description: "Heals MT.",
-    instructions: "Heal MT. PP on CD."
+    instructions: "Heal MT. PP on group on CD."
   }],
   [ASSIGNMENT_ID.TWINS_OT_HEALER, {
     id: ASSIGNMENT_ID.TWINS_OT_HEALER,
