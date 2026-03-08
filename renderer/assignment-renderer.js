@@ -544,6 +544,29 @@ function resolvePlayerNameAsPill(text) {
     });
   }
 
+  // Resolve NPCs
+  if (typeof NPC_ID !== 'undefined' && typeof NPC_DEFINITIONS !== 'undefined') {
+    const npcIds = Object.values(NPC_ID).sort((a, b) => b.length - a.length);
+    npcIds.forEach(id => {
+      const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b${escapedId}\\b`, 'g');
+      if (regex.test(result)) {
+        const def = NPC_DEFINITIONS.get(id);
+        if (def) {
+          let styleAttr = '';
+          if (def.color) {
+            styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
+          }
+          const replacementHtml = `<span class="npc-pill"${styleAttr}>${def.icon} ${def.name}</span>`;
+          
+          const token = getPlaceholder();
+          replacements.set(token, replacementHtml);
+          result = result.replace(regex, token);
+        }
+      }
+    });
+  }
+
   // Restore Tokens
   replacements.forEach((html, token) => {
     result = result.split(token).join(html);

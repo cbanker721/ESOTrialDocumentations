@@ -12,7 +12,7 @@ const ASSIGNMENTS = new Map([
     ],
     fights: [FIGHT_ID.TWINS],
     description: "Assignments for the teleport phase in the Twins fight.",
-    instructions: "All DDs tab-target the boss before teleport to see where their orb spawns. Go to your assigned dome position. Tip: Look at the orb beside you and take the dome of the opposite color."
+    instructions: `All ${ASSIGNMENT_ID.DPS} tab-target the ${NPC_ID.TWINS_BOSS} before teleport to see where their orb spawns. Go to your assigned dome position. Tip: Look at the orb beside you and take the dome of the opposite color.`
   }],
   [ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT, {
     id: ASSIGNMENT_ID.TWINS_TELEPORT_TOP_LEFT,
@@ -120,7 +120,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.TWINS],
     description: "Interrupts boss.",
-    instructions: "Use Crushing Shock to help interrupt the boss during teleport phase."
+    instructions: `Use Crushing Shock to help interrupt the ${NPC_ID.TWINS_BOSS} during teleport phase.`
   }],
   [ASSIGNMENT_ID.TWINS_GENERAL_ROLES, {
     id: ASSIGNMENT_ID.TWINS_GENERAL_ROLES,
@@ -140,7 +140,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.TWINS],
     description: "General DPS responsibilities for Twins.",
-    instructions: "Before execute, hold ult until both same colour atros are stacked on boss. During execute, mechs always take precedence over damage."
+    instructions: `Before execute, hold ult until both same colour ${NPC_ID.TWINS_DOGS} are stacked on ${NPC_ID.TWINS_BOSS}. During execute, mechs always take precedence over damage.`
   }],
   [ASSIGNMENT_ID.TWINS_HEALER_GENERAL, {
     id: ASSIGNMENT_ID.TWINS_HEALER_GENERAL,
@@ -178,7 +178,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.REEF],
     description: "General DPS responsibilities for Reef Guardian.",
-    instructions: "Soft stack at lightning and do not overlap with people when in lightning. Roll-dodge/walk out of poison AoE. At chalice, burn both Large and first Medium guardians. At crossbones, burn Large on left side and leave right side alone until it walks over. Ever after, burn every enemy."
+    instructions: `Soft stack at lightning and do not overlap with people when in lightning. Roll-dodge/walk out of poison AoE. At chalice, burn both ${NPC_ID.REEF_GUARDIAN_LARGE} and ${NPC_ID.REEF_GUARDIAN_MEDIUM_1}. At crossbones, burn ${NPC_ID.REEF_GUARDIAN_LARGE} on left side and leave right side alone until it walks over. Ever after, burn every enemy.`
   }],
   [ASSIGNMENT_ID.REEF_HEALER_GENERAL, {
     id: ASSIGNMENT_ID.REEF_HEALER_GENERAL,
@@ -216,7 +216,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.TALERIA],
     description: "General DPS responsibilities for Taleria, including Siren control.",
-    instructions: "Roll-dodge every wave unless OT says he's taking it out. Run to do deluge early. DoT and cleave Sirens as they show up, and break free immediately if lured."
+    instructions: `Roll-dodge every wave unless OT says he's taking it out. Run to do deluge early. DoT and cleave ${NPC_ID.TALERIA_SIRENS} as they show up, and break free immediately if lured.`
   }],
   [ASSIGNMENT_ID.TALERIA_HEALER_GENERAL, {
     id: ASSIGNMENT_ID.TALERIA_HEALER_GENERAL,
@@ -278,7 +278,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.TWINS],
     description: "Kills weapons.",
-    instructions: "Beam weapons as soon as they spawn."
+    instructions: `Beam ${NPC_ID.TWINS_WEAPONS} as soon as they spawn.`
   }],
   [ASSIGNMENT_ID.TWINS_LARGE_SIDE, {
     id: ASSIGNMENT_ID.TWINS_LARGE_SIDE,
@@ -296,7 +296,7 @@ const ASSIGNMENTS = new Map([
     assignment_ids: [ASSIGNMENT_ID.TWINS_EXECUTE_SMALL_DOME_HOLDER],
     fights: [FIGHT_ID.TWINS],
     description: "Small Side.",
-    instructions: "DPS8 kills weapons after a mech finishes and calls out."
+    instructions: `${MAIN_ROLE_ID.DPS8} kills ${NPC_ID.TWINS_WEAPONS} after a mech finishes and calls out.`
   }],
   [ASSIGNMENT_ID.TWINS_MT_TANK, {
     id: ASSIGNMENT_ID.TWINS_MT_TANK,
@@ -304,7 +304,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.TWINS],
     description: "Main Tank.",
-    instructions: "Coordinate boss swaps. Stack same-colour atros on boss. Keep them centered during teleport."
+    instructions: `Coordinate boss swaps. Stack same-colour ${NPC_ID.TWINS_DOGS} on ${NPC_ID.TWINS_BOSS}. Keep them centered during teleport.`
   }],
   [ASSIGNMENT_ID.TWINS_OT_TANK, {
     id: ASSIGNMENT_ID.TWINS_OT_TANK,
@@ -312,7 +312,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TWINS],
     description: "Off Tank.",
-    instructions: "Stack wrong-colour atros out of group (~1-2 o'clock outside dome). Use Magma Shell for execute abuse."
+    instructions: `Stack wrong-colour ${NPC_ID.TWINS_DOGS} out of group (~1-2 o'clock outside dome). Use Magma Shell for execute abuse.`
   }],
   [ASSIGNMENT_ID.TWINS_MT_HEALER, {
     id: ASSIGNMENT_ID.TWINS_MT_HEALER,
@@ -596,7 +596,7 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.REEF_FIRST_CROSSBONES, {
     id: ASSIGNMENT_ID.REEF_FIRST_CROSSBONES,
     name: "First Crossbones",
-    role_ids: [MAIN_ROLE_ID.DPS8],
+    role_ids: [MAIN_ROLE_ID.DPS5],
     fights: [FIGHT_ID.REEF],
     description: "First Crossbones.",
     instructions: "Help clear first Crossbones to speed up mage spawn."
@@ -618,7 +618,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.REEF],
     description: "Main Tank.",
-    instructions: "Taunt Large Guardian. Rubberband mages into group. Watch for bears/cats."
+    instructions: `Taunt ${NPC_ID.REEF_GUARDIAN_LARGE}. Rubberband ${NPC_ID.REEF_GUARDIAN_MAGE} into group. Watch for ${NPC_ID.REEF_GUARDIAN_BEAR}/${NPC_ID.REEF_GUARDIAN_CAT}.`
   }],
   [ASSIGNMENT_ID.REEF_OT_TANK, {
     id: ASSIGNMENT_ID.REEF_OT_TANK,
@@ -626,12 +626,12 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.REEF],
     description: "Off Tank.",
-    instructions: "Stack reef guardians on right side of reef. Dictate group stack position."
+    instructions: `Stack ${NPC_ID.REEF_GUARDIANS} on right side of reef. Dictate group stack position.`
   }],
   [ASSIGNMENT_ID.REEF_MT_HEALER, {
     id: ASSIGNMENT_ID.REEF_MT_HEALER,
     name: "MT Healer",
-    role_ids: [MAIN_ROLE_ID.H1],
+    role_ids: [MAIN_ROLE_ID.H2],
     fights: [FIGHT_ID.REEF],
     description: "Heals MT.",
     instructions: "Focus group and MT."
@@ -639,7 +639,7 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.REEF_OT_HEALER, {
     id: ASSIGNMENT_ID.REEF_OT_HEALER,
     name: "OT Healer",
-    role_ids: [MAIN_ROLE_ID.H2],
+    role_ids: [MAIN_ROLE_ID.H1],
     fights: [FIGHT_ID.REEF],
     description: "Heals OT.",
     instructions: "Pocket heal OT. PP + Slayer."
@@ -658,7 +658,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TALERIA],
     description: "Off Tank.",
-    instructions: "Behemoth is #1 priority. Stack mage close to Taleria. Ele Sus matrons."
+    instructions: `${NPC_ID.TALERIA_BEHEMOTH} is #1 priority. Stack ${NPC_ID.TALERIA_MAGE} close to ${NPC_ID.TALERIA_BOSS}. Ele Sus ${NPC_ID.TALERIA_SIRENS}.`
   }],
   [ASSIGNMENT_ID.TALERIA_BRIDGE_DPS, {
     id: ASSIGNMENT_ID.TALERIA_BRIDGE_DPS,
@@ -748,7 +748,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.TWINS],
     description: "Holds the center dome.",
-    instructions: "Move the center dome out of the boss at 80% health and then move back in for interrupt or when both same colour atros are stacked on boss."
+    instructions: `Move the center dome out of the ${NPC_ID.TWINS_BOSS} at 80% health and then move back in for interrupt or when both same colour ${NPC_ID.TWINS_DOGS} are stacked on ${NPC_ID.TWINS_BOSS}.`
   }],
   [ASSIGNMENT_ID.TANKS, {
     id: ASSIGNMENT_ID.TANKS,
