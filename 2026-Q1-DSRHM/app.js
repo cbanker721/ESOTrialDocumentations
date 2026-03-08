@@ -74,7 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
     else if (roleClass === 'role-healer') icon = '⚕️ ';
     else if (roleClass === 'role-dps') icon = '⚔️ ';
 
-    opt.textContent = `${icon}${PLAYERS[id].shortName} [${PLAYERS[id].tag}]`;
+    var tag_render = "";
+    if (PLAYERS[id].tag) {
+      tag_render = ` [${PLAYERS[id].tag}]`;
+    }
+    opt.textContent = `${icon}${PLAYERS[id].shortName}${tag_render}`;
     if (roleClass) opt.classList.add(roleClass);
 
     playerFilter.appendChild(opt);

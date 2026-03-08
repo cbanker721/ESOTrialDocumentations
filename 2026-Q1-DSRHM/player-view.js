@@ -41,8 +41,11 @@ function populateDropdown(currentId) {
     if (role === 'Tank') icon = '🛡️ ';
     else if (role === 'Healer') icon = '⚕️ ';
     else icon = '⚔️ ';
-
-    opt.textContent = `${icon}${PLAYERS[id].shortName} [${PLAYERS[id].tag}]`;
+    var tag_render = "";
+    if (PLAYERS[id].tag) {
+      tag_render = ` [${PLAYERS[id].tag}]`;
+    }
+    opt.textContent = `${icon}${PLAYERS[id].shortName}${tag_render}`;
     selector.appendChild(opt);
   });
 
@@ -73,7 +76,7 @@ function renderHeader(id) {
 
   container.innerHTML = `
     <h1 class="sidebar-title">${p.shortName} <span class="sidebar-id">(${id})</span></h1>
-    <div class="sidebar-meta">${role} • ${p.tag}</div>
+    <div class="sidebar-meta">${role}${p.tag ? ` [${p.tag}]` : ''}</div>
     ${guidanceHtml}
   `;
 }
