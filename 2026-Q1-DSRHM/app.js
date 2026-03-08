@@ -130,6 +130,61 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '-80px 0px -60% 0px' });
 
   document.querySelectorAll('.fight-section, .content-section').forEach(s => observer.observe(s));
+
+  // Image Modal Logic
+  const modalStyle = document.createElement('style');
+  modalStyle.innerHTML = `
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000; cursor: pointer;
+    }
+    .modal-content {
+      position: relative; background: var(--bg-main); padding: 20px;
+      border-radius: 8px; max-width: 90vw; max-height: 90vh; cursor: default;
+    }
+    .modal-content img {
+      display: block; max-width: 100%; max-height: calc(90vh - 40px); border-radius: 4px;
+    }
+    .modal-close {
+      position: absolute; top: -10px; right: -10px;
+      width: 30px; height: 30px; background: var(--accent); color: var(--bg-main);
+      border-radius: 50%; border: 2px solid var(--bg-main);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold; cursor: pointer; font-size: 1.2rem; line-height: 1;
+    }
+  `;
+  document.head.appendChild(modalStyle);
+
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList.contains('show-map-btn')) {
+      const imgSrc = e.target.dataset.imgSrc;
+      if (!imgSrc) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      
+      overlay.innerHTML = `
+        <div class="modal-content">
+          <img src="${imgSrc}" alt="Movement Map">
+          <div class="modal-close">&times;</div>
+        </div>
+      `;
+      
+      document.body.appendChild(overlay);
+
+      const closeModal = () => {
+        if (document.body.contains(overlay)) {
+          document.body.removeChild(overlay);
+        }
+      };
+
+      overlay.addEventListener('click', (ev) => {
+        if (ev.target === overlay || ev.target.classList.contains('modal-close')) closeModal();
+      });
+    }
+  });
 });
 
 // ---- Fight selection & tab switching ----
@@ -321,6 +376,33 @@ function renderStrategy(fight) {
     });
     rem.appendChild(ul);
     container.appendChild(rem);
+  }
+
+  if (fight.strategy.supplemental && fight.strategy.supplemental.length) {
+    const supp = document.createElement('div');
+    supp.className = 'supplemental-section';
+    supp.style.marginTop = '1.5rem';
+    supp.style.borderTop = '1px solid var(--border)';
+    supp.style.paddingTop = '1rem';
+    
+    fight.strategy.supplemental.forEach(s => {
+      const h4 = document.createElement('h4');
+      h4.textContent = s.title;
+      h4.style.color = 'var(--text-muted)';
+      h4.style.fontSize = '0.9rem';
+      h4.style.textTransform = 'uppercase';
+      h4.style.marginBottom = '0.5rem';
+      supp.appendChild(h4);
+
+      const ul = document.createElement('ul');
+      s.content.forEach(line => {
+        const li = document.createElement('li');
+        li.innerHTML = resolvePlayerNameAsPill(line);
+        ul.appendChild(li);
+      });
+      supp.appendChild(ul);
+    });
+    container.appendChild(supp);
   }
 
   return container;
