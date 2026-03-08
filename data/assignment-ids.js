@@ -80,7 +80,7 @@ const ASSIGNMENT_ID = Object.freeze({
   LEVER_CLOSE: 'lever-close',
   LEVER_MIDDLE: 'lever-middle',
   LEVER_FAR: 'lever-far',
-  LEVERS: 'levers',
+  LEVERS: 'lever-people',
   LEVERS_LIGHTNING: 'levers-lightning',
   LEVERS_POISON: 'levers-poison',
   LEVERS_LIGHTNING_1: 'levers-lightning-1',

@@ -500,11 +500,17 @@ function createOwnerPillHtml(id) {
 
 function resolvePlayerNameAsPill(text) {
   let result = text;
+  const replacements = new Map();
+  let placeholderIndex = 0;
+  const getPlaceholder = () => `__TOKEN_${placeholderIndex++}__`;
+
   const ids = Object.keys(PLAYERS).sort((a, b) => b.length - a.length);
   ids.forEach(id => {
     const regex = new RegExp(`\\b${id}\\b`, 'g');
     if (regex.test(result)) {
-      result = result.replace(regex, createOwnerPillHtml(id));
+      const token = getPlaceholder();
+      replacements.set(token, createOwnerPillHtml(id));
+      result = result.replace(regex, token);
     }
   });
 
@@ -517,15 +523,31 @@ function resolvePlayerNameAsPill(text) {
       if (regex.test(result)) {
         const def = ASSIGNMENTS.get(id);
         if (def) {
-          let styleAttr = '';
-          if (def.color) {
-            styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
+          const renderOption = def.render_option || RENDER_OPTION.RENDER_ROLE;
+          let replacementHtml = '';
+
+          if (renderOption === RENDER_OPTION.RENDER_ROLE && def.role_ids && def.role_ids.length > 0) {
+            replacementHtml = def.role_ids.map(rid => createOwnerPillHtml(rid)).join(' ');
+          } else {
+            let styleAttr = '';
+            if (def.color) {
+              styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
+            }
+            replacementHtml = `<span class="assignment-pill"${styleAttr}>${def.name}</span>`;
           }
-          result = result.replace(regex, `<span class="assignment-pill"${styleAttr}>${def.name}</span>`);
+
+          const token = getPlaceholder();
+          replacements.set(token, replacementHtml);
+          result = result.replace(regex, token);
         }
       }
     });
   }
+
+  // Restore Tokens
+  replacements.forEach((html, token) => {
+    result = result.split(token).join(html);
+  });
 
   return result;
 }

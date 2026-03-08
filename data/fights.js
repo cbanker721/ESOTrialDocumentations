@@ -174,7 +174,7 @@ const FIGHTS = new Map([
     icon: "🐦🐢",
     strategy: {
       details: [
-        `For trash pulls before Sail Ripper/Bow Breaker, ${ASSIGNMENT_ID.H1} and ${ASSIGNMENT_ID.OT} are officially solo-heal and solo-tank as ${ASSIGNMENT_ID.H2} and ${ASSIGNMENT_ID.MT} are away at levers`,
+        `For trash pulls before Sail Ripper/Bow Breaker, ${ASSIGNMENT_ID.NON_LEVER_TANK} and ${ASSIGNMENT_ID.NON_LEVER_HEALER} are officially solo-tank and solo-heal as ${ASSIGNMENT_ID.LEVERS} are away doing levers.`,
         "People not responsible for levers wait at exit as soon as trash is dead.",
         `${ASSIGNMENT_ID.LEVERS} run to levers or wait for trash (at discretion). For last lever set before boss, hotkey gear swap via Wizard's Wardrobe.`,
         `At Sail-Ripper, Slayers and ult-dump will happen when boss flies for the first time.`,
@@ -264,7 +264,7 @@ const FIGHTS = new Map([
             `Upstairs ${ASSIGNMENT_ID.DPS} parse Large Guardian on left side ONLY. Right side does NOT get burned to avoid pushing reef spawns. No ults.`,
             `When Crossbones heart is at 40%:  informs group. ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} takes Large Guardian into right stack. Upstairs ${ASSIGNMENT_ID.DPS} lay DoTs on right side.`,
             `When Crossbones heart clears: ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} comes up. ${ASSIGNMENT_ID.REEF_OT_TANK} takes mage, bear, and cat. ${ASSIGNMENT_ID.REEF_GROUP_1} proceeds to Skull.`,
-            `Ult dump when mage is into group: ${ASSIGNMENT_ID.DPS} and ${ASSIGNMENT_ID.REEF_OT_TANK} ult → ${ASSIGNMENT_ID.H1} Naz → ${ASSIGNMENT_ID.H2} PP.`
+            `Ult dump when mage is into group: ${ASSIGNMENT_ID.DPS} and ${ASSIGNMENT_ID.REEF_OT_TANK} ult → ${MAIN_ROLE_ID.H1} Naz → ${MAIN_ROLE_ID.H2} PP.`
           ]
         },
         {

@@ -425,15 +425,16 @@ const ASSIGNMENTS = new Map([
   }],    
   [ASSIGNMENT_ID.LEVERS, {
     id: ASSIGNMENT_ID.LEVERS,
-    name: "Levers",
-    role_ids: [],
+    name: "Lever People",
+    role_ids: [MAIN_ROLE_ID.MT, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.DPS7],
     assignment_ids: [
       ASSIGNMENT_ID.LEVERS_LIGHTNING,
       ASSIGNMENT_ID.LEVERS_POISON
     ],
     fights: [FIGHT_ID.MINIS],
     description: "Overall lever assignments.",
-    instructions: "Group of players responsible for pulling levers during trash pulls before Sail Ripper & Bow Breaker. See maps below."
+    instructions: "Group of players responsible for pulling levers during trash pulls before Sail Ripper & Bow Breaker. See maps below.",
+    render_option: RENDER_OPTION.RENDER_ROLE
   }],
   [ASSIGNMENT_ID.LEVER_MIDDLE, {
     id: ASSIGNMENT_ID.LEVER_MIDDLE,
@@ -563,7 +564,7 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.NON_LEVER_DPS, {
     id: ASSIGNMENT_ID.NON_LEVER_DPS,
     name: "Non-Lever DPS",
-    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS8],
+    role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.MINIS],
     description: "Group DPS.",
     instructions: "Wait at exit until trash is dead."
@@ -752,17 +753,20 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.TANKS, {
     id: ASSIGNMENT_ID.TANKS,
     name: "Tanks",
-    color: '#90caf9'
+    color: '#90caf9',
+    render_option: RENDER_OPTION.RENDER_ASSIGNMENT
   }],
   [ASSIGNMENT_ID.HEALERS, {
     id: ASSIGNMENT_ID.HEALERS,
     name: "Healers",
-    color: '#a5d6a7'
+    color: '#a5d6a7',
+    render_option: RENDER_OPTION.RENDER_ASSIGNMENT
   }],
   [ASSIGNMENT_ID.DPS, {
     id: ASSIGNMENT_ID.DPS,
     name: "DDs",
-    color: '#ffeb3b'
+    color: '#ffeb3b',
+    render_option: RENDER_OPTION.RENDER_ASSIGNMENT
   }],
   [ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS, {
     id: ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS,
