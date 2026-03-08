@@ -19,6 +19,7 @@ const ASSIGNMENT_ID = Object.freeze({
   TALERIA_HEALER_GENERAL: 'taleria-healer-general',
   TALERIA_TANK_GENERAL: 'taleria-tank-general',
   TWINS_TELEPORT_TOP_RIGHT: 'twins-teleport-top-right',
+  TWINS_CENTER_DOME_HOLDER: 'twins-center-dome-holder',
   TWINS_TELEPORT_TOP_RIGHT_DOME_HOLDER: 'twins-teleport-top-right-dome-holder',
   TWINS_TELEPORT_TOP_RIGHT_DOME_BASHER: 'twins-teleport-top-right-dome-basher',
 
@@ -31,6 +32,7 @@ const ASSIGNMENT_ID = Object.freeze({
   TWINS_TELEPORT_BOTTOM_RIGHT_DOME_BASHER: 'twins-teleport-bottom-right-dome-basher',
   TWINS_TELEPORT_INTERRUPTER: 'twins-teleport-interrupter',
   TWINS_EXECUTE: 'twins-execute',
+  TWINS_EXECUTE_DOME_HOLDERS: 'twins-execute-dome-holders',
   TWINS_EXECUTE_LARGE_DOME_HOLDER: "twins-execute-left-dome-holder",
   TWINS_LARGE_DOME_RESCUE: "twins-large-dome-rescue",
   TWINS_EXECUTE_SMALL_DOME_HOLDER: "twins-execute-small-dome-holder",
@@ -87,4 +89,7 @@ const ASSIGNMENT_ID = Object.freeze({
   LEVERS_POISON_1: 'levers-poison-1',
   LEVERS_POISON_2: 'levers-poison-2',
   LEVERS_POISON_3: 'levers-poison-3',
+  TANKS: 'tanks',
+  HEALERS: 'healers',
+  DPS: 'dps',
 });

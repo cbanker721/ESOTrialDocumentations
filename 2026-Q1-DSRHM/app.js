@@ -256,11 +256,12 @@ function renderBuilds(fight) {
 function renderStrategy(fight) {
   const container = document.createElement('div');
 
-  const summary = document.createElement('div');
-  summary.className = 'strategy-summary';
-  summary.innerHTML = resolvePlayerNameAsPill(fight.strategy.summary);
-  container.appendChild(summary);
-
+  if (fight.strategy.summary) {
+    const summary = document.createElement('div');
+    summary.className = 'strategy-summary';
+    summary.innerHTML = resolvePlayerNameAsPill(fight.strategy.summary);
+    container.appendChild(summary);
+  }
   if (fight.strategy.details && fight.strategy.details.length) {
     const details = document.createElement('div');
     details.className = 'strategy-details';

@@ -454,6 +454,15 @@ style.innerHTML = `
   .role-symbol.role-dps { background-color: rgba(211, 47, 47, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); }
   .role-symbol.role-healer { background-color: rgba(56, 142, 60, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); }
   .role-symbol.role-tank { background-color: rgba(25, 118, 210, 0.9); border: 1px solid rgba(255, 255, 255, 0.15); }
+
+  .assignment-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border);
+    padding: 0 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: var(--text-bright);
+  }
 `;
 document.head.appendChild(style);
 
@@ -498,6 +507,26 @@ function resolvePlayerNameAsPill(text) {
       result = result.replace(regex, createOwnerPillHtml(id));
     }
   });
+
+  // Resolve Assignments
+  if (typeof ASSIGNMENT_ID !== 'undefined' && typeof ASSIGNMENTS !== 'undefined') {
+    const assignIds = Object.values(ASSIGNMENT_ID).sort((a, b) => b.length - a.length);
+    assignIds.forEach(id => {
+      const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b${escapedId}\\b`, 'g');
+      if (regex.test(result)) {
+        const def = ASSIGNMENTS.get(id);
+        if (def) {
+          let styleAttr = '';
+          if (def.color) {
+            styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
+          }
+          result = result.replace(regex, `<span class="assignment-pill"${styleAttr}>${def.name}</span>`);
+        }
+      }
+    });
+  }
+
   return result;
 }
 

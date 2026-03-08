@@ -614,7 +614,7 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.REEF_MT_TANK, {
     id: ASSIGNMENT_ID.REEF_MT_TANK,
     name: "MT Tank",
-    role_ids: [MAIN_ROLE_ID.MT],
+    role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.REEF],
     description: "Main Tank.",
     instructions: "Taunt Large Guardian. Rubberband mages into group. Watch for bears/cats."
@@ -622,7 +622,7 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.REEF_OT_TANK, {
     id: ASSIGNMENT_ID.REEF_OT_TANK,
     name: "OT Tank",
-    role_ids: [MAIN_ROLE_ID.OT],
+    role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.REEF],
     description: "Off Tank.",
     instructions: "Stack reef guardians on right side of reef. Dictate group stack position."
@@ -740,5 +740,34 @@ const ASSIGNMENTS = new Map([
     fights: [FIGHT_ID.TALERIA],
     description: "Provides Back Slayer.",
     instructions: "Provide Major Slayer for the back group."
-  }]
+  }],
+  [ASSIGNMENT_ID.TWINS_CENTER_DOME_HOLDER, {
+    id: ASSIGNMENT_ID.TWINS_CENTER_DOME_HOLDER,
+    name: "Center Dome Holder",
+    role_ids: [MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TWINS],
+    description: "Holds the center dome.",
+    instructions: "Move the center dome out of the boss at 80% health and then move back in for interrupt or when both same colour atros are stacked on boss."
+  }],
+  [ASSIGNMENT_ID.TANKS, {
+    id: ASSIGNMENT_ID.TANKS,
+    name: "Tanks",
+    color: '#90caf9'
+  }],
+  [ASSIGNMENT_ID.HEALERS, {
+    id: ASSIGNMENT_ID.HEALERS,
+    name: "Healers",
+    color: '#a5d6a7'
+  }],
+  [ASSIGNMENT_ID.DPS, {
+    id: ASSIGNMENT_ID.DPS,
+    name: "DDs",
+    color: '#ffeb3b'
+  }],
+  [ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS, {
+    id: ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS,
+    assignment_ids: [ASSIGNMENT_ID.TWINS_EXECUTE_LARGE_DOME_HOLDER, ASSIGNMENT_ID.TWINS_EXECUTE_SMALL_DOME_HOLDER],
+    name: "Dome Holders",
+    color: '#e83bff'
+  }],
 ]);

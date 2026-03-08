@@ -17,10 +17,9 @@ const FIGHTS = new Map([
     strategy: {
       summary: "Clear trash packs between bosses efficiently. Supports never ult on trash. DDs can ult until the last or second-to-last pull — use judgement since Standards are expensive.",
       details: [
-        "Coordinate pulls between MT and OT.",
-        "Supports never ult on trash.",
-        "DDs can ult until last or 2nd-last pull (Standards are expensive).",
-        "Lever pullers swap sets via Wizard's Wardrobe hotkey before being pulled in.",
+        `${MAIN_ROLE_ID.MT} leads coordination of trash pulls with ${MAIN_ROLE_ID.OT}.`,
+        `${ASSIGNMENT_ID.TANK} and ${ASSIGNMENT_ID.HEALERS} never ult on trash, except ${ASSIGNMENT_ID.TALERIA_MT_TANK} will barrier on last trash pull before Taleria.`,
+        `${ASSIGNMENT_ID.DPS}s can ult until last or 2nd-last pull (Note: Standards are expensive).`,
       ]
     },
     builds: {
@@ -62,61 +61,65 @@ const FIGHTS = new Map([
     shortName: "Twins",
     icon: "🔥❄️",
     strategy: {
-      summary: "Dual-boss fight with fire/ice dome mechanics. Bosses come down one at a time, then both together for execute. Both must die within 7.5s of each other on HM.",
-      details: [
-        "Everyone hold ult until Slayer callout.",
-        "All ranged DDs beam weapons as soon as they spawn.",
-        "Dome holder moves dome out of boss at 80%, returns for (1) boss channel or (2) 2nd same-colour atro.",
-        "When boss starts teleport phase, all DDs tab-target boss and note where their orb spawns.",
-        "Slayer at 2nd atro. Ult order: All DDs → H1 Naz → H2 PP. Tanks ult at discretion.",
-        "OT starts with boss, MT takes later. OT stacks wrong-colour atros out of group (~1-2 o'clock outside dome).",
-        "MT coordinates boss swaps. Stacks same-colour atros on boss, keeps them centered during teleport."
-      ],
       phases: [
+        {
+          name: "Dogs",
+          details: [
+            `${MAIN_ROLE_ID.MT} Grabs dome. Not ults here. Also a natural ulti-pull is we need ult`,
+          ]
+        },
+        {
+          name: "Boss at Center",
+          details: [
+            `${MAIN_ROLE_ID.OT} starts with boss, ${MAIN_ROLE_ID.MT} takes later. ${MAIN_ROLE_ID.OT} stacks wrong-colour atros out of group (~1-2 o'clock outside dome).`,
+            "Everyone hold ult until Slayer callout.",
+            `${ASSIGNMENT_ID.DPS} beam weapons as soon as they spawn.`,
+            `${ASSIGNMENT_ID.TWINS_CENTER_DOME_HOLDER} moves dome out of boss at 80%, returns for (1) boss channel or (2) 2nd same-colour atro.`,
+            `When atros are stacked, do slayer stacks and drop ult. Ult order: All ${ASSIGNMENT_ID.DPS} → ${MAIN_ROLE_ID.H1} Naz → ${ASSIGNMENT_ID.H2} PP. ${ASSIGNMENT_ID.TANKS} ult at discretion.`,
+            `When boss starts teleport phase, ${ASSIGNMENT_ID.DPS} tab-target boss and note where their orb spawns.`,
+          ]
+        },
         {
           name: "Teleport Phase",
           details: [
-            "DDs go to assigned domes. If freed up, drop DoTs in middle.",
-            "Last DD holds dome. If leftover right-colour atros, MT takes them there; DD holds dome until atros die.",
-            "Dome holder waits for old dome to drop. MT helps interrupt with Crushing Shock.",
+            `${ASSIGNMENT_ID.DPS} go to assigned domes. If freed up, drop DoTs in middle.`,
+            `Last ${ASSIGNMENT_ID.DPS} who's holding dome check if there is . If leftover right-colour atros, ${ASSIGNMENT_ID.MT} takes them there; DD holds dome until atros die.`,
+            `MT helps interrupt with Crushing Shock.`,
             "Tip: Look at the orb beside you and take the dome of opposite colour."
           ]
         },
         {
           name: "Execute Phase 1 (Before Swap at 15%)",
           details: [
-            "Large side: OT, H1, all DDs except DPS8.",
-            "Small side: MT, H2, DPS8.",
-            "Large side starts with a Slayer. Ult order: All DDs → H1 Naz extend → Tanks ult whenever. DDs ult on CD after.",
-            "H1 stays out of dome for jump rescue.",
-            "DPS6 and DPS7 swap domes on jump/brands. DPS6 grabs first.",
-            "Small side: DPS8 kills weapons after a mech finishes and calls out.",
-            "H2 holds dome initially. If someone else has dome and PP is off CD, go to large side to pop PP.",
-            "Tanks stack puddles along sides in L-shape pattern. Don't run into DDs doing brands during boss swap."
+            `Large side starts: with a Slayer when they are stacked at their conor. Ult order: All ${ASSIGNMENT_ID.DPS} → ${ASSIGNMENT_ID.H1} Naz extend → Tanks ult whenever. DDs ult on CD after.`,
+            `${MAIN_ROLE_ID.H1} stays outside dome for jump rescue. ${ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS} swap domes on jump/brands. ${ASSIGNMENT_ID.DPS6} grabs first.`,
+            `${ASSIGNMENT_ID.TWINS_WEAPON_SLAYER} kills weapons after a mech finishes and calls out when weapon is about to explode`,
+            `Small side: ${ASSIGNMENT_ID.H2} takes dome first. She holds PP until she is not holding dome then pops it on large side. Any ${ASSIGNMENT_ID.DPS} permanently on small side can ult on cooldown`,
+            `${ASSIGNMENT_ID.MT} calls swaps. ${ASSIGNMENT_ID.TANKS} stack puddles along sides in L-shape pattern. Don't run into DDs doing brands during boss swap. Take dogs with you during swaps.`
           ]
         },
         {
           name: "Side Swap (Large boss at 15%)",
           details: [
             "Called when large-side boss is at 15% and no active mech is happening.",
-            "All DDs and healers swap sides. Dome holders stay until someone takes dome off them. Tanks always stay.",
-            "Both healers drop HoTs in their old dome before leaving."
+            `All ${ASSIGNMENT_ID.HEALERS} and ${ASSIGNMENT_ID.DPS} swap sides. ${ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS} stay until someone takes dome off them. Tanks always stay until their own swap.`,
+            `${ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS} drop HoTs in their old dome before leaving.`
           ]
         },
         {
-          name: "Execute Phase 2 & Final",
+          name: "Execute Phase 2",
           details: [
-            "Everyone just burn. Can largely ignore weapons.",
-            "Final execute: large-side boss is dead. DDs check if they have dome — drop it. Once clear, run to finish other boss.",
-            "Both bosses must die within 7.5s of each other (HM)."
+            `${ASSIGNMENT_ID.DPS} burn. Can largely ignore weapons.`,
+            `Final execute: large-side boss is dead. ${ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS} whose bose is dead will drop dome. MAKE SURE you are not running with dome to the other side.`,
+            "Both bosses must die within 10s of each other or the domes will disappear and it will be a wipe."
           ]
         }
       ],
       reminders: [
         "Block weapon waves before execute if you are not tank.",
         "Roll-dodge weapon waves at execute (especially same-colour wave) or if you are tank.",
-        "Dome holders during execute: move vertically (entrance↔exit). Only move horizontally if boss channels at middle outside dome — be very careful.",
-        "Remember you have dome and watch where the boss you cover is standing."
+        `${ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS} during execute: move vertically (entrance↔exit). Only move horizontally if boss channels at middle outside dome — be very careful. Do NOT put domes on brands`,
+        `${ASSIGNMENT_ID.HEALERS} and ${ASSIGNMENT_ID.DPS} with brands - please make sure you can see a GPS icon on the floor. That is the indicator of where you should go. If you don't have it, download Slip's Sanity's Edge add-on`,
       ]
     },
     builds: {
@@ -158,9 +161,10 @@ const FIGHTS = new Map([
     ],
     assignments: [
       ASSIGNMENT_ID.TWINS_GENERAL_ROLES,
+      ASSIGNMENT_ID.TWINS_SLAYERS,
+      ASSIGNMENT_ID.TWINS_CENTER_DOME_HOLDER,
       ASSIGNMENT_ID.TWINS_TELEPORT,
       ASSIGNMENT_ID.TWINS_EXECUTE,
-      ASSIGNMENT_ID.TWINS_SLAYERS
     ]
   }],
   [FIGHT_ID.MINIS, {
@@ -169,14 +173,14 @@ const FIGHTS = new Map([
     shortName: "Minis",
     icon: "🐦🐢",
     strategy: {
-      summary: "Two mini-bosses with no hardmode. Sail Ripper has lethal harpy heavy attacks. Bow Breaker is a Coral Haj Mota with frontal cleave. Don't ult on Bow Breaker — save for Reef Guardians.",
       details: [
-        "For trash pulls before Sail Ripper/Bow Breaker, H1 and OT are officially solo-heal and solo-tank as H2 and MT are away at levers",
+        `For trash pulls before Sail Ripper/Bow Breaker, ${ASSIGNMENT_ID.H1} and ${ASSIGNMENT_ID.OT} are officially solo-heal and solo-tank as ${ASSIGNMENT_ID.H2} and ${ASSIGNMENT_ID.MT} are away at levers`,
         "People not responsible for levers wait at exit as soon as trash is dead.",
-        "Lever pullers run to levers or wait for trash (at discretion). For last lever set before boss, hotkey gear swap via Wizard's Wardrobe.",
+        `${ASSIGNMENT_ID.LEVERS} run to levers or wait for trash (at discretion). For last lever set before boss, hotkey gear swap via Wizard's Wardrobe.`,
+        `At Sail-Ripper, Slayers and ult-dump will happen when boss flies for the first time.`,
         "Don't ult on Bow Breaker — save for Reef Guardians immediately after.",
-        "OT takes boss and first adds since other tank may be late from levers.",
-        "MT takes small adds and stacks on boss once pulled into group.",
+        `${ASSIGNMENT_ID.OT} takes boss and first adds since other tank may be late from levers.`,
+        `${ASSIGNMENT_ID.MT} takes small adds and stacks on boss once pulled into group.`,
       ]
     },
     builds: {
@@ -229,56 +233,77 @@ const FIGHTS = new Map([
     shortName: "Reef",
     icon: "🪸",
     strategy: {
-      summary: "Multi-phase fight with coral constructs that replicate into smaller copies. Large splits at 99% and 80%, Medium splits at 80%. Reef Hearts must be destroyed in portals or the guardian enrages and wipes the group.",
       details: [
-        "Before fight: All DDs except Reef Group 1 and DPS8 go downstairs to Chalice.",
+        "This is a pretty complicated fight. Please make sure you understand the mechanics and the flow.",
         "Reef Guardians never lose taunt — they always follow the last person who taunted them.",
-        "Both Mediums + Small #1 should be out by end of Chalice. Small #2 spawns near Crossbones→Skull transition.",
-        "Every time a reef clears, a bear, a cat, and a mage spawns. MT should grab all of them. If he struggles, H2 can take mage for Chalice, Crossbones, and Skull."
+        `${ASSIGNMENT_ID.REEF_MT_TANK} ults whenever he needs.`,
       ],
       phases: [
         {
-          name: "Chalice (Start)",
+          name: "Before Pull",
+          details: [
+            `${ASSIGNMENT_ID.DPS} that are NOT ${ASSIGNMENT_ID.REEF_GROUP_1} and ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} go downstairs to Chalice.`,
+          ]
+        },
+        {
+          name: "Chalice - Start",
           details: [
             "Everyone hold ult.",
-            "MT taunts Large Guardian. OT taunts Medium #1 when Large splits at 99%. OT ults whenever.",
-            "Downstairs DDs kill heart at Chalice and come up.",
-            "Upstairs DDs burn Medium #1 and any Smalls that spawn.",
-            "MT takes bear, mage, and cats when Chalice clears. The large guardian will not need re-taunt",
+            `${ASSIGNMENT_ID.REEF_OT_TANK} taunts Large Reef Guardian. ${ASSIGNMENT_ID.REEF_MT_TANK} taunts Medium #1 when Large splits at 99% and stacks it onto the Large that is channelling.`,
+            `Downstairs ${ASSIGNMENT_ID.DPS} kill heart at Chalice and come up.`,
+            `Upstairs ${ASSIGNMENT_ID.DPS} burn Medium #1 and any Small #1 that spawn. Note: ${ASSIGNMENT_ID.REEF_MT_TANK} should take run to Crossbones (right side) when Small #1 gets close to 85% or when Chalice mage is dead`,
+            `${ASSIGNMENT_ID.REEF_OT_TANK} takes bear, mage, and cats when Chalice clears. The large guardian will not need re-taunt and it will stand for a little while`,
             "Slayer ult: DDs + MT → H1 Naz → H2 PP."
           ]
         },
         {
           name: "Crossbones",
           details: [
-            "MT takes Large Guardian (no re-taunt needed) and puts it on left side of the reef.",
-            "OT stacks all Small and Medium on right side.",
-            "Upstairs DDs parse Large Guardian on left side ONLY. Right side does NOT get burned to avoid pushing reef spawns. No ults.",
-            "When Crossbones heart is at 40%: Reef Group 1 informs group. OT takes Large Guardian into right stack. Upstairs DDs lay DoTs on right side.",
-            "When Crossbones heart clears: DPS8 comes up. MT takes mage, bear, and cat. Reef Group 1 proceeds to Skull.",
-            "Ult dump when mage is into group: DDs and MT ult → H1 Naz → H2 PP."
+            `${ASSIGNMENT_ID.REEF_OT_TANK} takes Large Guardian (no re-taunt needed) and puts it on left side of the reef.`,
+            `${ASSIGNMENT_ID.REEF_MT_TANK} stacks all Small and Medium on right side.`,
+            `Upstairs ${ASSIGNMENT_ID.DPS} parse Large Guardian on left side ONLY. Right side does NOT get burned to avoid pushing reef spawns. No ults.`,
+            `When Crossbones heart is at 40%:  informs group. ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} takes Large Guardian into right stack. Upstairs ${ASSIGNMENT_ID.DPS} lay DoTs on right side.`,
+            `When Crossbones heart clears: ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} comes up. ${ASSIGNMENT_ID.REEF_OT_TANK} takes mage, bear, and cat. ${ASSIGNMENT_ID.REEF_GROUP_1} proceeds to Skull.`,
+            `Ult dump when mage is into group: ${ASSIGNMENT_ID.DPS} and ${ASSIGNMENT_ID.REEF_OT_TANK} ult → ${ASSIGNMENT_ID.H1} Naz → ${ASSIGNMENT_ID.H2} PP.`
           ]
         },
         {
           name: "General Pattern (After Crossbones)",
           details: [
-            "Upstairs DD stays at a reef until its mage spawns and is killed (removes need for OOT), then goes clockwise to next reef.",
-            "OT stacks reef guardians on right side of a reef. Ults whenever.",
-            "MT watches for adds whenever a reef clears. Grab bears, mage, and cats immediately. Rubberbands mage into group.",
-            "H1 focuses group and MT. H2 pocket heals OT.",
-            "Slayer and PP called by MT and H2. Timing: when enemies are stacked, not while running.",
-            "Criteria to move to next reef: (1) 2 active channels in reefs after current one, OR (2) mage of current reef is dead. OT and RL decide.",
+            `Upstairs ${ASSIGNMENT_ID.DPS} stays at a reef until its mage spawns and is killed (removes need for OOT), then goes clockwise to next reef.`,
+            `${ASSIGNMENT_ID.REEF_OT_TANK} stacks reef guardians on right side of a reef. Ults whenever.`,
+            `${ASSIGNMENT_ID.REEF_OT_TANK} watches for adds whenever a reef clears. Grab bears, mage, and cats immediately. Rubberbands mage into group.`,
+            `${ASSIGNMENT_ID.REEF_MT_HEALER} focuses group and ${ASSIGNMENT_ID.REEF_OT_TANK}. ${ASSIGNMENT_ID.REEF_MT_HEALER} pocket heals ${ASSIGNMENT_ID.REEF_MT_TANK}.`,
+            `Slayer and PP called by ${ASSIGNMENT_ID.REEF_LEFT_SLAYER_PROVIDER} and ${ASSIGNMENT_ID.REEF_RIGHT_SLAYER_PROVIDER}. Timing: when enemies are stacked, not while running.`,
+            `Criteria to move to next reef: (1) 2 active channels in reefs after current one, OR (2) mage of current reef is dead. ${ASSIGNMENT_ID.REEF_MT_TANK} and RL decide.`,
             "The idea: Each Reef Group does 2 hearts in sequence instead of 1."
           ]
         },
         {
           name: "Backward Reefs",
           details: [
-            "If a boss goes counter-clockwise to channel (e.g. Crossbones→Crown), it's a 'backwards' reef.",
-            "Reef backup DDs go down immediately to kill the heart.",
-            "MT must watch for mage and animals spawned far away after a backwards reef clears."
+            "If a boss goes counter-clockwise to channel (e.g. Crossbones→Crown), it's a 'backwards' reef. This usually happens when Medium #2 and Small #1 both run to channel at around the same time.",
+            `${ASSIGNMENT_ID.REEF_BACKUP} go down immediately to kill the heart. Note: Check your parasite cooldown if you are ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES}.`,
+            `${ASSIGNMENT_ID.REEF_OT_TANK} must watch for mage and animals spawned far away after a backwards reef clears.`
           ]
-        }
+        },
+                {
+          name: "General flow of the fight",
+          details: [
+            `There are 5 reef guardians in total: Large, Medium #1, Small #1, Medium #2, and Small #2. They spawn in that order. Large splits to Medium #1 and Medium #2 at 99% (start of fight) and 80% respectively. Medium #1 and Medium #2 will each split into Small #1 and Small #2 at 80%.`,
+            `Reef guardians will run to a reef to channel over the course of the fight. They always run to the unoccupied reef closest to them. They will run at some health thresholds and on some unspecified timer. What's known is that the Medium's run at 75% and Small's run at 80%. They can also run as low as 30s seconds after they spawn even if they are still above 80% health.`,
+            `A major part of the fight is controlling when and where the reef guardians channels. This is done by holding damage on some reef guardians at certain time points and to re-position the group periodically to force the reef guardians to channel at the reefs we wanted.`,
+            `The group will always be positioned at the earliest channeling reef until that reef clears and the mage is dead.`,
+            `The group starts at Chalice because that is where Large will channel immediately.`,
+            `The expected order of Reefs should be clockwised as followed: Chalice (Large) → Crossbones (Medium #1) → Skull (Small #1) → Anchor (Medium #2) → Wheel (Small #2).`,
+            `Crossbones is the critical part of the fight. The group needs to ensure Small #1 gets pushed to Skull shortly after Crossbone clears. Afterwards, the group must quickly go to Skull and push Medium #2 to Anchor.`,
+            `The key part of this fight is to make sure Small #1 and Medium #2 do not both run to channel before transition to Skull. The fight can be come very bad if one of the two runs backwards to Chalice or Crown.`,
+            `There are two factors that can be used (1) Pushing Small #1 to channel appears to delay Medium #2's own channel and (2) delaying Medium #2's spawn from Large until Chalice clears will also buy the group time to reposition to Skull before Medium #2 channels.`,
+            `High damage groups: They usually have Small #1 and Medium #2 pushed out when Chalice mage is dead. They should try to kill Large at Crossbones and Medium at Skull`,
+            `Lower damage groups: They usually only have Small #1 pushed out when Chalice mage is dead. They should stop burning Large when mage is dead and push Small #1 at Crossbones. Then push out Medium #2 at Skull and try to kill Large and Medium #1 at either Skull or Anchor.`
+
+          ]
+        },
       ]
     },
     builds: {
@@ -330,7 +355,6 @@ const FIGHTS = new Map([
     shortName: "Taleria",
     icon: "🌊",
     strategy: {
-      summary: "Final boss. Heavy movement fight with Winter Storm walls, Rapid Deluge water-dip mechanic, Sea Behemoths, Sirens, and bridge portals with coloured dome debuffs. Group can skip last bridge with enough DPS.",
       details: [
         "Drop DoTs on Taleria as she spawns.",
         "Ult dump: DDs → OT (front) and H2 (back) proc Slayer + PP.",
@@ -340,30 +364,30 @@ const FIGHTS = new Map([
         {
           name: "While Not in Winter Storm",
           details: [
-            "OT kites slam slightly out of stack — everyone get out of slam.",
-            "Waves: If certain OT's wave is not on you, keep parsing. Otherwise, roll dodge.",
-            "Maelstrom: Keep parsing until addon tells you to roll-dodge, then always roll-dodge.",
-            "Matrons: If in range, DoT or beam matrons. Don't chase far ones."
+            ` kites slam slightly out of stack but everyone should watch and out of slams.`,
+            `Waves: If you are VERY certain ${ASSIGNMENT_ID.TALERIA_OT_TANK}'s wave is not on you, keep parsing. Otherwise, roll dodge.`,
+            "Maelstrom: Keep parsing until addon tells you to roll-dodge, then roll-dodge.",
+            `Matrons: ${ASSIGNMENT_ID.DPS} will kill them if in range, DoT or beam matrons. Don't chase far ones. ${ASSIGNMENT_ID.TALERIA_OT_TANK} will taunt them.`
           ]
         },
         {
           name: "Winter Storm",
           details: [
-            "Group leads MT before Maelstrom (so MT doesn't move during Maelstrom). MT leads after Maelstrom (to get space).",
-            "If Winter Storm spawns at MT's side, MT and group roll through each other so group leads.",
+            `Group leads ${ASSIGNMENT_ID.TALERIA_MT_TANK} before Maelstrom (so ${ASSIGNMENT_ID.TALERIA_MT_TANK} doesn't move during Maelstrom). ${ASSIGNMENT_ID.TALERIA_MT_TANK} leads after Maelstrom (to get space).`,
+            `If Winter Storm spawns at ${ASSIGNMENT_ID.TALERIA_MT_TANK}'s side, ${ASSIGNMENT_ID.TALERIA_MT_TANK} and group roll through each other so group leads.`,
             "Maelstrom usually happens once at 4-5 clock units from origin. Stack tight. Ult-dump sequence usually happens at this Maelstrom.",
-            "While running: Stay well ahead while parsing Taleria. H2 provides Major and Minor Expedition.",
-            "Matrons: OT Ele Sus, DDs put DoTs and beam backwards from Taleria to kill."
+            `While running: Stay well ahead while parsing Taleria. ${ASSIGNMENT_ID.H2} provides Major and Minor Expedition.`,
+            `Matrons: ${ASSIGNMENT_ID.TALERIA_OT_TANK} Ele Sus, DDs put DoTs and beam backwards from Taleria to kill.`
           ]
         },
         {
           name: "First Bridge Spawns",
           details: [
             "Watch Maelstrom timer. If within 10 seconds: stay for Maelstrom first.",
-            "Bridge DDs go to their bridge (roll dodge through MT if needed to avoid cleave).",
+            `${ASSIGNMENT_ID.BRIDGE_DDS} go to their bridge (roll dodge through ${ASSIGNMENT_ID.TALERIA_MT_TANK} if needed to avoid cleave).`,
             "Group moves to dome next to bridge (coloured icon on map).",
-            "Unless dome is very close, MT always leads group to dome destination to ensure everyone goes same direction and MT gets heals.",
-            "Everyone but MT hold ults."
+            `Unless dome is very close (e.g. Yellow being first birdge), ${ASSIGNMENT_ID.TALERIA_MT_TANK} always leads group to dome destination to ensure everyone goes same direction and ${ASSIGNMENT_ID.TALERIA_MT_TANK} gets heals.`,
+            `Everyone but ${ASSIGNMENT_ID.TALERIA_MT_TANK} hold ults.`
           ]
         },
         {
@@ -371,16 +395,16 @@ const FIGHTS = new Map([
           details: [
             "Drains resources and ult. Drop any ult ASAP.",
             "Watch resources (especially stamina). HA/potion/siphoning attacks for stam for RD/break free.",
-            "Healers can forget PoE uptimes to play safe.",
-            "Risk: Healers running out of mag and people dying to Siren lures."
+            `${ASSIGNMENT_ID.HEALERS} can forget PoE uptimes to play safe.`,
+            `Risk: ${ASSIGNMENT_ID.HEALERS} running out of mag and people dying to Siren lures.`
           ]
         },
         {
           name: "Purple Dome (Heal Debuff)",
           details: [
-            "Heal debuff active. Healers and MT be extra careful with health.",
+            `Heal debuff active. ${ASSIGNMENT_ID.HEALERS} and ${ASSIGNMENT_ID.TALERIA_MT_TANK} be extra careful with health.`,
             "Maelstrom + purple mage can be deadly. Healers may alternate Barriers on Maelstrom.",
-            "Don't be near the purple mage."
+            `Don't be near the purple mage.`
           ]
         },
         {
@@ -392,10 +416,10 @@ const FIGHTS = new Map([
         {
           name: "Bridge Clears",
           details: [
-            "OT gets mage and stacks on Taleria.",
+            `${ASSIGNMENT_ID.TALERIA_MT_TANK} gets mage and stacks on Taleria.`,
             "After mage dies, group gets out of dome to clear debuff.",
             "If second bridge already spawned, use movement heuristic (Maelstrom timer, destination).",
-            "If not yet spawned, MT moves over a bit to let group exit dome."
+            `If not yet spawned, ${ASSIGNMENT_ID.TALERIA_MT_TANK} moves over a bit to let group exit dome.`
           ]
         },
         {
@@ -403,8 +427,13 @@ const FIGHTS = new Map([
           details: [
             "Group should always skip last bridge unless doing Full Tour Achievement.",
             "Skipped bridges apply their debuff until Taleria dies — be mindful.",
-            "Skipping 2 bridges (unlikely): Requires ~1.06M group DPS (avg 132.5K per DD). Group holds ult, stops FOO/DoTs at 41%, stops damage at 38%.",
-            "OT takes mage out of group until group burns Taleria.",
+          ]
+        },
+        {
+          name: "Execute (Skip 2 Bridges) - We probably won't do this",
+          details: [
+            "Skipping 2 bridges requires ~1.06M group DPS (avg 132.5K per DD). Group holds ult, stops FOO/DoTs at 41%, stops damage at 38%.",
+            `${ASSIGNMENT_ID.OT} takes mage out of group and ${ASSIGNMENT_ID.DPS} kill the mage without cleaving Taleria.`,
             "Burn when: Bridge clears AND either Winter Storm or Maelstrom happens.",
             "Trick: Wait for Winter Storm before pushing Bridge 1 to extend time before next Winter Storm."
           ]
