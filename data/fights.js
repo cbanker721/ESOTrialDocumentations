@@ -265,7 +265,8 @@ const FIGHTS = new Map([
             `Upstairs ${ASSIGNMENT_ID.DPS} parse ${NPC_ID.REEF_GUARDIAN_LARGE} on left side ONLY. Right side does NOT get burned to avoid pushing reef spawns. No ults.`,
             `When ${LOCATION_ID.REEF_CROSSBONES} heart is at 40%:  informs group. ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} takes ${NPC_ID.REEF_GUARDIAN_LARGE} into right stack. Upstairs ${ASSIGNMENT_ID.DPS} lay DoTs on right side.`,
             `When ${LOCATION_ID.REEF_CROSSBONES} heart clears: ${ASSIGNMENT_ID.REEF_FIRST_CROSSBONES} comes up. ${ASSIGNMENT_ID.REEF_OT_TANK} takes ${NPC_ID.REEF_GUARDIAN_MAGE}, ${NPC_ID.REEF_GUARDIAN_BEAR}, and ${NPC_ID.REEF_GUARDIAN_CAT}. ${ASSIGNMENT_ID.REEF_GROUP_1} proceeds to ${LOCATION_ID.REEF_SKULL}.`,
-            `Ult dump when ${NPC_ID.REEF_GUARDIAN_MAGE} is into group: ${ASSIGNMENT_ID.DPS} and ${ASSIGNMENT_ID.REEF_OT_TANK} ult → ${MAIN_ROLE_ID.H1} Naz → ${MAIN_ROLE_ID.H2} PP.`
+            `Ult dump when ${NPC_ID.REEF_GUARDIAN_MAGE} is into group: ${ASSIGNMENT_ID.DPS} and ${ASSIGNMENT_ID.REEF_OT_TANK} ult → ${MAIN_ROLE_ID.H1} Naz → ${MAIN_ROLE_ID.H2} PP.`,
+            `${ASSIGNMENT_ID.REEF_MT_TANK} move to ${LOCATION_ID.REEF_SKULL} (right side) when ${NPC_ID.REEF_GUARDIAN_SMALL_2} gets close to 85% or when ${LOCATION_ID.REEF_CROSSBONES} mage is dead`,
           ]
         },
         {

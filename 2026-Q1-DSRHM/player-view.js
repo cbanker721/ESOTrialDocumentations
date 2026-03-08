@@ -10,6 +10,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHeader(playerId);
     const assignmentRenderer = new AssignmentRenderer();
     renderContent(playerId, assignmentRenderer);
+
+    // Inject dynamic style to highlight the current player's pill
+    const highlightStyle = document.createElement('style');
+    highlightStyle.innerHTML = `
+      .owner-pill[data-owner-id="${playerId}"] {
+        background-color: var(--accent);
+        color: var(--bg-main);
+        border-color: var(--accent);
+      }
+    `;
+    document.head.appendChild(highlightStyle);
   }
 });
 
@@ -17,6 +28,13 @@ function getRole(id) {
   if (id.startsWith('H')) return 'Healer';
   if (id === 'MT' || id === 'OT') return 'Tank';
   return 'DPS';
+}
+
+function getRoleClass(id) {
+  if (id.startsWith('H')) return 'role-healer';
+  if (id === 'MT' || id === 'OT') return 'role-tank';
+  if (id.startsWith('DPS')) return 'role-dps';
+  return '';
 }
 
 function populateDropdown(currentId) {
@@ -37,15 +55,17 @@ function populateDropdown(currentId) {
     opt.value = id;
     
     let icon = '';
-    const role = getRole(id);
-    if (role === 'Tank') icon = '🛡️ ';
-    else if (role === 'Healer') icon = '⚕️ ';
-    else icon = '⚔️ ';
+    const roleClass = getRoleClass(id);
+    if (roleClass === 'role-tank') icon = '🛡️ ';
+    else if (roleClass === 'role-healer') icon = '⚕️ ';
+    else if (roleClass === 'role-dps') icon = '⚔️ ';
+
     var tag_render = "";
     if (PLAYERS[id].tag) {
       tag_render = ` [${PLAYERS[id].tag}]`;
     }
     opt.textContent = `${icon}${PLAYERS[id].shortName}${tag_render}`;
+    if (roleClass) opt.classList.add(roleClass);
     selector.appendChild(opt);
   });
 
@@ -99,7 +119,7 @@ function renderContent(id, assignmentRenderer) {
         <div style="margin-bottom:0.25rem;"><strong>Sets:</strong> ${sets}</div>
         <div style="margin-bottom:0.25rem;"><strong>Ult:</strong> <span class="ult-pill">${build.ult}</span></div>
         ${misc ? `<div style="margin-bottom:0.25rem;"><strong>Misc:</strong> ${misc}</div>` : ''}
-        ${build.notes ? `<div style="font-style:italic;color:var(--text-muted);margin-top:0.25rem;">📝 ${build.notes}</div>` : ''}
+        ${build.notes ? `<div style="font-style:italic;color:var(--text-muted);margin-top:0.25rem;">📝 ${resolvePlayerNameAsPill(build.notes)}</div>` : ''}
       `;
     }
 
@@ -125,7 +145,7 @@ function renderContent(id, assignmentRenderer) {
 
     card.innerHTML = `
       <div class="personal-fight-header">
-        <span style="font-size:1.5rem">${fight.icon}</span>
+        <span style="font-size:1.25rem">${fight.icon}</span>
         <h2>${fight.name}</h2>
       </div>
       <div class="personal-fight-body">
@@ -147,7 +167,7 @@ function renderContent(id, assignmentRenderer) {
 
           <div class="personal-section">
             <h3>⚙️ Strategy Notes</h3>
-            ${mentions.length ? `<ul class="personal-list">${mentions.map(m => `<li>${highlightId(m, id)}</li>`).join('')}</ul>` : '<p style="color:var(--text-muted)">No specific mentions.</p>'}
+            ${mentions.length ? `<ul class="personal-list">${mentions.map(m => `<li>${resolvePlayerNameAsPill(m)}</li>`).join('')}</ul>` : '<p style="color:var(--text-muted)">No specific mentions.</p>'}
           </div>
 
         </div>
@@ -157,45 +177,6 @@ function renderContent(id, assignmentRenderer) {
   });
 }
 
-function extractAssignments(assignmentIds, playerId,  visited = new Set()) {
-  if (!assignmentIds || !Array.isArray(assignmentIds)) return;
-  
-  assignmentIds.forEach(assignId => {
-    if (visited.has(assignId)) return;
-
-    const def = ASSIGNMENTS.get(assignId);
-    if (!def) return;
-
-    // Only add the assignment to the results if the player is directly part of it
-    if (def.role_ids && def.role_ids.includes(playerId)) {
-      results.push(`<strong>${def.name}:</strong> ${def.instructions}`);
-      // Mark as visited only after adding, so parent and child can both be added if player is in both
-      visited.add(assignId); 
-    }
-
-    // If the current assignment is a parent, recurse into its children
-    // to find more specific roles for the player.
-    if (def.assignment_ids) {
-      extractAssignments(def.assignment_ids, playerId, results, visited);
-    }
-  });
-}
-
 function findMentions(lines, id) {
   return lines.filter(line => line.includes(id));
 }
-
-function formatKey(key) {
-  // camelCase to Title Case
-  return key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-}
-
-function highlightId(text, id) {
-  // Simple highlight of the ID
-  return text.replace(new RegExp(id, 'g'), `<span class="highlight-me">${id}</span>`);
-}
-
-
-
-// Re-using pill styles from main css, but ensuring they work here
-const playerViewPillStyle = document.createElement('style');

@@ -433,7 +433,7 @@ const ASSIGNMENTS = new Map([
     ],
     fights: [FIGHT_ID.MINIS],
     description: "Overall lever assignments.",
-    instructions: `Group of players responsible for pulling ${LOCATION_ID.TRASH_LEVER}s during trash pulls before ${NPC_ID.SAIL_RIPPER} & ${NPC_ID.BOW_BREAKER}. See maps below.`,
+    instructions: `Group of players responsible for pulling levers during trash pulls before ${NPC_ID.SAIL_RIPPER} & ${NPC_ID.BOW_BREAKER}. See maps below.`,
     render_option: RENDER_OPTION.RENDER_ROLE
   }],
   [ASSIGNMENT_ID.LEVER_MIDDLE, {
