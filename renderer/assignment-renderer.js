@@ -63,7 +63,7 @@ class AssignmentRenderer {
         if (!isSpecialParent || !playerInChildren) {
             let content = `<strong>${def.name}</strong>`;
             if (def.instructions) {
-                content += `: ${resolvePlayerName(def.instructions)}`;
+                content += `: ${resolvePlayerNameAsPill(def.instructions)}`;
             }
             results.push(`<li>${content}</li>`);
         }
@@ -103,7 +103,7 @@ class AssignmentRenderer {
       <div class="assignment-card">
         <h4 title="${def.description || ''}">${def.name}</h4>
         ${ownersHtml ? `<div class="assignment-owners">${ownersHtml}</div>` : ''}
-        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
+        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerNameAsPill(def.instructions)}</p>` : ''}
         ${childrenHtml}
       </div>
     `;
@@ -169,7 +169,7 @@ class AssignmentRenderer {
       return `
         <div class="assignment-card special-slayer-card">
           <h4 title="${def.description || ''}">${def.name}</h4>
-          ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
+          ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerNameAsPill(def.instructions)}</p>` : ''}
           <div class="slayer-grid">
             <div class="slayer-col">
               <h5>${leftLabel} Provider</h5>
@@ -215,7 +215,7 @@ class AssignmentRenderer {
     return `
       <div class="assignment-card special-teleport-card">
         <h4 title="${def.description || ''}">${def.name}</h4>
-        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
+        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerNameAsPill(def.instructions)}</p>` : ''}
 
         <div class="teleport-grid">
           <div class="teleport-quadrant">
@@ -337,7 +337,7 @@ class AssignmentRenderer {
     return `
       <div class="assignment-card special-levers-card">
         <h4 title="${def.description || ''}">${def.name}</h4>
-        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerName(def.instructions)}</p>` : ''}
+        ${def.instructions ? `<p class="assignment-instructions">${resolvePlayerNameAsPill(def.instructions)}</p>` : ''}
         
         <div class="levers-container">
           ${this.renderLeverSide(lightning, 'bird-lever.png')}
@@ -504,15 +504,51 @@ function resolvePlayerNameAsPill(text) {
   let placeholderIndex = 0;
   const getPlaceholder = () => `__TOKEN_${placeholderIndex++}__`;
 
-  const ids = Object.keys(PLAYERS).sort((a, b) => b.length - a.length);
-  ids.forEach(id => {
-    const regex = new RegExp(`\\b${id}\\b`, 'g');
-    if (regex.test(result)) {
-      const token = getPlaceholder();
-      replacements.set(token, createOwnerPillHtml(id));
-      result = result.replace(regex, token);
-    }
-  });
+  // Resolve Locations
+  if (typeof LOCATION_ID !== 'undefined' && typeof LOCATION_DEFINITIONS !== 'undefined') {
+    const locIds = Object.values(LOCATION_ID).sort((a, b) => b.length - a.length);
+    locIds.forEach(id => {
+      const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b${escapedId}\\b`, 'g');
+      if (regex.test(result)) {
+        const def = LOCATION_DEFINITIONS.get(id);
+        if (def) {
+          let styleAttr = '';
+          if (def.color) {
+            styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
+          }
+          const replacementHtml = `<span class="location-pill"${styleAttr}>${def.icon} ${def.name}</span>`;
+          
+          const token = getPlaceholder();
+          replacements.set(token, replacementHtml);
+          result = result.replace(regex, token);
+        }
+      }
+    });
+  }
+
+  // Resolve NPCs
+  if (typeof NPC_ID !== 'undefined' && typeof NPC_DEFINITIONS !== 'undefined') {
+    const npcIds = Object.values(NPC_ID).sort((a, b) => b.length - a.length);
+    npcIds.forEach(id => {
+      const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const regex = new RegExp(`\\b${escapedId}\\b`, 'g');
+      if (regex.test(result)) {
+        const def = NPC_DEFINITIONS.get(id);
+        if (def) {
+          let styleAttr = '';
+          if (def.color) {
+            styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
+          }
+          const replacementHtml = `<span class="npc-pill"${styleAttr}>${def.icon} ${def.name}</span>`;
+          
+          const token = getPlaceholder();
+          replacements.set(token, replacementHtml);
+          result = result.replace(regex, token);
+        }
+      }
+    });
+  }
 
   // Resolve Assignments
   if (typeof ASSIGNMENT_ID !== 'undefined' && typeof ASSIGNMENTS !== 'undefined') {
@@ -544,28 +580,16 @@ function resolvePlayerNameAsPill(text) {
     });
   }
 
-  // Resolve NPCs
-  if (typeof NPC_ID !== 'undefined' && typeof NPC_DEFINITIONS !== 'undefined') {
-    const npcIds = Object.values(NPC_ID).sort((a, b) => b.length - a.length);
-    npcIds.forEach(id => {
-      const escapedId = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      const regex = new RegExp(`\\b${escapedId}\\b`, 'g');
-      if (regex.test(result)) {
-        const def = NPC_DEFINITIONS.get(id);
-        if (def) {
-          let styleAttr = '';
-          if (def.color) {
-            styleAttr = ` style="color:${def.color}; border-color:${def.color};"`;
-          }
-          const replacementHtml = `<span class="npc-pill"${styleAttr}>${def.icon} ${def.name}</span>`;
-          
-          const token = getPlaceholder();
-          replacements.set(token, replacementHtml);
-          result = result.replace(regex, token);
-        }
-      }
-    });
-  }
+  // Resolve Players (Last, to avoid breaking IDs that contain player names like 'twins-mt-tank')
+  const ids = Object.keys(PLAYERS).sort((a, b) => b.length - a.length);
+  ids.forEach(id => {
+    const regex = new RegExp(`\\b${id}\\b`, 'g');
+    if (regex.test(result)) {
+      const token = getPlaceholder();
+      replacements.set(token, createOwnerPillHtml(id));
+      result = result.replace(regex, token);
+    }
+  });
 
   // Restore Tokens
   replacements.forEach((html, token) => {

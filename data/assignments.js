@@ -178,7 +178,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.REEF],
     description: "General DPS responsibilities for Reef Guardian.",
-    instructions: `Soft stack at lightning and do not overlap with people when in lightning. Roll-dodge/walk out of poison AoE. At chalice, burn both ${NPC_ID.REEF_GUARDIAN_LARGE} and ${NPC_ID.REEF_GUARDIAN_MEDIUM_1}. At crossbones, burn ${NPC_ID.REEF_GUARDIAN_LARGE} on left side and leave right side alone until it walks over. Ever after, burn every enemy.`
+    instructions: `Soft stack at lightning and do not overlap with people when in lightning. Roll-dodge/walk out of poison AoE. At ${LOCATION_ID.REEF_CHALICE}, burn both ${NPC_ID.REEF_GUARDIAN_LARGE} and ${NPC_ID.REEF_GUARDIAN_MEDIUM_1}. At ${LOCATION_ID.REEF_CROSSBONES}, burn ${NPC_ID.REEF_GUARDIAN_LARGE} on left side and leave right side alone until it walks over. Ever after, burn every enemy.`
   }],
   [ASSIGNMENT_ID.REEF_HEALER_GENERAL, {
     id: ASSIGNMENT_ID.REEF_HEALER_GENERAL,
@@ -433,7 +433,7 @@ const ASSIGNMENTS = new Map([
     ],
     fights: [FIGHT_ID.MINIS],
     description: "Overall lever assignments.",
-    instructions: "Group of players responsible for pulling levers during trash pulls before Sail Ripper & Bow Breaker. See maps below.",
+    instructions: `Group of players responsible for pulling ${LOCATION_ID.TRASH_LEVER}s during trash pulls before ${NPC_ID.SAIL_RIPPER} & ${NPC_ID.BOW_BREAKER}. See maps below.`,
     render_option: RENDER_OPTION.RENDER_ROLE
   }],
   [ASSIGNMENT_ID.LEVER_MIDDLE, {
@@ -442,7 +442,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.MINIS],
     description: "Middle Lever.",
-    instructions: "Pulls lever that's not the cloest or furthest. Race Against Time as needed."
+    instructions: `Pulls ${LOCATION_ID.TRASH_LEVER} that's not the cloest or furthest. Race Against Time as needed.`
   }],
   [ASSIGNMENT_ID.LEVER_CLOSE, {
     id: ASSIGNMENT_ID.LEVER_CLOSE,
@@ -450,7 +450,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.H2],
     fights: [FIGHT_ID.MINIS],
     description: "Close Lever.",
-    instructions: "Pulls lever closest to exit. Hotkey gear swaps."
+    instructions: `Pulls ${LOCATION_ID.TRASH_LEVER} closest to exit. Hotkey gear swaps.`
   }],
   [ASSIGNMENT_ID.LEVER_FAR, {
     id: ASSIGNMENT_ID.LEVER_FAR,
@@ -458,7 +458,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS7],
     fights: [FIGHT_ID.MINIS],
     description: "Far Lever.",
-    instructions: "Pulls lever furthest from exit. Does the countdown for levers. Use Streak for parkour. Hotkey gear swaps."
+    instructions: `Pulls ${LOCATION_ID.TRASH_LEVER} furthest from exit. Does the countdown for ${LOCATION_ID.TRASH_LEVER}s. Use Streak for parkour. Hotkey gear swaps.`
   }],
   [ASSIGNMENT_ID.LEVERS_LIGHTNING, {
     id: ASSIGNMENT_ID.LEVERS_LIGHTNING,
@@ -575,7 +575,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS4],
     fights: [FIGHT_ID.REEF],
     description: "Portal Group 1.",
-    instructions: "Reefs: 2,3 (Crossbones/Skull) -> 6,7 (Crown/Chalice) -> 10,11 (Anchor/Wheel)."
+    instructions: `Reefs: 2,3 (${LOCATION_ID.REEF_CROSSBONES}/${LOCATION_ID.REEF_SKULL}) -> 6,7 (${LOCATION_ID.REEF_CROWN}/${LOCATION_ID.REEF_CHALICE}) -> 10,11 (${LOCATION_ID.REEF_ANCHOR}/${LOCATION_ID.REEF_WHEEL}).`
   }],
   [ASSIGNMENT_ID.REEF_GROUP_2, {
     id: ASSIGNMENT_ID.REEF_GROUP_2,
@@ -583,7 +583,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
     fights: [FIGHT_ID.REEF],
     description: "Portal Group 2.",
-    instructions: "Reefs: 4,5 (Anchor/Wheel) -> 8,9 (Crossbones/Skull) -> 12,13 (Crown/Chalice)."
+    instructions: `Reefs: 4,5 (${LOCATION_ID.REEF_ANCHOR}/${LOCATION_ID.REEF_WHEEL}) -> 8,9 (${LOCATION_ID.REEF_CROSSBONES}/${LOCATION_ID.REEF_SKULL}) -> 12,13 (${LOCATION_ID.REEF_CROWN}/${LOCATION_ID.REEF_CHALICE}).`
   }],
   [ASSIGNMENT_ID.REEF_BACKUP, {
     id: ASSIGNMENT_ID.REEF_BACKUP,
@@ -599,7 +599,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS5],
     fights: [FIGHT_ID.REEF],
     description: "First Crossbones.",
-    instructions: "Help clear first Crossbones to speed up mage spawn."
+    instructions: `Help clear first ${LOCATION_ID.REEF_CROSSBONES} to speed up mage spawn.`
   }],
   [ASSIGNMENT_ID.REEF_GROUPS, {
     id: ASSIGNMENT_ID.REEF_GROUPS,
@@ -666,7 +666,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
     fights: [FIGHT_ID.TALERIA],
     description: "Bridge DPS.",
-    instructions: "Go to bridge. Roll dodge through MT if needed. Slot self-heal/shield."
+    instructions: `Go to ${LOCATION_ID.TALERIA_BRIDGE}. Roll dodge through MT if needed. Slot self-heal/shield.`
   }],
   [ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP, {
     id: ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP,
