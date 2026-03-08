@@ -294,12 +294,12 @@ const FIGHTS = new Map([
           details: [
             `<b>Reef Guardians:</b> Large splits at 99% & 80%. Mediums split at 80%. Total: 1 Large, 2 Mediums, 2 Smalls.`,
             `<b>Channeling Logic:</b> Guardians run to the closest <i>unoccupied</i> reef to channel.`,
-            `<b>The Core Problem:</b> We must prevent ${NPC_ID.REEF_GUARDIAN_SMALL_1} and ${NPC_ID.REEF_GUARDIAN_MEDIUM_2} from channeling at the same time.`,
+            `<b>Key Factor:</b> We must prevent ${NPC_ID.REEF_GUARDIAN_SMALL_1} and ${NPC_ID.REEF_GUARDIAN_MEDIUM_2} from channeling at the same time.`,
             `<b>Controlling ${NPC_ID.REEF_GUARDIAN_SMALL_1}:</b> It reliably runs to channel shortly after its health drops below 80%. We control its burn to time this.`,
             `<b>Controlling ${NPC_ID.REEF_GUARDIAN_MEDIUM_2}:</b> Its 80% health trigger is unreliable. It can also run on a timer (~30s). Pushing ${NPC_ID.REEF_GUARDIAN_SMALL_1} first seems to delay its run, which is the goal at ${LOCATION_ID.REEF_CROSSBONES}.`,
-            `<b>Kill Priority - (${NPC_ID.REEF_GUARDIAN_LARGE}):</b> Once it has spawned both Mediums, it is safe to burn and should kill before Anchor. If it hasn't spawned Medium #2, only burn after Small #1 is pushed.`,
-            `<b>Kill Priority - (${NPC_ID.REEF_GUARDIAN_MEDIUM_1}):</b> Safe to burn as soon as it finishes channeling at ${LOCATION_ID.REEF_CROSSBONES}. Should kill before Anchor.`,
-            `<b>Out of Scope (${NPC_ID.REEF_GUARDIAN_SMALL_2}):</b> Usually spawns during the transition to ${LOCATION_ID.REEF_SKULL}. We can push it below 80% at ${LOCATION_ID.REEF_ANCHOR}.`,           
+            `<b>Kill Priority - ${NPC_ID.REEF_GUARDIAN_LARGE}:</b> Once it has spawned both Mediums, it is safe to burn and should kill before Anchor. If it hasn't spawned Medium #2, only burn after Small #1 is pushed.`,
+            `<b>Kill Priority - ${NPC_ID.REEF_GUARDIAN_MEDIUM_1}:</b> Safe to burn as soon as it finishes channeling at ${LOCATION_ID.REEF_CROSSBONES}. Should kill before Anchor.`,
+            `<b>Out of Scope ${NPC_ID.REEF_GUARDIAN_SMALL_2}:</b> Usually spawns during the transition to ${LOCATION_ID.REEF_SKULL}. We can push it below 80% at ${LOCATION_ID.REEF_ANCHOR}.`,           
           ]
         }
       ],
