@@ -84,7 +84,7 @@ const FIGHTS = new Map([
           details: [
             `<b>Go to assigned domes.</b> Tip: Look at the orb beside you and take the dome of the <b>opposite</b> colour.`,
             `${MAIN_ROLE_ID.MT} helps interrupt with Crushing Shock.`,
-            `<b>Last Dome Holder:</b> Check for leftover right-colour atronachs. If any remain, wait for ${MAIN_ROLE_ID.MT} to stack them on you before dropping dome.`
+            `<b>Last Dome Holder:</b> Check for leftover right-colour atronachs. If any remain, run over to them and drop dome after they are dead.`
           ]
         },
         {
@@ -93,7 +93,7 @@ const FIGHTS = new Map([
             `<b>Large Side:</b> Start with Slayer. Ult order: ${ASSIGNMENT_ID.DPS} → ${ASSIGNMENT_ID.H1} Naz. Then ult on CD.`,
             `<b>Dome Swaps:</b> ${ASSIGNMENT_ID.TWINS_EXECUTE_DOME_HOLDERS} swap on jump/brands. ${MAIN_ROLE_ID.H1} stays outside for rescue.`,
             `<b>Small Side:</b> ${ASSIGNMENT_ID.H2} takes dome first. Pops PP on large side when free.`,
-            `<b>Tanks:</b> Stack puddles in L-shape along edges. Do not run into Brands during swaps. Take dogs with you on swap.`
+            `<b>Tanks:</b> ${ASSIGNMENT_ID.TANKS} stack puddles in L-shape along edges. Do not run into Brands during swaps. Take dogs with you on swap.`
           ]
         },
         {
@@ -371,19 +371,18 @@ const FIGHTS = new Map([
         {
           name: "Winter Storm",
           details: [
-            `<b>Movement:</b> Group leads ${ASSIGNMENT_ID.TALERIA_MT_TANK} before Maelstrom. ${ASSIGNMENT_ID.TALERIA_MT_TANK} leads after.`,
-            `<b>If Winterstorm Spawned on MT:</b> ${ASSIGNMENT_ID.TALERIA_MT_TANK} and group roll through each other so Group leads.`,
+            `<b>Movement:</b> If Winterstorm spawns on group side, group leads. Otherwise, ${ASSIGNMENT_ID.TALERIA_MT_TANK} leads. After Maelstrom, MT always leads.`,
             `<b>Maelstrom in Winterstorm:</b> Stacks tight. Ult-dump usually happens here.`,
-            `<b>Matrons:</b> ${ASSIGNMENT_ID.TALERIA_OT_TANK} aply Ele Sus. DDs beam backwards. They are priority targets.`
+            `<b>Matrons:</b> ${ASSIGNMENT_ID.TALERIA_OT_TANK} apply Ele Sus. DDs beam backwards. They are priority targets.`
           ]
         },
         {
           name: "First Bridge Spawns",
           details: [
             `<b>Maelstrom:</b> If Maelstrom < 10s, group stays put. ${ASSIGNMENT_ID.TALERIA_BRIDGE_DPS} use their discretion on when to go.`,
-            `<b>Bridge DDs:</b> Go to bridge if Maelstrom is not imminent. Roll dodge through MT if needed. Slot heals/shields`,
+            `<b>Bridge DDs:</b> Go to bridge if Maelstrom is not imminent. Roll dodge through Taleria tank if needed. Slot heals/shields`,
             `<b>Group:</b> Move to coloured dome icon. ${ASSIGNMENT_ID.TALERIA_MT_TANK} leads the way UNLESS it is YELLOW dome (which is just next to the group).`,
-            `<b>Ults:</b> Except MT and Bridge, hold ults unless green dome.`
+            `<b>Ults:</b> Group hold ult. Bridge and Taleria tank can ult as needed.`
           ]
         },
         {

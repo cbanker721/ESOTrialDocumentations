@@ -304,7 +304,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.TWINS],
     description: "Main Tank.",
-    instructions: `Take dome in initial dogs fight. Coordinate boss swaps. Stack same-colour ${NPC_ID.TWINS_DOGS} on ${NPC_ID.TWINS_BOSS}.`
+    instructions: `Take dome in initial dogs fight. Coordinate boss swaps. Stack same-colour atros on ${NPC_ID.TWINS_BOSS}. During execute, take ${NPC_ID.TWINS_DOGS} with you when you swap sides.`
   }],
   [ASSIGNMENT_ID.TWINS_OT_TANK, {
     id: ASSIGNMENT_ID.TWINS_OT_TANK,
@@ -312,7 +312,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TWINS],
     description: "Off Tank.",
-    instructions: `Stack wrong-colour ${NPC_ID.TWINS_DOGS} out of group (~1-2 o'clock outside dome). Use Magma Shell for execute phase.`
+    instructions: `Stack wrong-colour ${NPC_ID.TWINS_DOGS} out of group (~1-2 o'clock outside dome). Use Magma Shell for execute phase. Take ${NPC_ID.TWINS_DOGS} with you when you swap sides.`
   }],
   [ASSIGNMENT_ID.TWINS_MT_HEALER, {
     id: ASSIGNMENT_ID.TWINS_MT_HEALER,
@@ -483,10 +483,10 @@ const ASSIGNMENTS = new Map([
     id: ASSIGNMENT_ID.LEVERS_LIGHTNING_1,
     name: "Lightning 1",
     role_ids: [],
-    instructions: "Left: DPS7 | Right (Far): MT | Exit: H2",
+    instructions: "Left (Far): DPS7 | Right: MT | Exit: H2",
     custom_positions: [
-      { pos: "Left", player: MAIN_ROLE_ID.DPS7 },
-      { pos: "Right (Far)", player: MAIN_ROLE_ID.MT },
+      { pos: "Left (Far)", player: MAIN_ROLE_ID.DPS7 },
+      { pos: "Right", player: MAIN_ROLE_ID.MT },
       { pos: "Exit", player: MAIN_ROLE_ID.H2 }
     ]
   }],
@@ -612,18 +612,18 @@ const ASSIGNMENTS = new Map([
       ASSIGNMENT_ID.REEF_BACKUP
     ],
   }],
-  [ASSIGNMENT_ID.REEF_MT_TANK, {
-    id: ASSIGNMENT_ID.REEF_MT_TANK,
+  [ASSIGNMENT_ID.REEF_OT_TANK, {
+    id: ASSIGNMENT_ID.REEF_OT_TANK,
     name: "MT Tank",
-    role_ids: [MAIN_ROLE_ID.OT],
+    role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.REEF],
     description: "Main Tank.",
     instructions: `Taunt ${NPC_ID.REEF_GUARDIAN_LARGE}. Rubberband ${NPC_ID.REEF_GUARDIAN_MAGE} into group. Watch for ${NPC_ID.REEF_GUARDIAN_BEAR}/${NPC_ID.REEF_GUARDIAN_CAT}.`
   }],
-  [ASSIGNMENT_ID.REEF_OT_TANK, {
-    id: ASSIGNMENT_ID.REEF_OT_TANK,
+  [ASSIGNMENT_ID.REEF_MT_TANK, {
+    id: ASSIGNMENT_ID.REEF_MT_TANK,
     name: "OT Tank",
-    role_ids: [MAIN_ROLE_ID.MT],
+    role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.REEF],
     description: "Off Tank.",
     instructions: `Stack ${NPC_ID.REEF_GUARDIANS} on right side of reef. Dictate group stack position.`
@@ -666,7 +666,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
     fights: [FIGHT_ID.TALERIA],
     description: "Bridge DPS.",
-    instructions: `Go to ${LOCATION_ID.TALERIA_BRIDGE}. Roll dodge through MT if needed. Slot self-heal/shield.`
+    instructions: `Go to ${LOCATION_ID.TALERIA_BRIDGE}. Roll dodge through Taleria Tank if needed. Slot self-heal/shield.`
   }],
   [ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP, {
     id: ASSIGNMENT_ID.TALERIA_BRIDGE_BACKUP,
@@ -707,7 +707,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7, MAIN_ROLE_ID.DPS8, MAIN_ROLE_ID.H1, MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TALERIA],
     description: "Front Slayer group.",
-    instructions: "Group of players receiving front slayer buff, provided by H2."
+    instructions: "Group of players receiving front slayer buff."
   }],
   [ASSIGNMENT_ID.TALERIA_BACK_SLAYER_GROUP, {
     id: ASSIGNMENT_ID.TALERIA_BACK_SLAYER_GROUP,
@@ -715,7 +715,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.DPS1, MAIN_ROLE_ID.DPS2, MAIN_ROLE_ID.DPS3, MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.H2, MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.TALERIA],
     description: "Back Slayer group.",
-    instructions: "Group of players receiving back slayer buff, provided by OT."
+    instructions: "Group of players receiving back slayer buff"
   }],
   [ASSIGNMENT_ID.TALERIA_SLAYERS, {
     id: ASSIGNMENT_ID.TALERIA_SLAYERS,

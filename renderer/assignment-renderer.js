@@ -15,13 +15,22 @@ class AssignmentRenderer {
     }
 
     if (isPersonalView) {
-      const personalAssignments = [];
-      this._collectPersonalAssignments(assignmentIds, playerId, personalAssignments, new Set());
+      let html = '<ul class="personal-list">';
+      let hasContent = false;
       
-      if (!personalAssignments.length) {
+      assignmentIds.forEach(assignId => {
+        const nodeHtml = this.renderPersonalNode(assignId, playerId, false);
+        if (nodeHtml) {
+          html += nodeHtml;
+          hasContent = true;
+        }
+      });
+      html += '</ul>';
+
+      if (!hasContent) {
         return '';
       }
-      return `<ul class="personal-list">${personalAssignments.join('')}</ul>`;
+      return html;
 
     } else { // Main View
       let html = '<div class="assignments-block">';
@@ -39,41 +48,58 @@ class AssignmentRenderer {
   }
 
   /**
-   * [PRIVATE] Recursively collects personal assignments for a player.
+   * [PRIVATE] Renders a node for the personal view (filtered tree).
+   * Renders the node if the player is directly assigned OR if any descendants are assigned.
    */
-  _collectPersonalAssignments(assignmentIds, playerId, results, visited) {
-    if (!assignmentIds) return;
+  renderPersonalNode(assignmentId, playerId, isParentDirectlyAssigned = false) {
+    const def = ASSIGNMENTS.get(assignmentId);
+    if (!def) return '';
+
+    // Check direct assignment
+    let myCustomPos = null;
+    if (def.custom_positions) {
+      myCustomPos = def.custom_positions.find(p => p.player === playerId)?.pos;
+    }
     
-    assignmentIds.forEach(assignId => {
-      if (visited.has(assignId)) return;
-      visited.add(assignId);
+    const isDirectlyAssigned = (def.role_ids && def.role_ids.includes(playerId)) || (myCustomPos !== null);
 
-      const def = ASSIGNMENTS.get(assignId);
-      if (!def) return;
+    // Recurse children
+    let childrenHtml = '';
+    if (def.assignment_ids) {
+      childrenHtml = def.assignment_ids
+        .map(childId => this.renderPersonalNode(childId, playerId, isDirectlyAssigned))
+        .join('');
+    }
 
-      // If the player is directly part of this assignment, add it.
-      if (def.role_ids && def.role_ids.includes(playerId)) {
-        // Don't add the generic "Slayers" parent if a more specific child role exists for the player.
-        const isSpecialParent = this.isSpecialAssignment(assignId);
-        const playerInChildren = (def.assignment_ids || []).some(childId => {
-            const childDef = ASSIGNMENTS.get(childId);
-            return childDef && childDef.role_ids && childDef.role_ids.includes(playerId);
-        });
+    // Flatten hierarchy for ancestors that are not directly assigned
+    if (!isDirectlyAssigned && childrenHtml) {
+      return childrenHtml;
+    }
 
-        if (!isSpecialParent || !playerInChildren) {
-            let content = `<strong>${def.name}</strong>`;
-            if (def.instructions) {
-                content += `: ${resolvePlayerNameAsPill(def.instructions)}`;
-            }
-            results.push(`<li>${content}</li>`);
-        }
+    // Render if directly assigned
+    if (isDirectlyAssigned) {
+      let html = '';
+      let content = '';
+      
+      if (myCustomPos) {
+        content = `: ${myCustomPos}`;
+      } else if (def.instructions) {
+        content = `: ${resolvePlayerNameAsPill(def.instructions)}`;
       }
 
-      // Recurse into children to find more specific roles.
-      if (def.assignment_ids) {
-        this._collectPersonalAssignments(def.assignment_ids, playerId, results, visited);
+      // If this node is a child of another assigned node, render it more concisely.
+      html = isParentDirectlyAssigned 
+        ? `<li><span class="chained-arrow">↳</span> <strong>${def.name}</strong>${content}`
+        : `<li><strong>${def.name}</strong>${content}`;
+
+      if (childrenHtml) {
+        html += `<ul class="personal-list">${childrenHtml}</ul>`;
       }
-    });
+      html += `</li>`;
+      return html;
+    }
+
+    return '';
   }
 
   /**
@@ -462,6 +488,11 @@ style.innerHTML = `
     border-radius: 4px;
     font-size: 0.9em;
     color: var(--text-bright);
+  }
+  .chained-arrow {
+    color: var(--text-muted);
+    margin-right: 0.25rem;
+    font-weight: bold;
   }
 `;
 document.head.appendChild(style);
