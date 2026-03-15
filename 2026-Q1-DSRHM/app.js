@@ -104,14 +104,16 @@ document.addEventListener('DOMContentLoaded', () => {
   playerFilter.addEventListener('change', () => applyPlayerFilter(playerFilter.value));
 
   // Personal View Button
-  btnPersonal.addEventListener('click', () => {
-    const pid = playerFilter.value;
-    if (pid && pid !== 'all') {
-      window.open(`player.html?id=${pid}`, '_blank');
-    } else {
-      alert('Please select a specific player from the dropdown first.');
-    }
-  });
+  if (btnPersonal) {
+    btnPersonal.addEventListener('click', () => {
+      const pid = playerFilter.value;
+      if (pid && pid !== 'all') {
+        window.open(`player.html?id=${pid}`, '_blank');
+      } else {
+        alert('Please select a specific player from the dropdown first.');
+      }
+    });
+  }
 
   // Scroll spy
   const observer = new IntersectionObserver(entries => {
