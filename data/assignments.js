@@ -646,7 +646,7 @@ const ASSIGNMENTS = new Map([
   }],
   [ASSIGNMENT_ID.TALERIA_MT_TANK, {
     id: ASSIGNMENT_ID.TALERIA_MT_TANK,
-    name: "MT Tank",
+    name: "Taleria Tank",
     role_ids: [MAIN_ROLE_ID.MT],
     fights: [FIGHT_ID.TALERIA],
     description: "Main Tank.",
@@ -654,7 +654,7 @@ const ASSIGNMENTS = new Map([
   }],
   [ASSIGNMENT_ID.TALERIA_OT_TANK, {
     id: ASSIGNMENT_ID.TALERIA_OT_TANK,
-    name: "OT Tank",
+    name: "OFf-Tank",
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TALERIA],
     description: "Off Tank.",

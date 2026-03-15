@@ -11,7 +11,7 @@ const PLAYER_SKILLS = {
   [MAIN_ROLE_ID.OT]:  [
     { skill: "Crusher", note: "Enchants" },
     { skill: "Colourless", note: "Minor Brittle" },
-    { skill: "Igneous Weapons", note: "Minor Brutality, Major Sorcery/Brutality" },
+    { skill: "Igneous Weapons", note: "Major Sorcery/Brutality" },
   ],
   [MAIN_ROLE_ID.H1]:  [
     { skill: "Altar", note: "Undaunted" },
@@ -19,10 +19,15 @@ const PLAYER_SKILLS = {
     { skill: "From the Brink", note: "CP" },
   ],
   [MAIN_ROLE_ID.H2]:  [
-    { skill: "Radiant Aura", note: "" },
     { skill: "Warding Burst", note: "Minor Expedition" },
     { skill: "Off Balance", note: "Lightning Staff" },
     { skill: "Enlivening", note: "CP" },
+  ],
+  [MAIN_ROLE_ID.DPS3]:  [
+    { skill: "Earthenheart", note: "Minor Brutality" },
+  ],
+  [MAIN_ROLE_ID.DPS5]:  [
+    { skill: "Standard of Might", note: "Jail" },
   ]
 };
 
@@ -54,7 +59,7 @@ const REFERENCES = {
 
 // General DPS build guidance
 const DPS_GUIDANCE = {
-  subclass: "Herald/Ardent/X. Bridge DDs go Storm Calling. Non-Portal DDs go Assassination or Spear. Other Portal DDs go either Storm or Assassination. See <a href=\"https://hyperioxes.com/eso/dps/beam-builds\" target=\"_blank\">Hyperioxes</a> for more U48 beam subclass builds.",
+  subclass: "Herald/X/X. DK is main class. Bridge DDs go Storm Calling. Non-Portal DDs go Assassination or Spear. Other Portal DDs go either Storm or Assassination. See <a href=\"https://hyperioxes.com/eso/dps/beam-builds\" target=\"_blank\">Hyperioxes</a> for more U48 beam subclass builds.",
   bannerDDs: "Shocking/Cavalier/Courage banner.",
   beamDDs: "The beam morph to use is Pragmatic Fatecarver.",
   alkoshDPS: "Colo-only for ult. Gravelord for 3rd subclass. Alkosh for all fights except Taleria (use parse trial set + Colo)."
@@ -62,10 +67,10 @@ const DPS_GUIDANCE = {
 
 const HEALER_GUIDANCE = {
   H1: { subclass: "GB/(RL or Curative)/Flex", groupSkill: "Altar" },
-  H2: { subclass: "Shadow/(RL)/Flex", groupSkills: "Refreshing Path, Radiant Aura, Warding Burst (Minor Expedition). Provide Minor and Major Expedition on all fights. Barriers only." }
+  H2: { subclass: "Shadow/Ardent/Flex", groupSkills: "Refreshing Path, Fire Keeper (Minor Heroism), Warding Burst (Minor Expedition). Provide Minor and Major Expedition on all fights. Barriers only." }
 };
 
 const TANK_GUIDANCE = {
   MT: { subclass: "Winter/Daedric/X", buff: "Frost Cloak (Major Resolve)" },
-  OT: { subclass: "Earthen Heart/SoA/X", buff: "Colourless (Minor Brittle), Elemental Susceptibility, Igneous Weapons (Minor Brutality, Major Sorcery/Brutality)" }
+  OT: { subclass: "Earthen Heart/SoA/X", buff: "Colourless (Minor Brittle), Elemental Susceptibility, Igneous Weapons (Major Sorcery/Brutality)" }
 };
