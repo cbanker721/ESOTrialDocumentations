@@ -658,7 +658,7 @@ const ASSIGNMENTS = new Map([
     role_ids: [MAIN_ROLE_ID.OT],
     fights: [FIGHT_ID.TALERIA],
     description: "Off Tank.",
-    instructions: `${NPC_ID.TALERIA_BEHEMOTH} is #1 priority. Stack ${NPC_ID.TALERIA_MAGE} close to ${NPC_ID.TALERIA_BOSS}. Ele Sus ${NPC_ID.TALERIA_SIRENS}.`
+    instructions: `${NPC_ID.TALERIA_BEHEMOTH} is #1 priority. Stack ${NPC_ID.TALERIA_MAGE} close to ${NPC_ID.TALERIA_BOSS}. Ele Sus ${NPC_ID.TALERIA_SIRENS}. Drop slams at outer edge of arena during winterstorm so DDs can safely walk along inner edge.`
   }],
   [ASSIGNMENT_ID.TALERIA_BRIDGE_DPS, {
     id: ASSIGNMENT_ID.TALERIA_BRIDGE_DPS,
@@ -675,6 +675,31 @@ const ASSIGNMENTS = new Map([
     fights: [FIGHT_ID.TALERIA],
     description: "Bridge Backup.",
     instructions: "Fill in if primary bridge DPS is down."
+  }],
+  [ASSIGNMENT_ID.TALERIA_SIREN_WATCHERS, {
+    id: ASSIGNMENT_ID.TALERIA_SIREN_WATCHERS,
+    name: "Siren Watchers",
+    role_ids: [],
+    assignment_ids: [ASSIGNMENT_ID.TALERIA_LEFT_SIREN_WATCHER, ASSIGNMENT_ID.TALERIA_RIGHT_SIREN_WATCHER],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Watch sirens after first winterstorm to keep group alert about nearby sirens.",
+    instructions: "Watch for nearby sirens after winterstorm. Tell the group if any exist."
+  }],
+  [ASSIGNMENT_ID.TALERIA_LEFT_SIREN_WATCHER, {
+    id: ASSIGNMENT_ID.TALERIA_LEFT_SIREN_WATCHER,
+    name: "Left Siren Watcher",
+    role_ids: [MAIN_ROLE_ID.DPS5],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Watch left side",
+    instructions: "Watch left side"
+  }],
+  [ASSIGNMENT_ID.TALERIA_RIGHT_SIREN_WATCHER, {
+    id: ASSIGNMENT_ID.TALERIA_RIGHT_SIREN_WATCHER,
+    name: "Right Siren Watcher",
+    role_ids: [MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.TALERIA],
+    description: "Watch right side",
+    instructions: "Watch right side"
   }],
   [ASSIGNMENT_ID.TALERIA_MT_HEALER, {
     id: ASSIGNMENT_ID.TALERIA_MT_HEALER,
