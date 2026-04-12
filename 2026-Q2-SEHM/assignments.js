@@ -142,7 +142,7 @@ const ASSIGNMENTS = new Map([
   [ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TEAM, {
     id: ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TEAM,
     name: "Portal Group",
-    role_ids: [MAIN_ROLE_ID.DPS5, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
+    role_ids: [MAIN_ROLE_ID.DPS4, MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
     fights: [FIGHT_ID.ANSUUL],
     instructions: "Do Ansuul portal. Bring Echoing Vigour"
   }],
