@@ -65,7 +65,7 @@ const FIGHTS = new Map([
       [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Wamasu tank" }
     },
     buffsDebuffs: [],
-    assignments: [ASSIGNMENT_ID.SE_SLAYERS, ASSIGNMENT_ID.SE_YASEYLA_PORTALS, ASSIGNMENT_ID.SE_YASEYLA_MT, ASSIGNMENT_ID.SE_YASEYLA_OT]
+    assignments: [ASSIGNMENT_ID.SE_YASEYLA_TANKS, ASSIGNMENT_ID.SE_YASEYLA_PORTALS, ASSIGNMENT_ID.SE_SLAYERS ]
   }],
   [FIGHT_ID.TWELVANE, {
     id: FIGHT_ID.TWELVANE,
@@ -94,7 +94,7 @@ const FIGHTS = new Map([
       [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Kites circles, takes animals" },
     },
     buffsDebuffs: [],
-    assignments: [ASSIGNMENT_ID.SE_TWELVANE_MT, ASSIGNMENT_ID.SE_TWELVANE_OT, ASSIGNMENT_ID.SE_TWELVANE_PORTALS, ASSIGNMENT_ID.SE_SLAYERS]
+    assignments: [ASSIGNMENT_ID.SE_TWELVANE_TANKS, ASSIGNMENT_ID.SE_TWELVANE_PORTALS, ASSIGNMENT_ID.SE_SLAYERS]
   }],
   [FIGHT_ID.ANSUUL, {
     id: FIGHT_ID.ANSUUL,
@@ -123,6 +123,6 @@ const FIGHTS = new Map([
       [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Barrier", misc: ["Rapids"], otes: "Interrupt" },
     },
     buffsDebuffs: [],
-    assignments: [ASSIGNMENT_ID.SE_ANSUUL_MT, ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TANK, ASSIGNMENT_ID.SE_ANSUUL_MANIC_TAUNT, ASSIGNMENT_ID.SE_SLAYERS, ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TEAM]
+    assignments: [ASSIGNMENT_ID.SE_ANSUUL_TANKS, ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TEAM, ASSIGNMENT_ID.SE_ANSUUL_MANIC_TAUNT, ASSIGNMENT_ID.SE_SLAYERS]
   }]
 ]);
