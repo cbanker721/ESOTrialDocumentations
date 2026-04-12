@@ -20,7 +20,18 @@ const FIGHTS = new Map([
       details: []
     },
     builds: {
-      // TODO: Fill in per-player builds
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Banner"], notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Banner"], notes: "" },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Shattering Knife (Multi-Target/OB)" },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", misc: ["Crusher"], notes: "" },
+      [MAIN_ROLE_ID.H2]:   { sets: ["RO", "JO", "AD"], ult: "None", misc: ["Crusher"], notes: "" },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "" },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "Crimson", "Flex"], ult: "Horn", notes: "Leads add-pulls because of Crimson" }
     },
     buffsDebuffs: [
       // TODO: Fill in buff/debuff assignments
@@ -33,14 +44,25 @@ const FIGHTS = new Map([
     shortName: "Yaseyla",
     icon: "👁️",
     strategy: {
-      summary: "Boss 1. Horror adds must be killed using Vanton's Clarity. HM increases Horror spawn difficulty and boss damage.",
+      summary: "",
       details: [],
       phases: [
         // TODO: Fill in phase-by-phase strategy
       ]
     },
     builds: {
-      // TODO: Fill in per-player builds
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Null", "Z'en"], ult: "Colo", notes: "" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Sym"], ult: "Glyph", misc: ["Weakning", "Altar"], notes: "" },
+      [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PA", "PoE", "Oze"], ult: "Barrier", misc: ["Weakening"], notes: "" },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Naz"], ult: "Atro", notes: "Yas tank" },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Wamasu tank" }
     },
     buffsDebuffs: [],
     assignments: []
@@ -51,14 +73,25 @@ const FIGHTS = new Map([
     shortName: "Twelvane",
     icon: "🔮",
     strategy: {
-      summary: "Boss 2. Crystal control sequences and Chimera add. HM adds more complex crystal patterns and tighter DPS checks.",
+      summary: "",
       details: [],
       phases: [
         // TODO: Fill in phase-by-phase strategy
       ]
     },
     builds: {
-      // TODO: Fill in per-player builds
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner", "Echoing Vigour"], notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner", "Echoing Vigour"], notes: "" },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Null", "Z'en"], ult: "Colo", notes: "", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Sym"], ult: "Glyph", misc: ["Weakning", "Altar"], notes: "" },
+      [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PA", "PoE", "Oze"], ult: "Standard of Might", misc: ["Weakening"], notes: "" },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Naz"], ult: "Atro", notes: "Tank boss" },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Kites circles, takes animals" },
     },
     buffsDebuffs: [],
     assignments: []
@@ -76,7 +109,18 @@ const FIGHTS = new Map([
       ]
     },
     builds: {
-      // TODO: Fill in per-player builds
+      [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
+      [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["EC", "Z'en", "Sym"], ult: "Colo", misc: ["Altar"], notes: "Third healer, interrupt" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Blind"], ult: "Glyph", misc: ["Weakning"], notes: "" },
+      [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PA", "PoE", "Oze"], ult: "Standard of Might", misc: ["Weakening"], notes: "" },
+      [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Naz"], ult: "Atro", notes: "" },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Interrupt" },
     },
     buffsDebuffs: [],
     assignments: []

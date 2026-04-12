@@ -11,7 +11,6 @@ const PLAYER_SKILLS = {
   [MAIN_ROLE_ID.OT]:  [
     { skill: "Crusher", note: "Enchants" },
     { skill: "Colourless", note: "Minor Brittle" },
-    { skill: "Igneous Weapons", note: "Major Sorcery/Brutality" },
   ],
   [MAIN_ROLE_ID.H1]:  [
     { skill: "Altar", note: "Undaunted" },
@@ -72,5 +71,5 @@ const HEALER_GUIDANCE = {
 
 const TANK_GUIDANCE = {
   MT: { subclass: "Winter/Daedric/X", buff: "Frost Cloak (Major Resolve)" },
-  OT: { subclass: "Earthen Heart/SoA/X", buff: "Colourless (Minor Brittle), Elemental Susceptibility, Igneous Weapons (Major Sorcery/Brutality)" }
+  OT: { subclass: "Draconic/SoA/X", buff: "Colourless (Minor Brittle), Elemental Susceptibility" }
 };
