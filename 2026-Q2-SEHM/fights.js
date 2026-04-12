@@ -21,13 +21,13 @@ const FIGHTS = new Map([
     },
     builds: {
       [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Banner"], notes: "" },
-      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", notes: "" },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
       [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", misc: ["Banner"], notes: "" },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "Shattering Knife (Multi-Target/OB)" },
-      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn"], ult: "Languid (Front), Destro (Back)", notes: "" },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Ansuul/Sul-Xan/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid (Front), Destro (Back)", notes: "" },
       [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PA", "PoE", "Oze"], ult: "None", misc: ["Crusher"], notes: "" },
       [MAIN_ROLE_ID.H2]:   { sets: ["RO", "JO", "AD"], ult: "None", misc: ["Crusher"], notes: "" },
       [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Flex"], ult: "Atro", notes: "" },
@@ -52,20 +52,20 @@ const FIGHTS = new Map([
     },
     builds: {
       [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
-      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", notes: "" },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
       [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
-      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Null", "Z'en"], ult: "Colo", notes: "" },
-      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Sym"], ult: "Glyph", misc: ["Weakning", "Altar"], notes: "" },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Null", "Z'en"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Sym"], ult: "Glyph", misc: ["Weakening", "Altar"], notes: "" },
       [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PA", "PoE", "Oze"], ult: "Barrier", misc: ["Weakening"], notes: "" },
       [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Naz"], ult: "Atro", notes: "Yas tank" },
       [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Wamasu tank" }
     },
     buffsDebuffs: [],
-    assignments: []
+    assignments: [ASSIGNMENT_ID.SE_SLAYERS, ASSIGNMENT_ID.SE_YASEYLA_PORTALS, ASSIGNMENT_ID.SE_YASEYLA_MT, ASSIGNMENT_ID.SE_YASEYLA_OT]
   }],
   [FIGHT_ID.TWELVANE, {
     id: FIGHT_ID.TWELVANE,
@@ -81,20 +81,20 @@ const FIGHTS = new Map([
     },
     builds: {
       [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner", "Echoing Vigour"], notes: "" },
-      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", misc: ["Echoing Vigour"] },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
       [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner", "Echoing Vigour"], notes: "" },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Null", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Echoing Vigour"] },
       [MAIN_ROLE_ID.DPS8]: { sets: ["Velothi", "Null", "Z'en"], ult: "Colo", notes: "", misc: ["Echoing Vigour"] },
-      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Sym"], ult: "Glyph", misc: ["Weakning", "Altar"], notes: "" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Sym"], ult: "Glyph", misc: ["Weakening", "Altar"], notes: "" },
       [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PA", "PoE", "Oze"], ult: "Standard of Might", misc: ["Weakening"], notes: "" },
       [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Naz"], ult: "Atro", notes: "Tank boss" },
       [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Kites circles, takes animals" },
     },
     buffsDebuffs: [],
-    assignments: []
+    assignments: [ASSIGNMENT_ID.SE_TWELVANE_MT, ASSIGNMENT_ID.SE_TWELVANE_OT, ASSIGNMENT_ID.SE_TWELVANE_PORTALS, ASSIGNMENT_ID.SE_SLAYERS]
   }],
   [FIGHT_ID.ANSUUL, {
     id: FIGHT_ID.ANSUUL,
@@ -110,19 +110,19 @@ const FIGHTS = new Map([
     },
     builds: {
       [MAIN_ROLE_ID.DPS1]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
-      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
+      [MAIN_ROLE_ID.DPS2]: { sets: ["Velothi", "Alkosh", "Deadly/Tideborn/Nerien'eth"], ult: "Colo", notes: "" },
       [MAIN_ROLE_ID.DPS3]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
       [MAIN_ROLE_ID.DPS4]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
       [MAIN_ROLE_ID.DPS5]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", misc: ["Banner"], notes: "" },
       [MAIN_ROLE_ID.DPS6]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
       [MAIN_ROLE_ID.DPS7]: { sets: ["Velothi", "Ansuul/Kazpian", "Deadly/Tideborn/Nerien'eth"], ult: "Languid or Standard", notes: "" },
-      [MAIN_ROLE_ID.DPS8]: { sets: ["EC", "Z'en", "Sym"], ult: "Colo", misc: ["Altar"], notes: "Third healer, interrupt" },
-      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Blind"], ult: "Glyph", misc: ["Weakning"], notes: "" },
+      [MAIN_ROLE_ID.DPS8]: { sets: ["EC", "Z'en", "Sym"], ult: "Barrier", misc: ["Altar"], notes: "Third healer, interrupt" },
+      [MAIN_ROLE_ID.H1]:   { sets: ["SPC", "PP", "PoE", "Blind"], ult: "Glyph", misc: ["Weakening"], notes: "" },
       [MAIN_ROLE_ID.H2]:   { sets: ["MA", "PA", "PoE", "Oze"], ult: "Standard of Might", misc: ["Weakening"], notes: "" },
       [MAIN_ROLE_ID.MT]:   { sets: ["LE", "Xoryn", "Naz"], ult: "Atro", notes: "" },
-      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Horn", notes: "Interrupt" },
+      [MAIN_ROLE_ID.OT]:   { sets: ["PW", "WM", "Baron"], ult: "Barrier", misc: ["Rapids"], otes: "Interrupt" },
     },
     buffsDebuffs: [],
-    assignments: []
+    assignments: [ASSIGNMENT_ID.SE_ANSUUL_MT, ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TANK, ASSIGNMENT_ID.SE_ANSUUL_MANIC_TAUNT, ASSIGNMENT_ID.SE_SLAYERS, ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TEAM]
   }]
 ]);
