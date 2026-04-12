@@ -49,8 +49,10 @@ const ASSIGNMENT_ID = Object.freeze({
   SE_ANSUUL_HEALERS: 'se-ansuul-healers-8a9b',
   SE_ANSUUL_DPS: 'se-ansuul-dps-0c1d',
   SE_ANSUUL_MT: 'se-ansuul-mt-u1v2',
-  SE_ANSUUL_PORTAL_TEAM: 'se-ansuul-portal-team-w3x4',
+  SE_ANSUUL_INTERRUPTORS: 'se-ansuul-interruptors-w3x4',
+  SE_ANSUUL_ATRONACH_HUNTERS: 'se-ansuul-atronach-hunters-y5z6',
   SE_ANSUUL_PORTAL_TANK: 'se-ansuul-portal-tank-w3x4',
   SE_ANSUUL_PORTAL_TEAM: 'se-ansuul-portal-team-y5z6',
   SE_ANSUUL_MANIC_TAUNT: 'se-ansuul-manic-taunt-a7b8',
+  SE_ANSUUL_EXECUTE_ROLES: 'se-ansuul-execute-roles-c9d0',
 });

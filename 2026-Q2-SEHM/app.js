@@ -1,5 +1,6 @@
 // ============================================================
 // SE HM Progression — App Logic
+// TODO - Will need to generalize out a lot of the duplicate logic from 2026-Q1-DSRHM
 // ============================================================
 
 let currentFightId = null;

@@ -146,11 +146,35 @@ const ASSIGNMENTS = new Map([
     fights: [FIGHT_ID.ANSUUL],
     instructions: "Do Ansuul portal. Bring Echoing Vigour"
   }],
+  [ASSIGNMENT_ID.SE_ANSUUL_TANKS, {
+    id: ASSIGNMENT_ID.SE_ANSUUL_TANKS,
+    name: "Tanks",
+    assignment_ids: [ASSIGNMENT_ID.SE_ANSUUL_MT, ASSIGNMENT_ID.SE_ANSUUL_PORTAL_TANK]
+  }],
   [ASSIGNMENT_ID.SE_ANSUUL_MANIC_TAUNT, {
     id: ASSIGNMENT_ID.SE_ANSUUL_MANIC_TAUNT,
     name: "Manic Phobia Taunt",
     role_ids: [MAIN_ROLE_ID.DPS8],
     fights: [FIGHT_ID.ANSUUL],
     instructions: "Taunt the Manic manifestation (Phobia) to ensure it does not wipe the group stack."
-  }]
+  }],
+  [ASSIGNMENT_ID.SE_ANSUUL_ATRONACH_HUNTERS, {
+    id: ASSIGNMENT_ID.SE_ANSUUL_ATRONACH_HUNTERS,
+    name: "Atronach Hunters",
+    role_ids: [MAIN_ROLE_ID.DPS6, MAIN_ROLE_ID.DPS7],
+    fights: [FIGHT_ID.ANSUUL],
+    instructions: "Prioritize killing flame atronachs and imps during execute"
+  }],
+  [ASSIGNMENT_ID.SE_ANSUUL_INTERRUPTORS, {
+    id: ASSIGNMENT_ID.SE_ANSUUL_INTERRUPTORS,
+    name: "Interruptors",
+    role_ids: [MAIN_ROLE_ID.OT, MAIN_ROLE_ID.DPS8],
+    fights: [FIGHT_ID.ANSUUL],
+    instructions: "Interrupt flame atronachs"
+  }],
+  [ASSIGNMENT_ID.SE_ANSUUL_EXECUTE_ROLES, {
+    id: ASSIGNMENT_ID.SE_ANSUUL_EXECUTE_ROLES,
+    name: "Execute",
+    assignment_ids: [ASSIGNMENT_ID.SE_ANSUUL_ATRONACH_HUNTERS, ASSIGNMENT_ID.SE_ANSUUL_INTERRUPTORS]
+  }],
 ]);
