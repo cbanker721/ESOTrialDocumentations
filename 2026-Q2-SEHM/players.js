@@ -10,6 +10,6 @@ const PLAYERS = {
   [MAIN_ROLE_ID.DPS8]: { name: "CommunistBanker",   tag: "RL",         nickname: "", shortName: "CBanker" },
   [MAIN_ROLE_ID.H1]:   { name: "Lissa",    tag: "SPC",          nickname: "", shortName: "Lissa" },
   [MAIN_ROLE_ID.H2]:   { name: "Violon/B",    tag: "PP",           nickname: "", shortName: "Violon" },
-  [MAIN_ROLE_ID.MT]:   { name: "Egandara",   tag: "Main Tank", nickname: "", shortName: "Egandara" },
-  [MAIN_ROLE_ID.OT]:   { name: "Sparrachion",     tag: "Off Tank",    nickname: "", shortName: "Sparr" }
+  [MAIN_ROLE_ID.OT]:   { name: "Egandara",   tag: "Main Tank", nickname: "", shortName: "Egandara" },
+  [MAIN_ROLE_ID.MT]:   { name: "Sparrachion",     tag: "Off Tank",    nickname: "", shortName: "Sparr" }
 };
