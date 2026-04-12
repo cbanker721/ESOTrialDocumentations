@@ -336,7 +336,7 @@ function renderGuidance() {
   const healCard = document.createElement('div'); healCard.className = 'guidance-card guidance-healer';
   healCard.innerHTML = `<h3>Healers</h3>
     <p><span class="guidance-key">H1 Subclass:</span> ${HEALER_GUIDANCE.H1.subclass}</p>
-    <p><span class="guidance-key">H1 Group Skill:</span> ${HEALER_GUIDANCE.H1.groupSkill}</p>
+    <p><span class="guidance-key">H1 Group Skill:</span> ${HEALER_GUIDANCE.H1.groupSkills}</p>
     <p><span class="guidance-key">H2 Subclass:</span> ${HEALER_GUIDANCE.H2.subclass}</p>
     <p><span class="guidance-key">H2 Group Skills:</span> ${HEALER_GUIDANCE.H2.groupSkills}</p>`;
   grid.appendChild(healCard);

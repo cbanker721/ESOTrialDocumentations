@@ -65,7 +65,7 @@ const DPS_GUIDANCE = {
 };
 
 const HEALER_GUIDANCE = {
-  H1: { subclass: "GB/(RL or Curative)/Flex", groupSkill: "Altar" },
+  H1: { subclass: "GB/(RL or Curative)/Flex", groupSkills: "Altar" },
   H2: { subclass: "Shadow/Ardent/Flex", groupSkills: "Refreshing Path, Fire Keeper (Minor Heroism), Warding Burst (Minor Expedition). Provide Minor and Major Expedition on all fights. Barriers only." }
 };
 

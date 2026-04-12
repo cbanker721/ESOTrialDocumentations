@@ -53,8 +53,8 @@ const DPS_GUIDANCE = {
 };
 
 const HEALER_GUIDANCE = {
-  H1: { subclass: "GB/Curative/X" },
-  H2: { subclass: "RL/Ardent/X", groupSkills: "Radiant, Firekeeper, Enlivening" }
+  H1: { subclass: "GB/Curative/RL", groupSkills: "Radiant" },
+  H2: { subclass: "RL/Ardent/X", groupSkills: "Altar, Firekeeper, Enlivening" }
 };
 
 const TANK_GUIDANCE = {
