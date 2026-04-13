@@ -358,9 +358,9 @@ function renderReferences() {
 
   const mechCard = document.createElement('div'); mechCard.className = 'ref-card';
   mechCard.innerHTML = `<h3>📖 Mechanics Guides</h3>
-    <a href="${REFERENCES.mechanics.yaseyla}" target="_blank">Boss 1: Exarchanic Yaseyla</a>
-    <a href="${REFERENCES.mechanics.twelvane}" target="_blank">Boss 2: Archwizard Twelvane</a>
-    <a href="${REFERENCES.mechanics.ansuul}" target="_blank">Boss 3: Ansuul the Tormentor</a>`;
+    <a href="${REFERENCES.mechanics.yaseyla}" target="_blank">TBD</a>
+    <a href="${REFERENCES.mechanics.twelvane}" target="_blank">TBD</a>
+    <a href="${REFERENCES.mechanics.ansuul}" target="_blank">TBD</a>`;
   grid.appendChild(mechCard);
 
   // Only render video/pen sections if they have content
